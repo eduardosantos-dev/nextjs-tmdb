@@ -1,0 +1,5 @@
+.pageContainer {
+  & > div:first-of-type {
+    flex: 1;
+  }
+}

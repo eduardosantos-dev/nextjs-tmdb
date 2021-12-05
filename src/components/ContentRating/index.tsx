@@ -1,12 +1,13 @@
 import React from "react";
 import {
   Box,
+  BoxProps,
   CircularProgress,
   CircularProgressLabel,
   Text,
 } from "@chakra-ui/react";
 
-interface ContentRatingProps {
+interface ContentRatingProps extends BoxProps {
   rating: number;
 }
 
@@ -36,12 +37,7 @@ export function ContentRating({ rating, ...rest }: ContentRatingProps) {
   };
 
   return (
-    <Box
-      backgroundColor="black"
-      pos="absolute"
-      top="-18px"
-      left="18px"
-      borderRadius="50%">
+    <Box backgroundColor="black" borderRadius="50%" w={10} h={10} {...rest}>
       <CircularProgress
         trackColor={getTrackColor()}
         value={rating * 10}

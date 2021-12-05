@@ -1,3 +1,5 @@
+import { useQuery, UseQueryOptions } from "react-query";
+import { toRunTimeString } from "../../utils";
 import { api } from "../api";
 
 type Movie = {
@@ -10,6 +12,7 @@ type Movie = {
 
 type GetMoviesResponse = {
   movies: Movie[];
+  page: number;
   totalPages: number;
   totalResults: number;
 };
@@ -37,6 +40,7 @@ export async function getMovies(page: number): Promise<GetMoviesResponse> {
 
   return {
     movies,
+    page: data.page,
     totalPages: data.total_pages,
     totalResults: data.total_results,
   };
@@ -49,7 +53,24 @@ interface GetMovieByIdResponse {
 export async function getMovieById(id: number): Promise<GetMovieByIdResponse> {
   const { data } = await api.get(`/movie/${id}`);
 
-  return {
-    movie: data,
+  const movie = {
+    ...data,
+    formatted_release_date: new Date(data.release_date).toLocaleDateString(
+      "pt-BR",
+      {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+      }
+    ),
+    formatted_runtime: toRunTimeString(data.runtime),
   };
+
+  return {
+    movie,
+  };
+}
+
+export function useMovies(page: number, options: UseQueryOptions): any {
+  return useQuery(["movies", page], () => getMovies(page));
 }
