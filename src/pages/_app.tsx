@@ -6,6 +6,7 @@ import { SidebarDrawerProvider } from "../context/SidebarDrawerContext";
 import { QueryClientProvider } from "react-query";
 import { queryClient } from "../services/queryClient";
 import { ReactQueryDevtools } from "react-query/devtools";
+import "../styles/global.scss";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

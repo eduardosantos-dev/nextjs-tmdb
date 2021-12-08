@@ -31,7 +31,7 @@ export function MovieCard({ movie, ...rest }: MovieCardProps) {
 
   return (
     <Box
-      maxW="md"
+      // maxW="md"
       boxShadow="lg"
       bg="gray.800"
       borderRadius="lg"

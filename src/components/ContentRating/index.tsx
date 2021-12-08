@@ -9,9 +9,16 @@ import {
 
 interface ContentRatingProps extends BoxProps {
   rating: number;
+  size?: string;
+  textFontSize?: string;
 }
 
-export function ContentRating({ rating, ...rest }: ContentRatingProps) {
+export function ContentRating({
+  rating,
+  size = "40px",
+  textFontSize = "sm",
+  ...rest
+}: ContentRatingProps) {
   const getTrackColor = () => {
     if (!rating) return "gray.400";
 
@@ -37,19 +44,19 @@ export function ContentRating({ rating, ...rest }: ContentRatingProps) {
   };
 
   return (
-    <Box backgroundColor="black" borderRadius="50%" w={10} h={10} {...rest}>
+    <Box backgroundColor="black" borderRadius="50%" w={size} h={size} {...rest}>
       <CircularProgress
         trackColor={getTrackColor()}
         value={rating * 10}
         color={getColor()}
-        size="40px"
+        size={size}
         thickness="4px">
         <CircularProgressLabel
           fontSize="sm"
           fontWeight="bold"
           display="flex"
           justifyContent="center">
-          <Text fontSize="sm">{rating * 10}</Text>
+          <Text fontSize={textFontSize}>{rating * 10}</Text>
           <Text fontSize="0.5rem" mt="0.5">
             %
           </Text>

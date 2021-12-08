@@ -1,71 +1,37 @@
 import React from "react";
 import { GetServerSideProps } from "next";
-import { Text, Image, Link, Flex, Container, Box } from "@chakra-ui/react";
 import { Params } from "next/dist/server/router";
 import { getMovieById } from "../../services/hooks/useMovies";
-import { Header } from "../../components/Header";
-import { ContentRating } from "../../components/ContentRating";
-
-interface Movie {
-  id: number;
-  poster_path: string;
-  release_date: string;
-  backdrop_path: string;
-  vote_average: number;
-  formatted_release_date: string;
-  title: string;
-  genres: { id: number; name: string }[];
-  formatted_runtime: string;
-}
+import MovieHero from "../../components/MovieHero";
+import MovieDetails from "../../components/MovieDetails";
+import { Container, Flex, useBreakpointValue } from "@chakra-ui/react";
+import { IMovie } from "../../types";
+import MovieDetailSidebar from "../../components/MovieDetailsSidebar";
+import { Sidebar } from "../../components/Sidebar";
 
 interface MoviePageProps {
-  movie: Movie;
+  movie: IMovie;
 }
 
 export default function MoviePage({ movie }: MoviePageProps) {
+  const isDrawerSidebar = useBreakpointValue({
+    base: true,
+    lg: false,
+  });
+
   return (
-    <Flex
-      direction="column"
-      h="100%"
-      bgImage={`https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${movie.backdrop_path}`}
-      bgPos="right -200px top"
-      bgSize="cover"
-      bgRepeat="no-repeat">
-      <Header />
+    <>
+      {isDrawerSidebar && <Sidebar />}
+      <MovieHero movie={movie} />
       <Flex
-        maxW="100%"
-        py="32"
-        align="center"
-        justifyContent="center"
-        bgImg="linear-gradient(to right, rgba(3.92%, 4.31%, 6.27%, 1.00) 150px, rgba(3.92%, 4.31%, 6.27%, 0.84) 100%);">
-        <Flex as={Container} maxW="container.xl">
-          <Box borderRadius="lg" overflow="hidden" bg="gray.800">
-            <Image
-              src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
-              alt={movie.title}
-              title={movie.title}
-              w={300}
-            />
-            <Box p="6">
-              <Text mt="2" fontWeight="bold" noOfLines={2}>
-                {movie.title}
-              </Text>
-            </Box>
-          </Box>
-          <Flex ml="12" flexDir="column">
-            <Text fontSize="3xl" fontWeight="bold">
-              {movie.title}
-            </Text>
-            <Text fontSize="md" fontWeight="bold">
-              {movie.formatted_release_date} •{" "}
-              {movie.genres.map((genre) => genre.name).join(", ")} •{" "}
-              {movie.formatted_runtime}
-            </Text>
-            <ContentRating rating={movie.vote_average} />
-          </Flex>
-        </Flex>
+        as={Container}
+        maxW="container.xl"
+        py={6}
+        direction={{ base: "column", md: "row" }}>
+        <MovieDetails movie={movie} />
+        <MovieDetailSidebar movie={movie} />
       </Flex>
-    </Flex>
+    </>
   );
 }
 

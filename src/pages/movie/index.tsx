@@ -5,7 +5,14 @@ import {
   getMovies,
   useMovies,
 } from "../../services/hooks/useMovies";
-import { Box, Button, Container, Flex, SimpleGrid } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Container,
+  Flex,
+  SimpleGrid,
+  Spinner,
+} from "@chakra-ui/react";
 import { Header } from "../../components/Header";
 import { Sidebar } from "../../components/Sidebar";
 import { MovieCard } from "../../components/MovieCard";
@@ -66,8 +73,12 @@ export default function Movies({ moviesProps }: MoviesProps) {
             dataLength={movies.length}
             next={fetchNextPage}
             hasMore={true}
-            loader={<h4>Loading...</h4>}>
-            <SimpleGrid flex="1" minChildWidth={200} gap="4">
+            loader={
+              <Flex align="center" justify="center" mt={6} h={20}>
+                <Spinner color="green.400" size="xl" />
+              </Flex>
+            }>
+            <SimpleGrid flex="1" columns={[2, 2, 4]} gap="4">
               {movies &&
                 movies.map((movie) => (
                   <MovieCard movie={movie} key={movie.id} />

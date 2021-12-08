@@ -1,0 +1,162 @@
+import {
+  Box,
+  Container,
+  Flex,
+  Image,
+  Text,
+  Heading,
+  Stack,
+  IconButton,
+  Button,
+  useBreakpointValue,
+} from "@chakra-ui/react";
+import React from "react";
+import {
+  RiPlayListAddLine,
+  RiHeartLine,
+  RiBookmarkLine,
+  RiStarLine,
+  RiPlayLine,
+} from "react-icons/ri";
+import { ContentRating } from "../ContentRating";
+import { Header } from "../Header";
+
+interface Genre {
+  id: number;
+  name: string;
+}
+
+interface MovieHeroProps {
+  movie: {
+    id: number;
+    poster_path: string;
+    release_date: string;
+    backdrop_path: string;
+    vote_average: number;
+    formatted_release_date: string;
+    title: string;
+    genres: Genre[];
+    formatted_runtime: string;
+    overview: string;
+  };
+}
+
+export default function MovieHero({ movie }: MovieHeroProps) {
+  const isWideVersion = useBreakpointValue({
+    base: false,
+    lg: true,
+  });
+
+  return (
+    <Flex
+      direction="column"
+      h="100%"
+      bgImage={`https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${movie.backdrop_path}`}
+      bgPos="right -200px top"
+      bgSize="cover"
+      bgRepeat="no-repeat">
+      <Header />
+      <Flex
+        maxW="100%"
+        mt="20"
+        py="45px"
+        align="center"
+        justifyContent="center"
+        bgImg="linear-gradient(to right, rgba(3.92%, 4.31%, 6.27%, 1.00) 150px, rgba(3.92%, 4.31%, 6.27%, 0.84) 100%);">
+        <Flex
+          as={Container}
+          maxW="container.xl"
+          direction={["column", "row"]}
+          flexWrap="wrap">
+          <Box
+            borderRadius="lg"
+            overflow="hidden"
+            bg="gray.800"
+            minW={300}
+            maxW={300}
+            mx="auto"
+            display={["none", "block"]}
+            flex="1">
+            <Image
+              src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
+              alt={movie.title}
+              title={movie.title}
+              w={300}
+              h={450}
+            />
+            <Box p="6">
+              <Text mt="2" fontWeight="bold" noOfLines={2}>
+                {movie.title}
+              </Text>
+            </Box>
+          </Box>
+          <Flex ml={[0, 4, 6, 8]} mt={[6, 6, 0]} flexDir="column" flex="1">
+            <Heading as="h1">{movie.title}</Heading>
+            <Text fontSize="sm">
+              {movie.formatted_release_date} •{" "}
+              {movie.genres.map((genre: Genre) => genre.name).join(", ")} •{" "}
+              {movie.formatted_runtime}
+            </Text>
+            <Stack
+              direction={["column", "column", "row"]}
+              mt={6}
+              spacing={4}
+              align={["center", "center", "flex-start"]}>
+              <ContentRating
+                rating={movie.vote_average}
+                size={"60px"}
+                textFontSize="lg"
+              />
+              <Stack spacing={4} align="center" direction="row">
+                <IconButton
+                  variant="outline"
+                  colorScheme="green"
+                  aria-label="Adicionar a uma lista"
+                  icon={<RiPlayListAddLine />}
+                />
+                <IconButton
+                  variant="outline"
+                  colorScheme="green"
+                  aria-label="Adicionar aos favoritos"
+                  icon={<RiHeartLine />}
+                />
+                <IconButton
+                  variant="outline"
+                  colorScheme="green"
+                  aria-label="Adicionar à sua lista de interesses"
+                  icon={<RiBookmarkLine />}
+                />
+                <IconButton
+                  variant="outline"
+                  colorScheme="green"
+                  aria-label="Avalie!"
+                  icon={<RiStarLine />}
+                />
+
+                {isWideVersion ? (
+                  <Button
+                    leftIcon={<RiPlayLine />}
+                    colorScheme="green"
+                    variant="outline">
+                    <Text>Reproduzir trailer</Text>
+                  </Button>
+                ) : (
+                  <IconButton
+                    variant="outline"
+                    colorScheme="green"
+                    aria-label="Reproduzir trailer"
+                    icon={<RiPlayLine />}
+                  />
+                )}
+              </Stack>
+            </Stack>
+            <Heading as="h3" fontSize="xl" mt={6}>
+              Sinopse
+            </Heading>
+            <Text mt={4}>{movie.overview}</Text>
+          </Flex>
+        </Flex>
+      </Flex>
+    </Flex>
+  );
+}

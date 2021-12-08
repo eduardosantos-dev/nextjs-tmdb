@@ -8,7 +8,6 @@ import {
 import React, { useState } from "react";
 import { RiMenuLine } from "react-icons/ri";
 import { useSidebarDrawer } from "../../context/SidebarDrawerContext";
-import useDocumentScrollThrottled from "../../services/hooks/useDocumentScrollThrottled";
 import { Logo } from "./Logo";
 import { Profile } from "./Profile";
 import { SearchBox } from "./SearchBox";

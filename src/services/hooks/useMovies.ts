@@ -1,17 +1,10 @@
 import { useQuery, UseQueryOptions } from "react-query";
+import { ICastMember, ICrewMember, IMovie } from "../../types";
 import { toRunTimeString } from "../../utils";
 import { api } from "../api";
 
-type Movie = {
-  id: number;
-  poster_path: string;
-  release_date: string;
-  vote_average: number;
-  title: string;
-};
-
 type GetMoviesResponse = {
-  movies: Movie[];
+  movies: IMovie[];
   page: number;
   totalPages: number;
   totalResults: number;
@@ -24,7 +17,7 @@ export async function getMovies(page: number): Promise<GetMoviesResponse> {
     },
   });
 
-  const movies = data.results.map((movie: Movie) => {
+  const movies = data.results.map((movie: IMovie) => {
     return {
       ...movie,
       formatted_release_date: new Date(movie.release_date).toLocaleDateString(
@@ -47,11 +40,15 @@ export async function getMovies(page: number): Promise<GetMoviesResponse> {
 }
 
 interface GetMovieByIdResponse {
-  movie: Movie;
+  movie: IMovie;
 }
 
 export async function getMovieById(id: number): Promise<GetMovieByIdResponse> {
-  const { data } = await api.get(`/movie/${id}`);
+  const { data } = await api.get<IMovie>(`/movie/${id}`, {
+    params: {
+      append_to_response: "credits,videos,images",
+    },
+  });
 
   const movie = {
     ...data,
@@ -73,4 +70,8 @@ export async function getMovieById(id: number): Promise<GetMovieByIdResponse> {
 
 export function useMovies(page: number, options: UseQueryOptions): any {
   return useQuery(["movies", page], () => getMovies(page));
+}
+
+export function useMovie(id: number, options: UseQueryOptions): any {
+  return useQuery(["movieDetails", id], () => getMovieById(id));
 }
