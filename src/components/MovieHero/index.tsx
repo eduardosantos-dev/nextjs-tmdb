@@ -101,7 +101,7 @@ export default function MovieHero({ movie }: MovieHeroProps) {
               direction={["column", "column", "row"]}
               mt={6}
               spacing={4}
-              align={["center", "center", "flex-start"]}>
+              align={["center"]}>
               <ContentRating
                 rating={movie.vote_average}
                 size={"60px"}

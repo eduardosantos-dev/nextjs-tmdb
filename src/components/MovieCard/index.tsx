@@ -1,6 +1,6 @@
 import React from "react";
 import { Box } from "@chakra-ui/layout";
-import { Text, Image, Link } from "@chakra-ui/react";
+import { Text, Image, Link, Skeleton } from "@chakra-ui/react";
 import { ContentRating } from "../ContentRating";
 import { queryClient } from "../../services/queryClient";
 import { getMovieById } from "../../services/hooks/useMovies";
@@ -31,7 +31,6 @@ export function MovieCard({ movie, ...rest }: MovieCardProps) {
 
   return (
     <Box
-      // maxW="md"
       boxShadow="lg"
       bg="gray.800"
       borderRadius="lg"
@@ -42,6 +41,7 @@ export function MovieCard({ movie, ...rest }: MovieCardProps) {
           src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
           alt={movie.title}
           title={movie.title}
+          fallback={<Skeleton w="100%" h="450px" />}
         />
       </Link>
       <Box p="6" pos="relative">

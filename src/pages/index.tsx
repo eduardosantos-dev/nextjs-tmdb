@@ -9,9 +9,7 @@ export default function Home() {
   return (
     <Flex direction="column" h="100%">
       <Header />
-      <Flex as={Container} maxW="container.xl" my="32">
-        <Sidebar />
-      </Flex>
+      <Flex as={Container} maxW="container.xl" my="32"></Flex>
     </Flex>
   );
 }

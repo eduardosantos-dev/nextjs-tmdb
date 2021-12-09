@@ -11,6 +11,7 @@ import {
   Container,
   Flex,
   SimpleGrid,
+  Skeleton,
   Spinner,
 } from "@chakra-ui/react";
 import { Header } from "../../components/Header";
@@ -67,7 +68,6 @@ export default function Movies({ moviesProps }: MoviesProps) {
         maxW="container.xl"
         my="32"
         className={styles.pageContainer}>
-        <Sidebar />
         {movies && (
           <InfiniteScroll
             dataLength={movies.length}

@@ -7,10 +7,10 @@ export function SearchBox() {
     <Flex
       as="label"
       flex="1"
-      py="4"
-      px="8"
+      py="2"
+      px="4"
       ml="6"
-      maxW={400}
+      maxW={300}
       alignSelf="center"
       color="gray.200"
       position="relative"
@@ -19,9 +19,8 @@ export function SearchBox() {
       <Input
         color="gray.50"
         variant="unstyled"
-        px="4"
         mr="4"
-        placeholder="Buscar na plataforma"
+        placeholder="Buscar"
         _placeholder={{ color: "gray.400" }}
       />
 

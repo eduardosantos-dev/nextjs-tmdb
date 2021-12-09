@@ -1,5 +1,5 @@
 import { useQuery, UseQueryOptions } from "react-query";
-import { ICastMember, ICrewMember, IMovie } from "../../types";
+import { IMovie } from "../../types";
 import { toRunTimeString } from "../../utils";
 import { api } from "../api";
 

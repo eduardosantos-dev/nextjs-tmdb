@@ -14,14 +14,8 @@ interface MoviePageProps {
 }
 
 export default function MoviePage({ movie }: MoviePageProps) {
-  const isDrawerSidebar = useBreakpointValue({
-    base: true,
-    lg: false,
-  });
-
   return (
     <>
-      {isDrawerSidebar && <Sidebar />}
       <MovieHero movie={movie} />
       <Flex
         as={Container}
