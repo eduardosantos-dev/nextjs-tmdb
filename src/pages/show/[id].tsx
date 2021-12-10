@@ -5,6 +5,7 @@ import { Params } from "next/dist/server/router";
 import { getMovieById } from "../../services/hooks/useMovies";
 import { getShowById } from "../../services/hooks/useShows";
 import { ContentRating } from "../../components/ContentRating";
+import Head from "next/head";
 
 interface Show {
   id: number;
@@ -22,6 +23,9 @@ interface ShowPageProps {
 export default function ShowPage({ show }: ShowPageProps) {
   return (
     <>
+      <Head>
+        <title>tmdb • {show.name}</title>
+      </Head>
       <h1>{show.name}</h1>
       <Image
         src={`https://image.tmdb.org/t/p/w500/${show.poster_path}`}

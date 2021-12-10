@@ -5,6 +5,7 @@ import { Header } from "../../components/Header";
 import { Sidebar } from "../../components/Sidebar";
 import { getShows } from "../../services/hooks/useShows";
 import { ShowCard } from "../../components/ShowCard";
+import Head from "next/head";
 
 interface Show {
   id: number;
@@ -21,16 +22,22 @@ interface ShowsProps {
 
 export default function Shows({ shows }: ShowsProps) {
   return (
-    <Flex direction="column" h="100%">
-      <Header />
-      <Flex as={Container} maxW="container.xl" my="32">
-        <Sidebar />
+    <>
+      <Head>
+        <title>tmdb • Popular TV</title>
+      </Head>
+      <Flex direction="column" h="100%">
+        <Header />
+        <Flex as={Container} maxW="container.xl" my="32">
+          <Sidebar />
 
-        <SimpleGrid flex="1" minChildWidth={200} gap="4">
-          {shows && shows.map((show) => <ShowCard show={show} key={show.id} />)}
-        </SimpleGrid>
+          <SimpleGrid flex="1" minChildWidth={200} gap="4">
+            {shows &&
+              shows.map((show) => <ShowCard show={show} key={show.id} />)}
+          </SimpleGrid>
+        </Flex>
       </Flex>
-    </Flex>
+    </>
   );
 }
 

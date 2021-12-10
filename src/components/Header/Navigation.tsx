@@ -8,24 +8,12 @@ import {
   Stack,
   Link,
   Icon,
-  useDisclosure,
-  Button,
-  Popover,
-  PopoverArrow,
-  PopoverBody,
-  PopoverCloseButton,
-  PopoverContent,
-  PopoverFooter,
-  PopoverHeader,
-  PopoverTrigger,
-  Portal,
 } from "@chakra-ui/react";
 import { useNavigation } from "../../services/hooks/useNavigation";
 import { MenuSection, NavigationMenu } from "../../types/navigation";
 
 export function Navigation() {
   const { menu }: NavigationMenu = useNavigation();
-  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <Stack direction="row" spacing={6}>
@@ -36,7 +24,7 @@ export function Navigation() {
             {menuSection.children.map((menuItem) => (
               <Link
                 key={menuItem.label}
-                to={menuItem.href}
+                href={menuItem.href}
                 _hover={{ textDecoration: "none" }}>
                 <MenuItem
                   _hover={{ bg: "green.400" }}

@@ -64,7 +64,7 @@ export function Header() {
           </Flex>
         </Flex>
       </Flex>
-      {!isWideVersion && <Sidebar />}
+      {isWideVersion === false && <Sidebar />}
     </>
   );
 }

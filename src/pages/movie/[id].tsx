@@ -8,6 +8,7 @@ import { Container, Flex, useBreakpointValue } from "@chakra-ui/react";
 import { IMovie } from "../../types";
 import MovieDetailSidebar from "../../components/MovieDetailsSidebar";
 import { Sidebar } from "../../components/Sidebar";
+import Head from "next/head";
 
 interface MoviePageProps {
   movie: IMovie;
@@ -16,6 +17,9 @@ interface MoviePageProps {
 export default function MoviePage({ movie }: MoviePageProps) {
   return (
     <>
+      <Head>
+        <title>tmdb • {movie.title}</title>
+      </Head>
       <MovieHero movie={movie} />
       <Flex
         as={Container}
