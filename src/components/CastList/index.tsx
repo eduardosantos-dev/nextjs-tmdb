@@ -1,4 +1,13 @@
-import { Stack, Box, Heading, Text, Icon, Flex, Img } from "@chakra-ui/react";
+import {
+  Stack,
+  Box,
+  Heading,
+  Text,
+  Icon,
+  Flex,
+  Img,
+  Image,
+} from "@chakra-ui/react";
 import React from "react";
 import { RiUserLine } from "react-icons/ri";
 import { ICastMember } from "../../types";
@@ -26,9 +35,9 @@ export function CastList({ cast }: CastListProps) {
               borderRadius="lg"
               overflow="hidden"
               bg="gray.800">
-              <Img
+              <Image
                 src={`https://image.tmdb.org/t/p/w138_and_h175_face/${castMember.profile_path}`}
-                bg="green.400"
+                bg="gray.700"
                 minH={175}
                 objectFit="cover"
                 alt={castMember.name}
