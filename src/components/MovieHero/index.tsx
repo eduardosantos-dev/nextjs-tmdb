@@ -99,7 +99,6 @@ export default function MovieHero({ movie }: MovieHeroProps) {
               minW={300}
               maxW={300}
               mx="auto"
-              display={["none", "block"]}
               flex="1">
               <Img
                 src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}

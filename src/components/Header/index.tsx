@@ -48,6 +48,7 @@ export function Header() {
               variant="unstyled"
               onClick={onOpen}
               aria-label="Open navigation"
+              d="flex"
               mr="2"
             />
           )}
@@ -64,7 +65,7 @@ export function Header() {
           </Flex>
         </Flex>
       </Flex>
-      {isWideVersion === false && <Sidebar />}
+      {isWideVersion !== null && !isWideVersion && <Sidebar />}
     </>
   );
 }

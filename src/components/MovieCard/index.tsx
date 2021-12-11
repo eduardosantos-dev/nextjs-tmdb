@@ -37,7 +37,7 @@ export function MovieCard({ movie, ...rest }: MovieCardProps) {
       overflow="hidden"
       onMouseEnter={() => handlePrefetchMovie(movie.id)}>
       <Link href={`/movie/${movie.id}`}>
-        <Img
+        <Image
           src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
           alt={movie.title}
           title={movie.title}
