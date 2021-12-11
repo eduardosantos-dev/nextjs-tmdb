@@ -61,6 +61,14 @@ export async function getMovieById(id: number): Promise<GetMovieByIdResponse> {
       }
     ),
     formatted_runtime: toRunTimeString(data.runtime),
+    formatted_revenue: data.revenue.toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+    }),
+    formatted_budget: data.budget.toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+    }),
   };
 
   return {

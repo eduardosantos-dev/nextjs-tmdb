@@ -48,7 +48,7 @@ export default function MovieDetailSidebar({ movie }: MovieDetailsProps) {
           Orçamento
         </Heading>
         <Text fontSize="sm" fontWeight="normal">
-          {movie.budget}
+          {movie.formatted_budget}
         </Text>
       </Box>
 
@@ -57,7 +57,7 @@ export default function MovieDetailSidebar({ movie }: MovieDetailsProps) {
           Receita
         </Heading>
         <Text fontSize="sm" fontWeight="normal">
-          {movie.revenue}
+          {movie.formatted_revenue}
         </Text>
       </Box>
     </Flex>

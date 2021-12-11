@@ -16,6 +16,8 @@ export interface IMovie {
   original_language: string;
   budget: number;
   revenue: number;
+  formatted_revenue: string;
+  formatted_budget: string;
   videos: {
     results: [
       {
