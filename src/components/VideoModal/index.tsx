@@ -23,7 +23,7 @@ export default function VideoModal({ contentTitle, src }: VideoModalProps) {
       <ModalContent
         bgColor="black"
         overflow="hidden"
-        minW={{ base: "100%", xl: "container.xl" }}>
+        minW={{ base: "100%", xl: "container.2xl" }}>
         <ModalHeader>{contentTitle}</ModalHeader>
         <ModalCloseButton />
         <ModalBody p={0}>

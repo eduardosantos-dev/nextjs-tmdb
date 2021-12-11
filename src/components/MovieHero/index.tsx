@@ -89,7 +89,7 @@ export default function MovieHero({ movie }: MovieHeroProps) {
           bgImg="linear-gradient(to right, rgba(3.92%, 4.31%, 6.27%, 1.00) 150px, rgba(3.92%, 4.31%, 6.27%, 0.84) 100%);">
           <Flex
             as={Container}
-            maxW="container.xl"
+            maxW="container.2xl"
             direction={["column", "row"]}
             flexWrap="wrap">
             <Box
@@ -179,7 +179,7 @@ export default function MovieHero({ movie }: MovieHeroProps) {
                   )}
                 </Stack>
               </Stack>
-              <Heading as="h3" fontSize="xl" mt={6}>
+              <Heading as="h3" fontSize="xl" mt={6} fontWeight="500">
                 Sinopse
               </Heading>
               <Text mt={4}>{movie.overview}</Text>

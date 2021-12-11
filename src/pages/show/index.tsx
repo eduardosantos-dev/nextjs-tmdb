@@ -28,7 +28,7 @@ export default function Shows({ shows }: ShowsProps) {
       </Head>
       <Flex direction="column" h="100%">
         <Header />
-        <Flex as={Container} maxW="container.xl" my="32">
+        <Flex as={Container} maxW="container.2xl" my="32">
           <Sidebar />
 
           <SimpleGrid flex="1" minChildWidth={200} gap="4">

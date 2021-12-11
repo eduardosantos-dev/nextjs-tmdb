@@ -35,7 +35,7 @@ export function Header() {
         zIndex="1"
         boxShadow="xl">
         <Flex
-          maxW="container.xl"
+          maxW="container.2xl"
           w="100%"
           mx="auto"
           px="4"
@@ -52,7 +52,7 @@ export function Header() {
               mr="2"
             />
           )}
-          <Link href="/movie" mr={6} _hover={{ textDecoration: "none" }}>
+          <Link href="/" mr={6} _hover={{ textDecoration: "none" }}>
             <Logo />
           </Link>
           <Flex justify="space-between" flex="1" mx={6}>
@@ -65,7 +65,7 @@ export function Header() {
           </Flex>
         </Flex>
       </Flex>
-      {isWideVersion !== null && !isWideVersion && <Sidebar />}
+      {!isWideVersion && <Sidebar />}
     </>
   );
 }

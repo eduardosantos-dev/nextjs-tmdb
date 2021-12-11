@@ -4,7 +4,7 @@ import { toRunTimeString } from "../../utils";
 import { api } from "../api";
 
 type GetMoviesResponse = {
-  movies: IMovie[];
+  content: IMovie[];
   page: number;
   totalPages: number;
   totalResults: number;
@@ -32,7 +32,7 @@ export async function getMovies(page: number = 1): Promise<GetMoviesResponse> {
   });
 
   return {
-    movies,
+    content: movies,
     page: data.page,
     totalPages: data.total_pages,
     totalResults: data.total_results,
@@ -76,8 +76,53 @@ export async function getMovieById(id: number): Promise<GetMovieByIdResponse> {
   };
 }
 
+interface GetTopRatedMoviesResponse {
+  content: IMovie[];
+  page: number;
+  totalPages: number;
+  totalResults: number;
+}
+
+export async function getMoviesTopRated(
+  page: number = 1
+): Promise<GetTopRatedMoviesResponse> {
+  const { data } = await api.get("/movie/top_rated", {
+    params: {
+      page,
+    },
+  });
+
+  const movies = data.results.map((movie: IMovie) => {
+    return {
+      ...movie,
+      formatted_release_date: new Date(movie.release_date).toLocaleDateString(
+        "pt-BR",
+        {
+          day: "2-digit",
+          month: "short",
+          year: "numeric",
+        }
+      ),
+    };
+  });
+
+  return {
+    content: movies,
+    page: data.page,
+    totalPages: data.total_pages,
+    totalResults: data.total_results,
+  };
+}
+
 export function useMovies(page: number, options: UseQueryOptions): any {
   return useQuery(["movies", page], () => getMovies(page));
+}
+
+export function useMoviesTopRated(
+  page: number,
+  options?: UseQueryOptions
+): any {
+  return useQuery(["movies", page], () => getMoviesTopRated(page));
 }
 
 export function useMovie(id: number, options: UseQueryOptions): any {

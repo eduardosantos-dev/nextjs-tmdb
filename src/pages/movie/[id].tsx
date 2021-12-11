@@ -26,7 +26,7 @@ export default function MoviePage({ movie }: MoviePageProps) {
           <MovieHero movie={movie} />
           <Flex
             as={Container}
-            maxW="container.xl"
+            maxW="container.2xl"
             py={6}
             direction={{ base: "column", md: "row" }}>
             <MovieDetails movie={movie} />
@@ -39,7 +39,7 @@ export default function MoviePage({ movie }: MoviePageProps) {
 }
 
 export const getStaticPaths = async () => {
-  const { movies } = await getMovies();
+  const { content: movies } = await getMovies();
 
   const paths = movies.map((movie) => ({
     params: { id: movie.id.toString() },

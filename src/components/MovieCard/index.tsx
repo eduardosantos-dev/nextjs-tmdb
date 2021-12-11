@@ -1,11 +1,11 @@
 import React from "react";
 import { Box } from "@chakra-ui/layout";
-import { Text, Image, Link, Skeleton, Img } from "@chakra-ui/react";
+import { Text, Image, Link, Skeleton, Img, BoxProps } from "@chakra-ui/react";
 import { ContentRating } from "../ContentRating";
 import { queryClient } from "../../services/queryClient";
 import { getMovieById } from "../../services/hooks/useMovies";
 
-interface MovieCardProps {
+interface MovieCardProps extends BoxProps {
   movie: {
     id: number;
     poster_path: string;
@@ -35,7 +35,9 @@ export function MovieCard({ movie, ...rest }: MovieCardProps) {
       bg="gray.800"
       borderRadius="lg"
       overflow="hidden"
-      onMouseEnter={() => handlePrefetchMovie(movie.id)}>
+      onMouseEnter={() => handlePrefetchMovie(movie.id)}
+      h={rest.h}
+      minW={rest.minW}>
       <Link href={`/movie/${movie.id}`}>
         <Image
           src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
@@ -46,13 +48,13 @@ export function MovieCard({ movie, ...rest }: MovieCardProps) {
           fallback={<Skeleton w="100%" h="450px" />}
         />
       </Link>
-      <Box p="6" pos="relative">
+      <Box px="10px" pt="26px" pb="12px" pos="relative">
         <ContentRating
           rating={movie.vote_average}
-          style={{ position: "absolute", top: "-18px" }}
+          style={{ position: "absolute", top: "-18px", left: "12px" }}
         />
         <Link color="gray.200" href={`/movie/${movie.id}`}>
-          <Text mt="2" fontWeight="bold" noOfLines={2}>
+          <Text mt="2" fontWeight="bold" noOfLines={2} fontSize="sm">
             {movie.title}
           </Text>
         </Link>

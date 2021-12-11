@@ -19,6 +19,11 @@ export const theme = extendTheme({
     headings: "Roboto",
     body: "Roboto",
   },
+  sizes: {
+    container: {
+      "2xl": "1400px",
+    },
+  },
   styles: {
     global: {
       body: {

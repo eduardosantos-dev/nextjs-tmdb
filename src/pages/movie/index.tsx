@@ -57,8 +57,7 @@ export default function Movies({ moviesProps }: MoviesProps) {
   });
 
   const movies = useMemo(() => {
-    const movies = data?.pages.map((page: any) => page.movies).flat();
-    return movies;
+    return data?.pages.map((page: any) => page.content).flat();
   }, [data]);
 
   return (
@@ -70,7 +69,7 @@ export default function Movies({ moviesProps }: MoviesProps) {
         <Header />
         <Flex
           as={Container}
-          maxW="container.xl"
+          maxW="container.2xl"
           my="32"
           className={styles.pageContainer}>
           {movies && (
@@ -83,7 +82,7 @@ export default function Movies({ moviesProps }: MoviesProps) {
                   <Spinner color="green.400" size="xl" />
                 </Flex>
               }>
-              <SimpleGrid flex="1" columns={[2, 3, 4]} gap="4">
+              <SimpleGrid flex="1" columns={[2, 3, 4, 5]} gap="4">
                 {movies &&
                   movies.map((movie) => (
                     <MovieCard movie={movie} key={movie.id} />
@@ -98,7 +97,7 @@ export default function Movies({ moviesProps }: MoviesProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { movies } = await getMovies(1);
+  const { content: movies } = await getMovies(1);
 
   return {
     props: {
