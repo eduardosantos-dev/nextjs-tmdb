@@ -10,7 +10,7 @@ interface MovieDetailsProps {
 
 export default function MovieDetails({ movie }: MovieDetailsProps) {
   return (
-    <Flex w={{ base: "100%", md: "calc(100% - 240px)" }} overflow="auto">
+    <Flex w={{ base: "100%", md: "calc(100% - 240px)" }}>
       <CastList cast={movie?.credits?.cast} />
     </Flex>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 import { Box } from "@chakra-ui/layout";
-import { Text, Image, Link } from "@chakra-ui/react";
+import { Text, Image, Link, Img } from "@chakra-ui/react";
 import { ContentRating } from "../ContentRating";
 
 interface ShowCardProps {
@@ -23,7 +23,7 @@ export function ShowCard({ show }: ShowCardProps) {
       borderRadius="lg"
       overflow="hidden">
       <Link href={`/show/${show.id}`}>
-        <Image
+        <Img
           src={`https://image.tmdb.org/t/p/w500/${show.poster_path}`}
           alt={show.name}
           title={show.name}

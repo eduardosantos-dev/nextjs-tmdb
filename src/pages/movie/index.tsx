@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import type { GetServerSideProps } from "next";
+import type { GetServerSideProps, GetStaticProps } from "next";
 import {
   getMovieById,
   getMovies,
@@ -83,7 +83,7 @@ export default function Movies({ moviesProps }: MoviesProps) {
                   <Spinner color="green.400" size="xl" />
                 </Flex>
               }>
-              <SimpleGrid flex="1" columns={[2, 2, 4]} gap="4">
+              <SimpleGrid flex="1" columns={[2, 3, 4]} gap="4">
                 {movies &&
                   movies.map((movie) => (
                     <MovieCard movie={movie} key={movie.id} />
@@ -97,7 +97,7 @@ export default function Movies({ moviesProps }: MoviesProps) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const { movies } = await getMovies(1);
 
   return {

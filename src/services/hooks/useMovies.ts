@@ -10,7 +10,7 @@ type GetMoviesResponse = {
   totalResults: number;
 };
 
-export async function getMovies(page: number): Promise<GetMoviesResponse> {
+export async function getMovies(page: number = 1): Promise<GetMoviesResponse> {
   const { data } = await api.get("/movie/popular", {
     params: {
       page,

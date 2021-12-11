@@ -1,6 +1,6 @@
 import React from "react";
 import { GetServerSideProps } from "next";
-import { Text, Image, Link } from "@chakra-ui/react";
+import { Text, Image, Link, Img } from "@chakra-ui/react";
 import { Params } from "next/dist/server/router";
 import { getMovieById } from "../../services/hooks/useMovies";
 import { getShowById } from "../../services/hooks/useShows";
@@ -27,7 +27,7 @@ export default function ShowPage({ show }: ShowPageProps) {
         <title>tmdb • {show.name}</title>
       </Head>
       <h1>{show.name}</h1>
-      <Image
+      <Img
         src={`https://image.tmdb.org/t/p/w500/${show.poster_path}`}
         alt={show.name}
         title={show.name}

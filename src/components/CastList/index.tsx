@@ -1,13 +1,4 @@
-import {
-  Stack,
-  Box,
-  Image,
-  Heading,
-  Text,
-  IconButton,
-  Icon,
-  Flex,
-} from "@chakra-ui/react";
+import { Stack, Box, Heading, Text, Icon, Flex, Img } from "@chakra-ui/react";
 import React from "react";
 import { RiUserLine } from "react-icons/ri";
 import { ICastMember } from "../../types";
@@ -19,7 +10,7 @@ interface CastListProps {
 export function CastList({ cast }: CastListProps) {
   const SLIDER_MAX_LENGTH = 10;
   return (
-    <section>
+    <Box maxW="100%">
       <Heading as="h3" fontSize="xl">
         Elenco principal
       </Heading>
@@ -35,10 +26,11 @@ export function CastList({ cast }: CastListProps) {
               borderRadius="lg"
               overflow="hidden"
               bg="gray.800">
-              <Image
+              <Img
                 src={`https://image.tmdb.org/t/p/w138_and_h175_face/${castMember.profile_path}`}
                 bg="green.400"
                 minH={175}
+                objectFit="cover"
                 alt={castMember.name}
                 fallback={
                   <Flex
@@ -61,6 +53,6 @@ export function CastList({ cast }: CastListProps) {
             </Box>
           ))}
       </Stack>
-    </section>
+    </Box>
   );
 }

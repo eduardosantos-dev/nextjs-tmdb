@@ -16,6 +16,17 @@ export interface IMovie {
   original_language: string;
   budget: number;
   revenue: number;
+  videos: {
+    results: [
+      {
+        type: string;
+        official: boolean;
+        site: string;
+        key: string;
+        published_at: string;
+      }
+    ];
+  };
 }
 
 export interface IGenre {
