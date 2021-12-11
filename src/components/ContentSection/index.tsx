@@ -8,7 +8,7 @@ import {
   TabPanels,
   Tabs,
 } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { UseQueryOptions } from "react-query";
 import { IMovie } from "../../types";
 import TabContent from "./TabContent";
@@ -29,22 +29,25 @@ export default function ContentSection({ title, tabs }: ContentSectionProps) {
   const [tabIndex, setTabIndex] = useState(0);
   const [tabsState, setTabsState] = useState<Tab[]>([]);
 
+  const handleTabsChange = useCallback(
+    async (index: number) => {
+      const { content } = await tabs[index].onTabChange(1);
+
+      setTabIndex(index);
+      const newTabs = [...tabs];
+      newTabs[index] = {
+        ...tabs[index],
+        contentList: content,
+      };
+
+      setTabsState(newTabs);
+    },
+    [tabs]
+  );
+
   useEffect(() => {
     handleTabsChange(0);
-  }, [tabs]);
-
-  const handleTabsChange = async (index: number) => {
-    const { content } = await tabs[index].onTabChange(1);
-
-    setTabIndex(index);
-    const newTabs = [...tabs];
-    newTabs[index] = {
-      ...tabs[index],
-      contentList: content,
-    };
-
-    setTabsState(newTabs);
-  };
+  }, [tabs, handleTabsChange]);
 
   return (
     <Box maxW="100%" mt="6">
@@ -59,9 +62,11 @@ export default function ContentSection({ title, tabs }: ContentSectionProps) {
           mt="4"
           index={tabIndex}
           onChange={handleTabsChange}>
-          <TabList>
+          <TabList overflowX="auto" py={["4", "0"]}>
             {tabsState.map((tab, index) => (
-              <Tab key={index}>{tab.label}</Tab>
+              <Tab key={index} whiteSpace="nowrap" fontSize={["sm", "md"]}>
+                {tab.label}
+              </Tab>
             ))}
           </TabList>
           <TabPanels>

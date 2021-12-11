@@ -18,11 +18,19 @@ export default function SearchHero({ src }: SearchHeroProps) {
       justify="center"
       px="10"
       py="8">
-      <Box mb="6">
-        <Heading as="h1" fontWeight="700" fontSize="5xl">
+      <Box mb="6" textAlign={["center", "left"]}>
+        <Heading
+          as="h1"
+          fontWeight="700"
+          fontSize={["2xl", "3xl", "5xl"]}
+          mb="2">
           Bem-Vindo(a).
         </Heading>
-        <Heading as="h2" fontWeight="500" fontSize="3xl">
+        <Heading
+          as="h2"
+          fontWeight="500"
+          fontSize={["xl", "2xl", "3xl"]}
+          mb="6">
           Milhões de filmes, séries e pessoas para descobrir. Explore já.
         </Heading>
       </Box>
