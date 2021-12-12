@@ -18,17 +18,37 @@ export interface IMovie {
   revenue: number;
   formatted_revenue: string;
   formatted_budget: string;
-  videos: {
-    results: [
-      {
-        type: string;
-        official: boolean;
-        site: string;
-        key: string;
-        published_at: string;
-      }
-    ];
-  };
+  videos: IVideo;
+}
+
+export interface IVideo {
+  results: [
+    {
+      type: string;
+      official: boolean;
+      site: string;
+      key: string;
+      published_at: string;
+    }
+  ];
+}
+export interface IShow {
+  id: number;
+  poster_path: string;
+  release_date: string;
+  vote_average: number;
+  name: string;
+  formatted_first_air_date: string;
+  first_air_date: string;
+  videos: IVideo;
+  genres: IGenre[];
+  backdrop_path: string;
+  overview: string;
+  credits: ICredits;
+  status: string;
+  original_name: string;
+  original_language: string;
+  number_of_episodes: string;
 }
 
 export interface IGenre {

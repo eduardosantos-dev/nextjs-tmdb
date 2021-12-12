@@ -2,11 +2,11 @@ import React from "react";
 import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
 import { Params } from "next/dist/server/router";
 import { getMovieById, getMovies } from "../../services/hooks/useMovies";
-import MovieHero from "../../components/MovieHero";
-import MovieDetails from "../../components/MovieDetails";
+import MovieHero from "../../components/Movies/MovieHero";
+import MovieDetails from "../../components/Movies/MovieDetails";
 import { Container, Flex, useBreakpointValue } from "@chakra-ui/react";
 import { IMovie } from "../../types";
-import MovieDetailSidebar from "../../components/MovieDetailsSidebar";
+import MovieDetailSidebar from "../../components/Movies/MovieDetailsSidebar";
 import { Sidebar } from "../../components/Sidebar";
 import Head from "next/head";
 

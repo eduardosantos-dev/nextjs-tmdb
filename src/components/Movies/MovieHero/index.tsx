@@ -19,11 +19,11 @@ import {
   RiStarLine,
   RiPlayLine,
 } from "react-icons/ri";
-import { useModal } from "../../context/ModalContext";
-import { IMovie } from "../../types";
-import { ContentRating } from "../ContentRating";
-import { Header } from "../Header";
-import VideoModal from "../VideoModal";
+import { useModal } from "../../../context/ModalContext";
+import { IMovie } from "../../../types";
+import { ContentRating } from "../../ContentRating";
+import { Header } from "../../Header";
+import VideoModal from "../../VideoModal";
 
 interface Genre {
   id: number;

@@ -126,5 +126,5 @@ export function useMoviesTopRated(
 }
 
 export function useMovie(id: number, options: UseQueryOptions): any {
-  return useQuery(["movieDetails", id], () => getMovieById(id));
+  return useQuery(["movie", id], () => getMovieById(id));
 }

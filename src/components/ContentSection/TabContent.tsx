@@ -1,6 +1,6 @@
 import { Box, Stack } from "@chakra-ui/react";
 import { IMovie } from "../../types";
-import { MovieCard } from "../MovieCard";
+import { MovieCard } from "../Movies/MovieCard";
 
 interface ContentSectionProps {
   contentList: IMovie[];

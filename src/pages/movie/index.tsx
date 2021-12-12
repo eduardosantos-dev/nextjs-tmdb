@@ -16,7 +16,7 @@ import {
 } from "@chakra-ui/react";
 import { Header } from "../../components/Header";
 import { Sidebar } from "../../components/Sidebar";
-import { MovieCard } from "../../components/MovieCard";
+import { MovieCard } from "../../components/Movies/MovieCard";
 import { queryClient } from "../../services/queryClient";
 import { useInfiniteQuery } from "react-query";
 import InfiniteScroll from "react-infinite-scroll-component";

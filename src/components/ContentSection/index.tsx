@@ -31,16 +31,18 @@ export default function ContentSection({ title, tabs }: ContentSectionProps) {
 
   const handleTabsChange = useCallback(
     async (index: number) => {
-      const { content } = await tabs[index].onTabChange(1);
+      if (tabs) {
+        const { content } = await tabs[index].onTabChange(1);
 
-      setTabIndex(index);
-      const newTabs = [...tabs];
-      newTabs[index] = {
-        ...tabs[index],
-        contentList: content,
-      };
+        setTabIndex(index);
+        const newTabs = [...tabs];
+        newTabs[index] = {
+          ...tabs[index],
+          contentList: content,
+        };
 
-      setTabsState(newTabs);
+        setTabsState(newTabs);
+      }
     },
     [tabs]
   );

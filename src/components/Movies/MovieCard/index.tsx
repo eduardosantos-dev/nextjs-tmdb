@@ -1,19 +1,13 @@
 import React from "react";
 import { Box } from "@chakra-ui/layout";
 import { Text, Image, Link, Skeleton, Img, BoxProps } from "@chakra-ui/react";
-import { ContentRating } from "../ContentRating";
-import { queryClient } from "../../services/queryClient";
-import { getMovieById } from "../../services/hooks/useMovies";
+import { ContentRating } from "../../ContentRating";
+import { queryClient } from "../../../services/queryClient";
+import { getMovieById } from "../../../services/hooks/useMovies";
+import { IMovie } from "../../../types";
 
 interface MovieCardProps extends BoxProps {
-  movie: {
-    id: number;
-    poster_path: string;
-    release_date: string;
-    vote_average: number;
-    title: string;
-    formatted_release_date: string;
-  };
+  movie: IMovie;
 }
 
 export function MovieCard({ movie, ...rest }: MovieCardProps) {

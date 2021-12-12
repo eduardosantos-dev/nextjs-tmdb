@@ -1,38 +1,40 @@
 import React from "react";
 import { GetServerSideProps } from "next";
-import { Text, Image, Link, Img } from "@chakra-ui/react";
+import { Text, Image, Link, Img, Container, Flex } from "@chakra-ui/react";
 import { Params } from "next/dist/server/router";
 import { getMovieById } from "../../services/hooks/useMovies";
 import { getShowById } from "../../services/hooks/useShows";
 import { ContentRating } from "../../components/ContentRating";
 import Head from "next/head";
-
-interface Show {
-  id: number;
-  poster_path: string;
-  first_air_date: string;
-  vote_average: number;
-  formatted_first_air_date: string;
-  name: string;
-}
+import ShowHero from "../../components/Shows/ShowHero";
+import { IShow } from "../../types";
+import ShowDetails from "../../components/Shows/ShowDetails";
+import ShowDetailsSidebar from "../../components/Shows/ShowDetailsSidebar";
 
 interface ShowPageProps {
-  show: Show;
+  show: IShow;
 }
 
 export default function ShowPage({ show }: ShowPageProps) {
   return (
     <>
-      <Head>
-        <title>tmdb • {show.name}</title>
-      </Head>
-      <h1>{show.name}</h1>
-      <Img
-        src={`https://image.tmdb.org/t/p/w500/${show.poster_path}`}
-        alt={show.name}
-        title={show.name}
-      />
-      <ContentRating rating={show.vote_average} />
+      {show && (
+        <>
+          <Head>
+            <title>tmdb • {show.name}</title>
+          </Head>
+
+          <ShowHero show={show} />
+          <Flex
+            as={Container}
+            maxW="container.2xl"
+            py={6}
+            direction={{ base: "column", md: "row" }}>
+            <ShowDetails show={show} />
+            <ShowDetailsSidebar show={show} />
+          </Flex>
+        </>
+      )}
     </>
   );
 }
