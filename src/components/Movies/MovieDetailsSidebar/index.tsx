@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Flex, Heading, Text } from "@chakra-ui/react";
-import { IMovie } from "../../types";
+import { IMovie } from "../../../types";
 
 interface MovieDetailsProps {
   movie: IMovie;
