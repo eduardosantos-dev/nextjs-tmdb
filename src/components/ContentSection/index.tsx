@@ -62,9 +62,13 @@ export default function ContentSection({ title, tabs }: ContentSectionProps) {
           mt="4"
           index={tabIndex}
           onChange={handleTabsChange}>
-          <TabList overflowX="auto" py={["4", "0"]}>
+          <TabList overflowX="auto" py="4" px="2">
             {tabsState.map((tab, index) => (
-              <Tab key={index} whiteSpace="nowrap" fontSize={["sm", "md"]}>
+              <Tab
+                key={index}
+                whiteSpace="nowrap"
+                fontSize={["sm", "md"]}
+                mr="2">
                 {tab.label}
               </Tab>
             ))}
