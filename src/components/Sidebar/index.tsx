@@ -34,11 +34,7 @@ export function Sidebar() {
         </DrawerOverlay>
       </Drawer>
     );
+  } else {
+    return null;
   }
-
-  return (
-    <Box as="aside" w="64" mr="8">
-      <SidebarNav />
-    </Box>
-  );
 }
