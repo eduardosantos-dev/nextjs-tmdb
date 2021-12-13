@@ -8,8 +8,9 @@ import { Box, Container, Flex } from "@chakra-ui/react";
 import { Header } from "../components/Header";
 import SearchHero from "../components/Home/SearchHero";
 import { GetStaticProps } from "next/types";
-import { IMovie } from "../types";
+import { ContentTypes, IMovie } from "../types";
 import ContentSection from "../components/ContentSection";
+import { getShows, getShowsTopRated } from "../services/hooks/useShows";
 
 interface HomeProps {
   heroBackdropImage: string;
@@ -27,24 +28,29 @@ export default function Home({ heroBackdropImage }: HomeProps) {
           title="Os Mais Populares"
           tabs={[
             {
-              label: "Streaming",
-              contentType: "movie",
+              label: "Filmes",
+              contentType: ContentTypes.Movie,
               onTabChange: getMovies,
             },
             {
               label: "Na TV",
-              contentType: "movie",
+              contentType: ContentTypes.Show,
+              onTabChange: getShows,
+            },
+          ]}
+        />
+        <ContentSection
+          title="Os Melhores"
+          tabs={[
+            {
+              label: "Filmes",
+              contentType: ContentTypes.Movie,
               onTabChange: getMoviesTopRated,
             },
             {
-              label: "Para Alugar",
-              contentType: "movie",
-              onTabChange: getMoviesTopRated,
-            },
-            {
-              label: "Nos Cinemas",
-              contentType: "movie",
-              onTabChange: getMoviesTopRated,
+              label: "Séries",
+              contentType: ContentTypes.Show,
+              onTabChange: getShowsTopRated,
             },
           ]}
         />

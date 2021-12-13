@@ -7,7 +7,7 @@ import {
   ModalHeader,
   ModalOverlay,
 } from "@chakra-ui/react";
-import { useModal } from "../../context/ModalContext";
+import { useVideoModal } from "../../context/ModalContext";
 
 interface VideoModalProps {
   contentTitle: string;
@@ -15,7 +15,7 @@ interface VideoModalProps {
 }
 
 export default function VideoModal({ contentTitle, src }: VideoModalProps) {
-  const { isOpen, onClose } = useModal();
+  const { isOpen, onClose } = useVideoModal();
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="xl">

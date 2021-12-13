@@ -8,19 +8,19 @@ import { queryClient } from "../services/queryClient";
 import { ReactQueryDevtools } from "react-query/devtools";
 import "../styles/global.scss";
 import Head from "next/head";
-import { ModalProvider } from "../context/ModalContext";
+import { VideoModalProvider } from "../context/ModalContext";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
       <ChakraProvider theme={theme}>
         <SidebarDrawerProvider>
-          <ModalProvider>
+          <VideoModalProvider>
             <Head>
               <title>tmdb</title>
             </Head>
             <Component {...pageProps} />
-          </ModalProvider>
+          </VideoModalProvider>
         </SidebarDrawerProvider>
       </ChakraProvider>
       <ReactQueryDevtools />

@@ -18,19 +18,18 @@ export interface IMovie {
   revenue: number;
   formatted_revenue: string;
   formatted_budget: string;
-  videos: IVideo;
+  videos: IVideos;
 }
 
 export interface IVideo {
-  results: [
-    {
-      type: string;
-      official: boolean;
-      site: string;
-      key: string;
-      published_at: string;
-    }
-  ];
+  type: string;
+  official: boolean;
+  site: string;
+  key: string;
+  published_at: string;
+}
+export interface IVideos {
+  results: IVideo[];
 }
 export interface IShow {
   id: number;
@@ -40,7 +39,7 @@ export interface IShow {
   name: string;
   formatted_first_air_date: string;
   first_air_date: string;
-  videos: IVideo;
+  videos: IVideos;
   genres: IGenre[];
   backdrop_path: string;
   overview: string;

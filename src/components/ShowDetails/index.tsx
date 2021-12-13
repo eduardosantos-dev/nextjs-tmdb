@@ -1,8 +1,6 @@
 import { Flex } from "@chakra-ui/react";
-import movie from "../../../pages/movie";
-import { IShow } from "../../../types";
-import { CastList } from "../../CastList";
-import ContentSection from "../../ContentSection";
+import { IShow } from "../../types";
+import { CastList } from "../CastList";
 
 interface ShowDetailsProps {
   show: IShow;

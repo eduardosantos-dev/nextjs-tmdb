@@ -50,7 +50,7 @@ export async function getMovieById(id: number): Promise<GetMovieByIdResponse> {
     },
   });
 
-  const movie = {
+  const movie: IMovie = {
     ...data,
     formatted_release_date: new Date(data.release_date).toLocaleDateString(
       "pt-BR",

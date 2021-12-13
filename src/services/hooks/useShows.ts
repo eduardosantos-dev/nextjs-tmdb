@@ -63,6 +63,43 @@ export async function getShowById(id: number): Promise<GetShowByIdResponse> {
   };
 }
 
+interface GetTopRatedShowsResponse {
+  content: IShow[];
+  page: number;
+  totalPages: number;
+  totalResults: number;
+}
+
+export async function getShowsTopRated(
+  page: number = 1
+): Promise<GetTopRatedShowsResponse> {
+  const { data } = await api.get("/tv/top_rated", {
+    params: {
+      page,
+    },
+  });
+
+  const shows = data.results.map((show: IShow) => {
+    return {
+      ...show,
+      formatted_first_air_date: new Date(
+        data.first_air_date
+      ).toLocaleDateString("pt-BR", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+      }),
+    };
+  });
+
+  return {
+    content: shows,
+    page: data.page,
+    totalPages: data.total_pages,
+    totalResults: data.total_results,
+  };
+}
+
 export function useShows(page: number, options: UseQueryOptions): any {
   return useQuery(["shows", page], () => getShows(page));
 }

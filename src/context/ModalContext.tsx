@@ -1,15 +1,15 @@
 import { useDisclosure, UseDisclosureReturn } from "@chakra-ui/react";
 import { createContext, ReactNode, useContext, useEffect } from "react";
 
-interface ModalProviderProps {
+interface VideoModalProviderProps {
   children: ReactNode;
 }
 
-type ModalContextData = UseDisclosureReturn;
+type VideoModalContextData = UseDisclosureReturn;
 
-const ModalContext = createContext({} as ModalContextData);
+const VideoModalContext = createContext({} as VideoModalContextData);
 
-export function ModalProvider({ children }: ModalProviderProps) {
+export function VideoModalProvider({ children }: VideoModalProviderProps) {
   const disclosure = useDisclosure();
 
   useEffect(() => {
@@ -17,8 +17,10 @@ export function ModalProvider({ children }: ModalProviderProps) {
   }, []);
 
   return (
-    <ModalContext.Provider value={disclosure}>{children}</ModalContext.Provider>
+    <VideoModalContext.Provider value={disclosure}>
+      {children}
+    </VideoModalContext.Provider>
   );
 }
 
-export const useModal = () => useContext(ModalContext);
+export const useVideoModal = () => useContext(VideoModalContext);
