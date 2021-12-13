@@ -20,24 +20,25 @@ export default function ShowPage({ show }: ShowPageProps) {
   const [headerData, setHeaderData] = useState<any>();
 
   useEffect(() => {
-    setSidebarData([
-      { label: "Título original", value: show.original_name },
-      { label: "Situação", value: show.status },
-      { label: "Idioma original", value: show.original_language },
-    ]);
+    if (show) {
+      setSidebarData([
+        { label: "Título original", value: show.original_name },
+        { label: "Situação", value: show.status },
+        { label: "Idioma original", value: show.original_language },
+      ]);
 
-    setHeaderData({
-      name: show.name,
-      poster_path: show.poster_path,
-      backdrop_path: show.backdrop_path,
-      release_date: show.formatted_first_air_date,
-      // runtime: show.formatted_first_air_date,
-      number_of_episodes: show.number_of_episodes,
-      genres: show.genres,
-      overview: show.overview,
-      vote_average: show.vote_average,
-      videos: show.videos,
-    });
+      setHeaderData({
+        name: show.name,
+        poster_path: show.poster_path,
+        backdrop_path: show.backdrop_path,
+        release_date: show.formatted_first_air_date,
+        number_of_episodes: show.number_of_episodes,
+        genres: show.genres,
+        overview: show.overview,
+        vote_average: show.vote_average,
+        videos: show.videos,
+      });
+    }
   }, [show]);
 
   return (

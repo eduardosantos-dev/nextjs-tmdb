@@ -19,25 +19,27 @@ export default function MoviePage({ movie }: MoviePageProps) {
   const [headerData, setHeaderData] = useState<any>();
 
   useEffect(() => {
-    setSidebarData([
-      { label: "Título original", value: movie.original_title },
-      { label: "Situação", value: movie.status },
-      { label: "Idioma original", value: movie.original_language },
-      { label: "Orçamento", value: movie.formatted_budget },
-      { label: "Receita", value: movie.formatted_revenue },
-    ]);
+    if (movie) {
+      setSidebarData([
+        { label: "Título original", value: movie.original_title },
+        { label: "Situação", value: movie.status },
+        { label: "Idioma original", value: movie.original_language },
+        { label: "Orçamento", value: movie.formatted_budget },
+        { label: "Receita", value: movie.formatted_revenue },
+      ]);
 
-    setHeaderData({
-      name: movie.title,
-      poster_path: movie.poster_path,
-      backdrop_path: movie.backdrop_path,
-      release_date: movie.formatted_release_date,
-      runtime: movie.formatted_runtime,
-      genres: movie.genres,
-      overview: movie.overview,
-      vote_average: movie.vote_average,
-      videos: movie.videos,
-    });
+      setHeaderData({
+        name: movie.title,
+        poster_path: movie.poster_path,
+        backdrop_path: movie.backdrop_path,
+        release_date: movie.formatted_release_date,
+        runtime: movie.formatted_runtime,
+        genres: movie.genres,
+        overview: movie.overview,
+        vote_average: movie.vote_average,
+        videos: movie.videos,
+      });
+    }
   }, [movie]);
 
   return (
