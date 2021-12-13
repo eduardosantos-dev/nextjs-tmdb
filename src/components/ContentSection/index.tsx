@@ -9,14 +9,13 @@ import {
   Tabs,
 } from "@chakra-ui/react";
 import { useCallback, useEffect, useState } from "react";
-import { UseQueryOptions } from "react-query";
-import { IMovie } from "../../types";
+import { ContentTypes, IMovie } from "../../types";
 import TabContent from "./TabContent";
 
 interface Tab {
   label: string;
   contentList?: IMovie[];
-  contentType: "movie" | "show" | "person";
+  contentType: ContentTypes;
   onTabChange: (page: number) => any;
 }
 

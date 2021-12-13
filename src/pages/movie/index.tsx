@@ -1,27 +1,14 @@
 import React, { useMemo, useState } from "react";
-import type { GetServerSideProps, GetStaticProps } from "next";
-import {
-  getMovieById,
-  getMovies,
-  useMovies,
-} from "../../services/hooks/useMovies";
-import {
-  Box,
-  Button,
-  Container,
-  Flex,
-  SimpleGrid,
-  Skeleton,
-  Spinner,
-} from "@chakra-ui/react";
+import type { GetStaticProps } from "next";
+import { getMovies } from "../../services/hooks/useMovies";
+import { Container, Flex, SimpleGrid, Spinner } from "@chakra-ui/react";
 import { Header } from "../../components/Header";
-import { Sidebar } from "../../components/Sidebar";
-import { MovieCard } from "../../components/Movies/MovieCard";
-import { queryClient } from "../../services/queryClient";
 import { useInfiniteQuery } from "react-query";
 import InfiniteScroll from "react-infinite-scroll-component";
 import styles from "./styles.module.scss";
 import Head from "next/head";
+import ContentCard from "../../components/ContentCard";
+import { ContentTypes } from "../../types";
 
 interface Movie {
   id: number;
@@ -85,7 +72,11 @@ export default function Movies({ moviesProps }: MoviesProps) {
               <SimpleGrid flex="1" columns={[2, 3, 4, 5]} gap="4">
                 {movies &&
                   movies.map((movie) => (
-                    <MovieCard movie={movie} key={movie.id} />
+                    <ContentCard
+                      content={movie}
+                      contentType={ContentTypes.Movie}
+                      key={movie.id}
+                    />
                   ))}
               </SimpleGrid>
             </InfiniteScroll>

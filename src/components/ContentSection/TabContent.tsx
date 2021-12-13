@@ -1,10 +1,10 @@
 import { Box, Stack } from "@chakra-ui/react";
-import { IMovie } from "../../types";
-import { MovieCard } from "../Movies/MovieCard";
+import { ContentTypes, IMovie } from "../../types";
+import ContentCard from "../ContentCard";
 
 interface ContentSectionProps {
   contentList: IMovie[];
-  contentType: "movie" | "show" | "person";
+  contentType: ContentTypes;
   onTabChange?: (page: number) => any;
 }
 
@@ -34,13 +34,23 @@ export default function TabContent({
         spacing={4}
         py={6}
         pr="8">
-        {contentType === "movie" &&
+        {/* {contentType === "movie" &&
           contentList &&
           contentList.map((movie) => (
             <Box key={movie.id}>
               <MovieCard movie={movie} h="350px" minW="150px" />
             </Box>
-          ))}
+          ))} */}
+        {contentList.map((content) => (
+          <Box key={content.id}>
+            <ContentCard
+              content={content}
+              contentType={contentType}
+              h="350px"
+              minW="150px"
+            />
+          </Box>
+        ))}
       </Stack>
     </Box>
   );

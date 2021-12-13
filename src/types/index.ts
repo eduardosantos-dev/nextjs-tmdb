@@ -90,3 +90,13 @@ export interface ICrewMember {
   department: string;
   job: string;
 }
+
+export interface IContentType {
+  name: "movie" | "show";
+}
+
+export enum ContentTypes {
+  Movie = "movie",
+  Show = "show",
+  Person = "person",
+}

@@ -1,14 +1,13 @@
 import React, { useMemo, useState } from "react";
-import type { GetServerSideProps, GetStaticProps } from "next";
+import type { GetStaticProps } from "next";
 import { Container, Flex, SimpleGrid, Spinner } from "@chakra-ui/react";
 import { Header } from "../../components/Header";
-import { Sidebar } from "../../components/Sidebar";
 import { getShows } from "../../services/hooks/useShows";
-import { ShowCard } from "../../components/Shows/ShowCard";
 import Head from "next/head";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useInfiniteQuery } from "react-query";
-import { getMovies } from "../../services/hooks/useMovies";
+import ContentCard from "../../components/ContentCard";
+import { ContentTypes } from "../../types";
 
 interface Show {
   id: number;
@@ -59,7 +58,13 @@ export default function Shows({ showsProps }: ShowsProps) {
               }>
               <SimpleGrid flex="1" columns={[2, 3, 4, 5]} gap="4">
                 {shows &&
-                  shows.map((show) => <ShowCard show={show} key={show.id} />)}
+                  shows.map((show) => (
+                    <ContentCard
+                      content={show}
+                      contentType={ContentTypes.Show}
+                      key={show.id}
+                    />
+                  ))}
               </SimpleGrid>
             </InfiniteScroll>
           )}
