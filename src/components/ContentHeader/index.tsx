@@ -59,26 +59,25 @@ export default function ContentHeader({ content }: ContentHeaderProps) {
 
   useEffect(() => {
     const { videos } = content;
-    const video: any =
-      videos.results
-        .filter(
-          (video: IVideo) =>
-            video.type === "Trailer" &&
-            video.official === true &&
-            video.site === "YouTube"
-        )
-        .sort((a, b) => {
-          let x = a.published_at.toLowerCase();
-          let y = b.published_at.toLowerCase();
-          if (x < y) {
-            return -1;
-          }
-          if (x > y) {
-            return 1;
-          }
-          return 0;
-        })
-        .shift() || {};
+    const video: any = videos.results
+      .filter(
+        (video: IVideo) =>
+          video.type === "Trailer" &&
+          video.official === true &&
+          video.site === "YouTube"
+      )
+      .sort((a, b) => {
+        let x = a.published_at.toLowerCase();
+        let y = b.published_at.toLowerCase();
+        if (x < y) {
+          return -1;
+        }
+        if (x > y) {
+          return 1;
+        }
+        return 0;
+      })
+      .shift();
 
     if (video) {
       setVideo(video);
