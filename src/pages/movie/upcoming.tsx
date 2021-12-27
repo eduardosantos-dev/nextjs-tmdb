@@ -1,4 +1,10 @@
-import { Flex, Container, Spinner, SimpleGrid } from "@chakra-ui/react";
+import {
+  Flex,
+  Container,
+  Spinner,
+  SimpleGrid,
+  Heading,
+} from "@chakra-ui/react";
 
 import styles from "./styles.module.scss";
 import React, { useMemo } from "react";
@@ -36,14 +42,14 @@ const Upcoming: React.FC = () => {
   return (
     <>
       <Head>
-        <title>tmdb • Próximas estreias</title>
+        <title>tmdb • Filmes que estreiam em breve</title>
       </Head>
       <Flex direction="column" h="100%">
         <Header />
         <Flex
           as={Container}
           maxW="container.2xl"
-          my="32"
+          my="28"
           className={styles.pageContainer}>
           {movies && (
             <InfiniteScroll
@@ -55,6 +61,9 @@ const Upcoming: React.FC = () => {
                   <Spinner color="green.400" size="xl" />
                 </Flex>
               }>
+              <Heading mb="6" fontSize="2xl">
+                Filmes que estreiam em breve
+              </Heading>
               <SimpleGrid flex="1" columns={[2, 3, 4, 5]} gap="4">
                 {movies &&
                   movies.map((movie) => (

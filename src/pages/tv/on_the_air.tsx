@@ -1,6 +1,12 @@
 import React, { useMemo, useState } from "react";
 import type { GetStaticProps } from "next";
-import { Container, Flex, SimpleGrid, Spinner } from "@chakra-ui/react";
+import {
+  Container,
+  Flex,
+  Heading,
+  SimpleGrid,
+  Spinner,
+} from "@chakra-ui/react";
 import { Header } from "../../components/Header";
 import Head from "next/head";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -50,7 +56,7 @@ export default function OnTheAir({ showsProps }: ShowsProps) {
       </Head>
       <Flex direction="column" h="100%">
         <Header />
-        <Flex as={Container} maxW="container.2xl" my="32">
+        <Flex as={Container} maxW="container.2xl" my="28">
           {shows && (
             <InfiniteScroll
               dataLength={shows.length}
@@ -61,6 +67,9 @@ export default function OnTheAir({ showsProps }: ShowsProps) {
                   <Spinner color="green.400" size="xl" />
                 </Flex>
               }>
+              <Heading mb="6" fontSize="2xl">
+                Séries em exibição
+              </Heading>
               <SimpleGrid flex="1" columns={[2, 3, 4, 5]} gap="4">
                 {shows &&
                   shows.map((show) => (

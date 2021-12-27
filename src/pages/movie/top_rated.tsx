@@ -1,4 +1,10 @@
-import { Flex, Container, Spinner, SimpleGrid } from "@chakra-ui/react";
+import {
+  Flex,
+  Container,
+  Spinner,
+  SimpleGrid,
+  Heading,
+} from "@chakra-ui/react";
 
 import styles from "./styles.module.scss";
 import React, { useMemo } from "react";
@@ -43,7 +49,7 @@ const TopRated: React.FC = () => {
         <Flex
           as={Container}
           maxW="container.2xl"
-          my="32"
+          my="28"
           className={styles.pageContainer}>
           {movies && (
             <InfiniteScroll
@@ -55,6 +61,9 @@ const TopRated: React.FC = () => {
                   <Spinner color="green.400" size="xl" />
                 </Flex>
               }>
+              <Heading mb="6" fontSize="2xl">
+                Filmes mais bem avaliados
+              </Heading>
               <SimpleGrid flex="1" columns={[2, 3, 4, 5]} gap="4">
                 {movies &&
                   movies.map((movie) => (

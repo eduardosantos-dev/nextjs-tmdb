@@ -17,7 +17,9 @@ export default function SearchHero({ src }: SearchHeroProps) {
       direction="column"
       justify="center"
       px="10"
-      py="8">
+      py="8"
+      mt="12"
+      borderRadius="lg">
       <Box mb="6" textAlign={["center", "left"]}>
         <Heading
           as="h1"

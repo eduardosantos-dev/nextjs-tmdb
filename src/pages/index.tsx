@@ -56,7 +56,9 @@ export default function Home({ heroBackdropImage }: HomeProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { content: popularMovies } = await getMovies();
+  const { content: popularMovies } = await getMoviesTopRated(
+    Math.floor(Math.random() * 10) + 1
+  );
 
   const heroBackdropImage =
     popularMovies[Math.floor(Math.random() * popularMovies.length)]
