@@ -56,7 +56,7 @@ export function ContentRating({
           fontWeight="bold"
           display="flex"
           justifyContent="center">
-          <Text fontSize={textFontSize}>{rating * 10}</Text>
+          <Text fontSize={textFontSize}>{Math.ceil(rating * 10)}</Text>
           <Text fontSize="0.5rem" mt="0.5">
             %
           </Text>

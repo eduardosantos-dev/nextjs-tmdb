@@ -20,14 +20,7 @@ import {
 } from "react-icons/ri";
 import { useVideoModal } from "../../context/ModalContext";
 import movie from "../../pages/movie";
-import {
-  ContentTypes,
-  IGenre,
-  IMovie,
-  IShow,
-  IVideo,
-  IVideos,
-} from "../../types";
+import { ContentTypes, IGenre, IMovie, IShow, IVideo } from "../../types";
 import { ContentRating } from "../ContentRating";
 import { Header } from "../Header";
 import VideoModal from "../VideoModal";
@@ -40,7 +33,7 @@ interface ContentHeaderProps {
     release_date: string;
     runtime: string;
     genres: IGenre[];
-    videos: IVideos;
+    videos: IVideo[];
     vote_average: number;
     overview: string;
     number_of_episodes?: number;
@@ -59,7 +52,7 @@ export default function ContentHeader({ content }: ContentHeaderProps) {
 
   useEffect(() => {
     const { videos } = content;
-    const video: any = videos.results
+    const video: any = videos
       .filter(
         (video: IVideo) =>
           video.type === "Trailer" &&

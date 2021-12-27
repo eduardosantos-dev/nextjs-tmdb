@@ -14,7 +14,7 @@ export function useNavigation(): NavigationMenu {
         label: "Filmes",
         children: [
           { label: "Populares", href: "/movie", icon: RiFireLine },
-          { label: "Em cartaz", href: "#", icon: RiFilmLine },
+          { label: "Em cartaz", href: "/movie/now_playing", icon: RiFilmLine },
           {
             label: "Próximas estreias",
             href: "#",
@@ -26,7 +26,7 @@ export function useNavigation(): NavigationMenu {
       {
         label: "Séries",
         children: [
-          { label: "Populares", href: "/show", icon: RiFireLine },
+          { label: "Populares", href: "/tv", icon: RiFireLine },
           { label: "Em cartaz", href: "#", icon: RiCalendarEventLine },
           { label: "Próximas estreias", href: "#", icon: RiTvLine },
           { label: "Mais bem avaliados", href: "#", icon: RiStarLine },

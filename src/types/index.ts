@@ -18,7 +18,8 @@ export interface IMovie {
   revenue: number;
   formatted_revenue: string;
   formatted_budget: string;
-  videos: IVideos;
+  videos: IVideo[];
+  recommendations: IMovie[] | IShow[];
 }
 
 export interface IVideo {
@@ -28,9 +29,6 @@ export interface IVideo {
   key: string;
   published_at: string;
 }
-export interface IVideos {
-  results: IVideo[];
-}
 export interface IShow {
   id: number;
   poster_path: string;
@@ -39,7 +37,7 @@ export interface IShow {
   name: string;
   formatted_first_air_date: string;
   first_air_date: string;
-  videos: IVideos;
+  videos: IVideo[];
   genres: IGenre[];
   backdrop_path: string;
   overview: string;
@@ -48,6 +46,7 @@ export interface IShow {
   original_name: string;
   original_language: string;
   number_of_episodes: string;
+  recommendations: IMovie[] | IShow[];
 }
 
 export interface IGenre {
@@ -91,11 +90,11 @@ export interface ICrewMember {
 }
 
 export interface IContentType {
-  name: "movie" | "show";
+  name: "movie" | "tv";
 }
 
 export enum ContentTypes {
   Movie = "movie",
-  Show = "show",
+  Show = "tv",
   Person = "person",
 }

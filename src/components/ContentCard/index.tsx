@@ -1,10 +1,9 @@
 import { Box, BoxProps, Skeleton, Image, Text, Link } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import movie from "../../pages/movie";
-import { getMovieById } from "../../services/hooks/useMovies";
-import { getShowById } from "../../services/hooks/useShows";
+import { getMovieById } from "../../services/movie";
 import { queryClient } from "../../services/queryClient";
-import { IShow, IMovie, IContentType, ContentTypes } from "../../types";
+import { getShowById } from "../../services/show";
+import { IShow, IMovie, ContentTypes } from "../../types";
 import { ContentRating } from "../ContentRating";
 
 interface ContentCardProps extends BoxProps {

@@ -14,7 +14,7 @@ export default function ContentDetailsSidebar({
       direction="column"
       bgColor="gray.800"
       borderRadius="lg"
-      mt={[10, 10, 0]}>
+      mb={[10, 10, 0]}>
       {data.map(({ label, value }, index) => (
         <Box mb={6} key={index}>
           <Heading as="h4" fontSize="md">

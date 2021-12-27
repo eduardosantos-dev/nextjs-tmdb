@@ -1,7 +1,8 @@
 import React from "react";
-import { Flex, Heading } from "@chakra-ui/react";
+import { Flex, Heading, Stack } from "@chakra-ui/react";
 import { IMovie } from "../../types";
 import { CastList } from "../CastList";
+import { Recommendations } from "../Recommendations";
 
 interface MovieDetailsProps {
   movie: IMovie;
@@ -9,8 +10,12 @@ interface MovieDetailsProps {
 
 export default function MovieDetails({ movie }: MovieDetailsProps) {
   return (
-    <Flex w={{ base: "100%", md: "calc(100% - 240px)" }}>
+    <Stack
+      w={{ base: "100%", md: "calc(100% - 240px)" }}
+      direction="column"
+      spacing="6">
       <CastList cast={movie?.credits?.cast} />
-    </Flex>
+      <Recommendations recommendations={movie.recommendations} />
+    </Stack>
   );
 }

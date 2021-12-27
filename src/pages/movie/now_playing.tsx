@@ -2,39 +2,48 @@ import React, { useMemo, useState } from "react";
 import type { GetStaticProps } from "next";
 import { Container, Flex, SimpleGrid, Spinner } from "@chakra-ui/react";
 import { Header } from "../../components/Header";
-import { getShows } from "../../services/hooks/useShows";
-import Head from "next/head";
-import InfiniteScroll from "react-infinite-scroll-component";
 import { useInfiniteQuery } from "react-query";
+import InfiniteScroll from "react-infinite-scroll-component";
+import styles from "./styles.module.scss";
+import Head from "next/head";
 import ContentCard from "../../components/ContentCard";
 import { ContentTypes } from "../../types";
+import { getMovies, getMoviesNowPlaying } from "../../services/movie";
 
-interface Show {
+interface Movie {
   id: number;
   poster_path: string;
-  first_air_date: string;
+  backdrop_path: string;
+  release_date: string;
+  formatted_release_date: string;
   vote_average: number;
-  formatted_first_air_date: string;
-  name: string;
+  title: string;
 }
 
-interface ShowsProps {
-  showsProps: Show[];
+interface MoviesProps {
+  moviesProps: Movie[];
 }
 
-export default function Shows({ showsProps }: ShowsProps) {
+export default function Movies({ moviesProps }: MoviesProps) {
   const [page, setPage] = useState(1);
 
   const fetchPage = async ({ pageParam = 1 }): Promise<any> => {
-    const response = await getShows(pageParam);
+    const response = await getMovies(pageParam);
     return response;
   };
 
-  const { data, fetchNextPage } = useInfiniteQuery("shows", fetchPage, {
+  const {
+    data,
+    isLoading,
+    isError,
+    isFetchingNextPage,
+    fetchNextPage,
+    hasNextPage,
+  } = useInfiniteQuery("movies", fetchPage, {
     getNextPageParam: (lastPage: { page: number }) => lastPage.page + 1,
   });
 
-  const shows = useMemo(() => {
+  const movies = useMemo(() => {
     return data?.pages.map((page: any) => page.content).flat();
   }, [data]);
 
@@ -45,10 +54,14 @@ export default function Shows({ showsProps }: ShowsProps) {
       </Head>
       <Flex direction="column" h="100%">
         <Header />
-        <Flex as={Container} maxW="container.2xl" my="32">
-          {shows && (
+        <Flex
+          as={Container}
+          maxW="container.2xl"
+          my="32"
+          className={styles.pageContainer}>
+          {movies && (
             <InfiniteScroll
-              dataLength={shows.length}
+              dataLength={movies.length}
               next={fetchNextPage}
               hasMore={true}
               loader={
@@ -57,12 +70,12 @@ export default function Shows({ showsProps }: ShowsProps) {
                 </Flex>
               }>
               <SimpleGrid flex="1" columns={[2, 3, 4, 5]} gap="4">
-                {shows &&
-                  shows.map((show) => (
+                {movies &&
+                  movies.map((movie) => (
                     <ContentCard
-                      content={show}
-                      contentType={ContentTypes.Show}
-                      key={show.id}
+                      content={movie}
+                      contentType={ContentTypes.Movie}
+                      key={movie.id}
                     />
                   ))}
               </SimpleGrid>
@@ -75,11 +88,11 @@ export default function Shows({ showsProps }: ShowsProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { content: shows } = await getShows();
+  const { content: movies } = await getMoviesNowPlaying(1);
 
   return {
     props: {
-      shows,
+      movies,
     },
   };
 };

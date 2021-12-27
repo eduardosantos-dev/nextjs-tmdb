@@ -34,13 +34,6 @@ export default function TabContent({
         spacing={4}
         py={6}
         pr="8">
-        {/* {contentType === "movie" &&
-          contentList &&
-          contentList.map((movie) => (
-            <Box key={movie.id}>
-              <MovieCard movie={movie} h="350px" minW="150px" />
-            </Box>
-          ))} */}
         {contentList.map((content) => (
           <Box key={content.id}>
             <ContentCard

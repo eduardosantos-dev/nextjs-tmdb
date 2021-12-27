@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
 import { Params } from "next/dist/server/router";
-import { getMovieById, getMovies } from "../../services/hooks/useMovies";
 import MovieDetails from "../../components/MovieDetails";
 import { Container, Flex, useBreakpointValue } from "@chakra-ui/react";
 import { IMovie } from "../../types";
@@ -9,6 +8,7 @@ import { Sidebar } from "../../components/Sidebar";
 import Head from "next/head";
 import ContentDetailsSidebar from "../../components/ContentDetailsSidebar";
 import ContentHeader from "../../components/ContentHeader";
+import { getMovies, getMovieById } from "../../services/movie";
 
 interface MoviePageProps {
   movie: IMovie;
@@ -55,9 +55,9 @@ export default function MoviePage({ movie }: MoviePageProps) {
             as={Container}
             maxW="container.2xl"
             py={6}
-            direction={{ base: "column", md: "row" }}>
-            <MovieDetails movie={movie} />
+            direction={{ base: "column", md: "row-reverse" }}>
             {sidebarData && <ContentDetailsSidebar data={sidebarData} />}
+            <MovieDetails movie={movie} />
           </Flex>
         </>
       )}

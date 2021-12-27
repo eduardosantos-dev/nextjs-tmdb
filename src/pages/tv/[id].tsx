@@ -2,14 +2,13 @@ import React, { useEffect, useState } from "react";
 import { GetServerSideProps } from "next";
 import { Text, Image, Link, Img, Container, Flex } from "@chakra-ui/react";
 import { Params } from "next/dist/server/router";
-import { getMovieById } from "../../services/hooks/useMovies";
-import { getShowById } from "../../services/hooks/useShows";
 import { ContentRating } from "../../components/ContentRating";
 import Head from "next/head";
 import { IShow } from "../../types";
 import ShowDetails from "../../components/ShowDetails";
 import ContentDetailsSidebar from "../../components/ContentDetailsSidebar";
 import ContentHeader from "../../components/ContentHeader";
+import { getShowById } from "../../services/show";
 
 interface ShowPageProps {
   show: IShow;
@@ -54,10 +53,9 @@ export default function ShowPage({ show }: ShowPageProps) {
             as={Container}
             maxW="container.2xl"
             py={6}
-            direction={{ base: "column", md: "row" }}>
-            <ShowDetails show={show} />
-
+            direction={{ base: "column", md: "row-reverse" }}>
             {sidebarData && <ContentDetailsSidebar data={sidebarData} />}
+            <ShowDetails show={show} />
           </Flex>
         </>
       )}
