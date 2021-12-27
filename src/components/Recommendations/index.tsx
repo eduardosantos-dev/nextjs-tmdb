@@ -7,6 +7,8 @@ interface RecommendationsProps extends BoxProps {
 }
 
 export function Recommendations({ recommendations }: RecommendationsProps) {
+  if (recommendations.length <= 0) return null;
+
   return (
     <Box maxW="100%">
       <Heading as="h3" fontSize="xl">

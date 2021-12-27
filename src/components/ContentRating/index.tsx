@@ -56,10 +56,18 @@ export function ContentRating({
           fontWeight="bold"
           display="flex"
           justifyContent="center">
-          <Text fontSize={textFontSize}>{Math.ceil(rating * 10)}</Text>
-          <Text fontSize="0.5rem" mt="0.5">
-            %
-          </Text>
+          {rating ? (
+            <>
+              <Text fontSize={textFontSize}>{Math.ceil(rating * 10)}</Text>
+              <Text fontSize="0.5rem" mt="0.5">
+                %
+              </Text>
+            </>
+          ) : (
+            <Text color="gray.400" fontSize={textFontSize}>
+              N/A
+            </Text>
+          )}
         </CircularProgressLabel>
       </CircularProgress>
     </Box>

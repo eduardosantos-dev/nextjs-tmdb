@@ -1,6 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { GetServerSideProps } from "next";
-import { Text, Image, Link, Img, Container, Flex } from "@chakra-ui/react";
+import {
+  Text,
+  Image,
+  Link,
+  Img,
+  Container,
+  Flex,
+  Heading,
+  Box,
+} from "@chakra-ui/react";
 import { Params } from "next/dist/server/router";
 import { ContentRating } from "../../components/ContentRating";
 import Head from "next/head";
@@ -54,7 +63,22 @@ export default function ShowPage({ show }: ShowPageProps) {
             maxW="container.2xl"
             py={6}
             direction={{ base: "column", md: "row-reverse" }}>
-            {sidebarData && <ContentDetailsSidebar data={sidebarData} />}
+            {sidebarData && (
+              <ContentDetailsSidebar>
+                {sidebarData.map(
+                  (item: { label: string; value: string }, index: number) => (
+                    <Box mb={6} key={index}>
+                      <Heading as="h4" fontSize="md">
+                        {item.label}
+                      </Heading>
+                      <Text fontSize="sm" fontWeight="normal">
+                        {item.value}
+                      </Text>
+                    </Box>
+                  )
+                )}
+              </ContentDetailsSidebar>
+            )}
             <ShowDetails show={show} />
           </Flex>
         </>

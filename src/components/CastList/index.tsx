@@ -18,6 +18,8 @@ interface CastListProps {
 
 export function CastList({ cast }: CastListProps) {
   const SLIDER_MAX_LENGTH = 10;
+  if (cast.length <= 0) return null;
+
   return (
     <Box maxW="100%">
       <Heading as="h3" fontSize="xl">

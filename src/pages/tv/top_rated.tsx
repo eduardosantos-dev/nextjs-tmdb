@@ -7,7 +7,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { useInfiniteQuery } from "react-query";
 import ContentCard from "../../components/ContentCard";
 import { ContentTypes } from "../../types";
-import { getShows } from "../../services/show";
+import { getOnAirShows, getShows, getShowsTopRated } from "../../services/show";
 
 interface Show {
   id: number;
@@ -22,11 +22,9 @@ interface ShowsProps {
   showsProps: Show[];
 }
 
-export default function Shows({ showsProps }: ShowsProps) {
-  const [page, setPage] = useState(1);
-
+export default function TopRatedShows({ showsProps }: ShowsProps) {
   const fetchPage = async ({ pageParam = 1 }): Promise<any> => {
-    const response = await getShows(pageParam);
+    const response = await getShowsTopRated(pageParam);
     return response;
   };
 
@@ -46,7 +44,7 @@ export default function Shows({ showsProps }: ShowsProps) {
   return (
     <>
       <Head>
-        <title>tmdb • Séries populares</title>
+        <title>tmdb • Séries mais bem avaliadas</title>
       </Head>
       <Flex direction="column" h="100%">
         <Header />
@@ -80,7 +78,7 @@ export default function Shows({ showsProps }: ShowsProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { content: shows } = await getShows();
+  const { content: shows } = await getShowsTopRated();
 
   return {
     props: {

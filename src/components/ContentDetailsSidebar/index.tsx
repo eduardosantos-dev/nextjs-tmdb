@@ -1,10 +1,10 @@
 import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 
 interface ContentDetailsSidebarProps {
-  data: { label: string; value: string }[];
+  children: React.ReactNode;
 }
 export default function ContentDetailsSidebar({
-  data,
+  children,
 }: ContentDetailsSidebarProps) {
   return (
     <Flex
@@ -15,16 +15,7 @@ export default function ContentDetailsSidebar({
       bgColor="gray.800"
       borderRadius="lg"
       mb={[10, 10, 0]}>
-      {data.map(({ label, value }, index) => (
-        <Box mb={6} key={index}>
-          <Heading as="h4" fontSize="md">
-            {label}
-          </Heading>
-          <Text fontSize="sm" fontWeight="normal">
-            {value}
-          </Text>
-        </Box>
-      ))}
+      {children}
     </Flex>
   );
 }

@@ -1,32 +1,19 @@
-import React, { useMemo, useState } from "react";
-import type { GetStaticProps } from "next";
-import { Container, Flex, SimpleGrid, Spinner } from "@chakra-ui/react";
-import { Header } from "../../components/Header";
-import { useInfiniteQuery } from "react-query";
-import InfiniteScroll from "react-infinite-scroll-component";
+import { Flex, Container, Spinner, SimpleGrid } from "@chakra-ui/react";
+
 import styles from "./styles.module.scss";
-import Head from "next/head";
+import React, { useMemo } from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { useInfiniteQuery } from "react-query";
 import ContentCard from "../../components/ContentCard";
-import { ContentTypes, IMovie } from "../../types";
-import { getMovies, getMoviesNowPlaying } from "../../services/movie";
+import { Header } from "../../components/Header";
+import { getMoviesNowPlaying, getUpcomingMovies } from "../../services/movie";
+import { ContentTypes } from "../../types";
+import Head from "next/head";
+import { GetStaticProps } from "next";
 
-interface Movie {
-  id: number;
-  poster_path: string;
-  backdrop_path: string;
-  release_date: string;
-  formatted_release_date: string;
-  vote_average: number;
-  title: string;
-}
-
-interface MoviesProps {
-  moviesProps: IMovie[];
-}
-
-export default function NowPlaying({ moviesProps }: MoviesProps) {
+const Upcoming: React.FC = () => {
   const fetchPage = async ({ pageParam = 1 }): Promise<any> => {
-    const response = await getMoviesNowPlaying(pageParam);
+    const response = await getUpcomingMovies(pageParam);
     return response;
   };
 
@@ -49,7 +36,7 @@ export default function NowPlaying({ moviesProps }: MoviesProps) {
   return (
     <>
       <Head>
-        <title>tmdb • Em cartaz</title>
+        <title>tmdb • Próximas estreias</title>
       </Head>
       <Flex direction="column" h="100%">
         <Header />
@@ -84,10 +71,12 @@ export default function NowPlaying({ moviesProps }: MoviesProps) {
       </Flex>
     </>
   );
-}
+};
+
+export default Upcoming;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { content: movies } = await getMoviesNowPlaying(1);
+  const { content: movies } = await getUpcomingMovies(1);
 
   return {
     props: {

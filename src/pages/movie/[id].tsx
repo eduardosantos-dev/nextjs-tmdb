@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
+import { GetStaticProps } from "next";
 import { Params } from "next/dist/server/router";
 import MovieDetails from "../../components/MovieDetails";
-import { Container, Flex, useBreakpointValue } from "@chakra-ui/react";
+import { Box, Container, Flex, Heading, Text } from "@chakra-ui/react";
 import { IMovie } from "../../types";
-import { Sidebar } from "../../components/Sidebar";
 import Head from "next/head";
 import ContentDetailsSidebar from "../../components/ContentDetailsSidebar";
 import ContentHeader from "../../components/ContentHeader";
@@ -56,7 +55,22 @@ export default function MoviePage({ movie }: MoviePageProps) {
             maxW="container.2xl"
             py={6}
             direction={{ base: "column", md: "row-reverse" }}>
-            {sidebarData && <ContentDetailsSidebar data={sidebarData} />}
+            {sidebarData && (
+              <ContentDetailsSidebar>
+                {sidebarData.map(
+                  (item: { label: string; value: string }, index: number) => (
+                    <Box mb={6} key={index}>
+                      <Heading as="h4" fontSize="md">
+                        {item.label}
+                      </Heading>
+                      <Text fontSize="sm" fontWeight="normal">
+                        {item.value}
+                      </Text>
+                    </Box>
+                  )
+                )}
+              </ContentDetailsSidebar>
+            )}
             <MovieDetails movie={movie} />
           </Flex>
         </>

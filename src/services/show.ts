@@ -90,7 +90,7 @@ export async function getShowById(id: number): Promise<GetShowByIdResponse> {
   };
 }
 
-interface GetTopRatedShowsResponse {
+interface GetShowsResponse {
   content: IShow[];
   page: number;
   totalPages: number;
@@ -99,8 +99,69 @@ interface GetTopRatedShowsResponse {
 
 export async function getShowsTopRated(
   page: number = 1
-): Promise<GetTopRatedShowsResponse> {
+): Promise<GetShowsResponse> {
   const { data } = await api.get("/tv/top_rated", {
+    params: {
+      page,
+      region: "BR",
+    },
+  });
+
+  const shows = data.results.map((show: IShow) => {
+    return {
+      ...show,
+      formatted_first_air_date: new Date(
+        show.first_air_date
+      ).toLocaleDateString("pt-BR", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+      }),
+    };
+  });
+
+  return {
+    content: shows,
+    page: data.page,
+    totalPages: data.total_pages,
+    totalResults: data.total_results,
+  };
+}
+
+export async function getOnAirShows(
+  page: number = 1
+): Promise<GetShowsResponse> {
+  const { data } = await api.get("/tv/on_the_air", {
+    params: {
+      page,
+    },
+  });
+
+  const shows = data.results.map((show: IShow) => {
+    return {
+      ...show,
+      formatted_first_air_date: new Date(
+        show.first_air_date
+      ).toLocaleDateString("pt-BR", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+      }),
+    };
+  });
+
+  return {
+    content: shows,
+    page: data.page,
+    totalPages: data.total_pages,
+    totalResults: data.total_results,
+  };
+}
+
+export async function getAiringTodayShows(
+  page: number = 1
+): Promise<GetShowsResponse> {
+  const { data } = await api.get("/tv/airing_today", {
     params: {
       page,
     },

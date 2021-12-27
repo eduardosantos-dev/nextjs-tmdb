@@ -111,6 +111,7 @@ export async function getMoviesTopRated(
   const { data } = await api.get("/movie/top_rated", {
     params: {
       page,
+      region: "BR",
     },
   });
 
@@ -142,6 +143,39 @@ export async function getMoviesNowPlaying(
   const { data } = await api.get("/movie/now_playing", {
     params: {
       page,
+      region: "BR",
+    },
+  });
+
+  const movies = data.results.map((movie: IMovie) => {
+    return {
+      ...movie,
+      formatted_release_date: new Date(movie.release_date).toLocaleDateString(
+        "pt-BR",
+        {
+          day: "2-digit",
+          month: "short",
+          year: "numeric",
+        }
+      ),
+    };
+  });
+
+  return {
+    content: movies,
+    page: data.page,
+    totalPages: data.total_pages,
+    totalResults: data.total_results,
+  };
+}
+
+export async function getUpcomingMovies(
+  page: number = 1
+): Promise<GetMoviesResponse> {
+  const { data } = await api.get("/movie/upcoming", {
+    params: {
+      page,
+      region: "BR",
     },
   });
 
