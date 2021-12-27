@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { GetServerSideProps } from "next";
+import { GetServerSideProps, GetStaticProps } from "next";
 import {
   Text,
   Image,
@@ -17,7 +17,7 @@ import { IShow } from "../../types";
 import ShowDetails from "../../components/ShowDetails";
 import ContentDetailsSidebar from "../../components/ContentDetailsSidebar";
 import ContentHeader from "../../components/ContentHeader";
-import { getShowById } from "../../services/show";
+import { getShowById, getShows } from "../../services/show";
 
 interface ShowPageProps {
   show: IShow;
@@ -87,7 +87,21 @@ export default function ShowPage({ show }: ShowPageProps) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps<Params> = async ({
+export const getStaticPaths = async () => {
+  const numberOfPages = 10;
+  let paths: any[] = [];
+  for (let i = 1; i <= numberOfPages; i++) {
+    const { content: shows } = await getShows(i);
+
+    shows.map((show) => {
+      paths = [...paths, { params: { id: show.id.toString() } }];
+    });
+  }
+
+  return { paths, fallback: true };
+};
+
+export const getStaticProps: GetStaticProps<Params> = async ({
   params,
 }: Params) => {
   const { id } = params;
@@ -97,6 +111,7 @@ export const getServerSideProps: GetServerSideProps<Params> = async ({
   return {
     props: {
       show,
+      revalidate: 1 * 60 * 60 * 24, // 24 hours
     },
   };
 };

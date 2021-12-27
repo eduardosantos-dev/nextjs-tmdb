@@ -80,11 +80,15 @@ export default function MoviePage({ movie }: MoviePageProps) {
 }
 
 export const getStaticPaths = async () => {
-  const { content: movies } = await getMovies();
+  const numberOfPages = 10;
+  let paths: any[] = [];
+  for (let i = 1; i <= numberOfPages; i++) {
+    const { content: movies } = await getMovies(i);
 
-  const paths = movies.map((movie) => ({
-    params: { id: movie.id.toString() },
-  }));
+    movies.map((movie) => {
+      paths = [...paths, { params: { id: movie.id.toString() } }];
+    });
+  }
 
   return { paths, fallback: true };
 };
@@ -98,5 +102,6 @@ export const getStaticProps: GetStaticProps<Params> = async ({
 
   return {
     props: { movie },
+    revalidate: 1 * 60 * 60 * 24, // 24 hours
   };
 };
