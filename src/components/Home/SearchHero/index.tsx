@@ -2,6 +2,7 @@ import { Box, BoxProps, Flex, forwardRef, Heading } from "@chakra-ui/react";
 import Image from "next/image";
 import CustomImage from "../../CustomImage";
 import SearchInput from "./SearchInput";
+import styles from "./styles.module.scss";
 
 interface SearchHeroProps {
   src: string;
@@ -12,16 +13,27 @@ export default function SearchHero({ src }: SearchHeroProps) {
     <Flex
       w="full"
       h="360px"
-      bgImage={`linear-gradient(to right, rgba(28, 69, 50, 0.8), rgba(154, 230, 180, 0)), url('https://image.tmdb.org/t/p/w1920_and_h600_multi_faces_filter(duotone,1C4532,9AE6B4)${src}')`}
-      bgRepeat="no-repeat"
-      bgPos="50% 50%"
-      bgSize="cover"
+      bgImage={`linear-gradient(to right, rgba(28, 69, 50, 0.8), rgba(154, 230, 180, 0))`}
       direction="column"
       justify="center"
       px="10"
       py="8"
       mt="12"
-      borderRadius="lg">
+      borderRadius="lg"
+      position="relative"
+      overflow="hidden">
+      <Image
+        src={`https://image.tmdb.org/t/p/w1920_and_h600_multi_faces_filter(duotone,1C4532,9AE6B4)${src}`}
+        width="1368px"
+        height="360px"
+        layout="fill"
+        objectFit="cover"
+        objectPosition="50% 50%"
+        alt="tmdb"
+        className={styles.image}
+        priority
+        quality={30}
+      />
       <Box mb="6" textAlign={["center", "left"]}>
         <Heading
           as="h1"
