@@ -15,6 +15,7 @@ import Head from "next/head";
 import ContentCard from "../../components/ContentCard";
 import { ContentTypes } from "../../types";
 import { getMovies } from "../../services/movie";
+import ContentPage from "../../components/ContentPage";
 
 interface Movie {
   id: number;
@@ -27,73 +28,21 @@ interface Movie {
 }
 
 interface MoviesProps {
-  moviesProps: Movie[];
+  movies: Movie[];
 }
 
-export default function Movies({ moviesProps }: MoviesProps) {
-  const [page, setPage] = useState(1);
-
+export default function Movies({ movies }: MoviesProps) {
   const fetchPage = async ({ pageParam = 1 }): Promise<any> => {
     const response = await getMovies(pageParam);
     return response;
   };
-
-  const {
-    data,
-    isLoading,
-    isError,
-    isFetchingNextPage,
-    fetchNextPage,
-    hasNextPage,
-  } = useInfiniteQuery("movies", fetchPage, {
-    getNextPageParam: (lastPage: { page: number; totalPages: number }) =>
-      lastPage.page < lastPage.totalPages ? lastPage.page + 1 : undefined,
-  });
-
-  const movies = useMemo(() => {
-    return data?.pages.map((page: any) => page.content).flat();
-  }, [data]);
 
   return (
     <>
       <Head>
         <title>tmdb • Filmes populares</title>
       </Head>
-      <Flex direction="column" h="100%">
-        <Header />
-        <Flex
-          as={Container}
-          maxW="container.2xl"
-          my="28"
-          className={styles.pageContainer}>
-          {movies && (
-            <InfiniteScroll
-              dataLength={movies.length}
-              next={fetchNextPage}
-              hasMore={hasNextPage!!}
-              loader={
-                <Flex align="center" justify="center" mt={6} h={20}>
-                  <Spinner color="green.400" size="xl" />
-                </Flex>
-              }>
-              <Heading mb="6" fontSize="2xl">
-                Filmes populares
-              </Heading>
-              <SimpleGrid flex="1" columns={[2, 3, 4, 5]} gap="4">
-                {movies &&
-                  movies.map((movie) => (
-                    <ContentCard
-                      content={movie}
-                      contentType={ContentTypes.Movie}
-                      key={movie.id}
-                      h={[400, 480, 500]}
-                    />
-                  ))}
-              </SimpleGrid>
-            </InfiniteScroll>
-          )}
-        </Flex>
-      </Flex>
+      <ContentPage initialData={movies} fetchPage={fetchPage} />
     </>
   );
 }
