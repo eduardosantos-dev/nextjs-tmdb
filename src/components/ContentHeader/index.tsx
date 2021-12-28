@@ -22,6 +22,7 @@ import {
 import { useVideoModal } from "../../context/ModalContext";
 import { IGenre, IVideo } from "../../types";
 import { ContentRating } from "../ContentRating";
+import CustomImage from "../CustomImage";
 import { Header } from "../Header";
 import VideoModal from "../VideoModal";
 
@@ -93,7 +94,7 @@ export default function ContentHeader({ content }: ContentHeaderProps) {
             src={`https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${content.backdrop_path}`}
             layout="fill"
             objectFit="cover"
-            objectPosition="right top"
+            objectPosition="200px top"
             alt={content.name}
             quality={30}
             className={styles.heroBackgroundImage}
@@ -120,12 +121,11 @@ export default function ContentHeader({ content }: ContentHeaderProps) {
                 maxW={300}
                 mx="auto"
                 flex="1">
-                <Img
+                <CustomImage
                   src={`https://image.tmdb.org/t/p/w300/${content.poster_path}`}
                   alt={content.name}
-                  title={content.name}
-                  w={300}
-                  h={450}
+                  width={300}
+                  height={450}
                 />
                 <Box p="6">
                   <Text mt="2" fontWeight="bold" noOfLines={2}>

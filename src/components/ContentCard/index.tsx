@@ -1,10 +1,12 @@
-import { Box, BoxProps, Skeleton, Image, Text, Link } from "@chakra-ui/react";
+import { Box, BoxProps, Skeleton, Text, Link } from "@chakra-ui/react";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { getMovieById } from "../../services/movie";
 import { queryClient } from "../../services/queryClient";
 import { getShowById } from "../../services/show";
 import { IShow, IMovie, ContentTypes } from "../../types";
 import { ContentRating } from "../ContentRating";
+import CustomImage from "../CustomImage";
 
 interface ContentCardProps extends BoxProps {
   content: IMovie | IShow;
@@ -55,13 +57,12 @@ export default function ContentCard({
       h={rest.h}
       minW={rest.minW}>
       <Link href={`/${contentType}/${content.id}`}>
-        <Image
+        <CustomImage
           src={`https://image.tmdb.org/t/p/w300/${content.poster_path}`}
           alt={contentName}
-          title={contentName}
-          w="100%"
-          maxH="450px"
-          fallback={<Skeleton w="100%" h="450px" />}
+          width={280}
+          height={400}
+          objectFit="cover"
         />
       </Link>
       <Box px="10px" pt="26px" pb="12px" pos="relative">
