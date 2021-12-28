@@ -1,5 +1,12 @@
-import { Box, BoxProps, Skeleton, Text, Link } from "@chakra-ui/react";
-import Image from "next/image";
+import {
+  Box,
+  BoxProps,
+  Skeleton,
+  Text,
+  Link,
+  LinkBox,
+  LinkOverlay,
+} from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { getMovieById } from "../../services/movie";
 import { queryClient } from "../../services/queryClient";
@@ -48,37 +55,39 @@ export default function ContentCard({
   }, [contentType, content]);
 
   return (
-    <Box
-      boxShadow="lg"
-      bg="gray.800"
-      borderRadius="lg"
-      overflow="hidden"
-      onMouseEnter={() => handlePrefetchContent(content.id)}
-      h={rest.h}
-      minW={rest.minW}>
-      <Link href={`/${contentType}/${content.id}`}>
-        <CustomImage
-          src={`https://image.tmdb.org/t/p/w300/${content.poster_path}`}
-          alt={contentName}
-          width={280}
-          height={400}
-          objectFit="cover"
-        />
-      </Link>
-      <Box px="10px" pt="26px" pb="12px" pos="relative">
-        <ContentRating
-          rating={content.vote_average}
-          style={{ position: "absolute", top: "-18px", left: "12px" }}
-        />
-        <Link color="gray.200" href={`/${contentType}/${content.id}`}>
-          <Text mt="2" fontWeight="bold" noOfLines={2} fontSize="sm">
-            {contentName}
+    <LinkBox>
+      <Box
+        boxShadow="lg"
+        bg="gray.800"
+        borderRadius="lg"
+        overflow="hidden"
+        onMouseEnter={() => handlePrefetchContent(content.id)}
+        h={rest.h}
+        minW={rest.minW}>
+        <LinkOverlay href={`/${contentType}/${content.id}`}>
+          <CustomImage
+            src={`https://image.tmdb.org/t/p/w300/${content.poster_path}`}
+            alt={contentName}
+            width={280}
+            height={400}
+            objectFit="cover"
+          />
+        </LinkOverlay>
+        <Box px="10px" pt="26px" pb="12px" pos="relative">
+          <ContentRating
+            rating={content.vote_average}
+            style={{ position: "absolute", top: "-18px", left: "12px" }}
+          />
+          <LinkOverlay color="gray.200" href={`/${contentType}/${content.id}`}>
+            <Text mt="2" fontWeight="bold" noOfLines={2} fontSize="sm">
+              {contentName}
+            </Text>
+          </LinkOverlay>
+          <Text mt="2" fontSize="sm" color="gray.400">
+            {contentDate}
           </Text>
-        </Link>
-        <Text mt="2" fontSize="sm" color="gray.400">
-          {contentDate}
-        </Text>
+        </Box>
       </Box>
-    </Box>
+    </LinkBox>
   );
 }
