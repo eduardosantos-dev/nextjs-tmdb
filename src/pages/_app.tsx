@@ -9,20 +9,23 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import "../styles/global.scss";
 import Head from "next/head";
 import { VideoModalProvider } from "../context/ModalContext";
+import { Chakra } from "../../src/Chakra";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
-      <ChakraProvider theme={theme}>
-        <SidebarDrawerProvider>
-          <VideoModalProvider>
-            <Head>
-              <title>tmdb</title>
-            </Head>
-            <Component {...pageProps} />
-          </VideoModalProvider>
-        </SidebarDrawerProvider>
-      </ChakraProvider>
+      <Chakra cookies={pageProps.cookies}>
+        <ChakraProvider theme={theme}>
+          <SidebarDrawerProvider>
+            <VideoModalProvider>
+              <Head>
+                <title>tmdb</title>
+              </Head>
+              <Component {...pageProps} />
+            </VideoModalProvider>
+          </SidebarDrawerProvider>
+        </ChakraProvider>
+      </Chakra>
       <ReactQueryDevtools />
     </QueryClientProvider>
   );

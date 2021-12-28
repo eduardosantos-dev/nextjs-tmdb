@@ -6,6 +6,7 @@ import {
   Link,
   LinkBox,
   LinkOverlay,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { getMovieById } from "../../services/movie";
@@ -27,6 +28,9 @@ export default function ContentCard({
 }: ContentCardProps) {
   const [contentName, setContentName] = useState("");
   const [contentDate, setContentDate] = useState("");
+
+  const bgColor = useColorModeValue("white", "gray.800");
+  const textColor = useColorModeValue("gray.800", "gray.200");
 
   async function handlePrefetchContent(id: number) {
     await queryClient.prefetchQuery(
@@ -57,8 +61,7 @@ export default function ContentCard({
   return (
     <LinkBox>
       <Box
-        boxShadow="lg"
-        bg="gray.800"
+        bg={bgColor}
         borderRadius="lg"
         overflow="hidden"
         onMouseEnter={() => handlePrefetchContent(content.id)}
@@ -78,7 +81,7 @@ export default function ContentCard({
             rating={content.vote_average}
             style={{ position: "absolute", top: "-18px", left: "12px" }}
           />
-          <LinkOverlay color="gray.200" href={`/${contentType}/${content.id}`}>
+          <LinkOverlay color={textColor} href={`/${contentType}/${content.id}`}>
             <Text mt="2" fontWeight="bold" noOfLines={2} fontSize="sm">
               {contentName}
             </Text>

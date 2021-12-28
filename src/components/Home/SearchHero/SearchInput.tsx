@@ -1,4 +1,10 @@
-import { Flex, Icon, IconButton, Input } from "@chakra-ui/react";
+import {
+  Flex,
+  Icon,
+  IconButton,
+  Input,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import { RiSearchLine } from "react-icons/ri";
 
 export default function SearchInput() {
@@ -7,14 +13,15 @@ export default function SearchInput() {
       as="label"
       w="full"
       alignSelf="center"
-      color="gray.200"
+      color="green.400"
       position="relative"
-      bg="gray.700"
+      bg={useColorModeValue("white", "gray.700")}
       borderRadius="full"
+      boxShadow="lg"
       px="6"
       py="2">
       <Input
-        color="gray.50"
+        color={useColorModeValue("gray.400", "gray.50")}
         variant="unstyled"
         placeholder="Buscar"
         _placeholder={{ color: "gray.400" }}
@@ -22,6 +29,7 @@ export default function SearchInput() {
 
       <IconButton
         icon={<Icon as={RiSearchLine} />}
+        color="green.400"
         fontSize="20"
         variant="unstyled"
         aria-label="Buscar"

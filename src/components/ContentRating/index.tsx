@@ -58,8 +58,10 @@ export function ContentRating({
           justifyContent="center">
           {rating ? (
             <>
-              <Text fontSize={textFontSize}>{Math.ceil(rating * 10)}</Text>
-              <Text fontSize="0.5rem" mt="0.5">
+              <Text fontSize={textFontSize} color="white">
+                {Math.ceil(rating * 10)}
+              </Text>
+              <Text fontSize="0.5rem" mt="0.5" color="white">
                 %
               </Text>
             </>

@@ -1,4 +1,4 @@
-import { Box, Stack } from "@chakra-ui/react";
+import { Box, Stack, useColorMode } from "@chakra-ui/react";
 import { ContentTypes, IMovie } from "../../types";
 import ContentCard from "../ContentCard";
 
@@ -12,12 +12,15 @@ export default function TabContent({
   contentList,
   contentType,
 }: ContentSectionProps) {
+  const { colorMode } = useColorMode();
   return (
     <Box
       position="relative"
       _after={{
         bgImage:
-          "linear-gradient(to right, rgba(255,255,255,0) 0%, var(--chakra-colors-gray-900) 100%)",
+          colorMode === "light"
+            ? "linear-gradient(to right, rgba(255,255,255,0) 0%, var(--chakra-colors-gray-50) 100%)"
+            : "linear-gradient(to right, rgba(255,255,255,0) 0%, var(--chakra-colors-gray-900) 100%)",
         position: "absolute",
         width: "60px",
         height: "100%",

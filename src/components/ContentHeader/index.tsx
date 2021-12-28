@@ -9,6 +9,7 @@ import {
   IconButton,
   Button,
   Text,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -80,6 +81,8 @@ export default function ContentHeader({ content }: ContentHeaderProps) {
     }
   }, [content]);
 
+  const bgColor = useColorModeValue("white", "gray.800");
+
   return (
     <>
       {video && (
@@ -116,7 +119,7 @@ export default function ContentHeader({ content }: ContentHeaderProps) {
               <Box
                 borderRadius="lg"
                 overflow="hidden"
-                bg="gray.800"
+                bg={bgColor}
                 minW={300}
                 maxW={300}
                 mx="auto"
@@ -134,8 +137,10 @@ export default function ContentHeader({ content }: ContentHeaderProps) {
                 </Box>
               </Box>
               <Flex ml={[0, 4, 6, 8]} mt={[6, 6, 0]} flexDir="column" flex="1">
-                <Heading as="h1">{content.name}</Heading>
-                <Text fontSize="sm">
+                <Heading as="h1" color="whiteAlpha.800">
+                  {content.name}
+                </Heading>
+                <Text fontSize="sm" color="whiteAlpha.800">
                   {content.release_date} •{" "}
                   {content.genres.map((genre: IGenre) => genre.name).join(", ")}{" "}
                   {content.runtime && `• ${content.runtime}`}
@@ -201,10 +206,17 @@ export default function ContentHeader({ content }: ContentHeaderProps) {
                     )}
                   </Stack>
                 </Stack>
-                <Heading as="h3" fontSize="xl" mt={6} fontWeight="500">
+                <Heading
+                  as="h3"
+                  fontSize="xl"
+                  mt={6}
+                  fontWeight="500"
+                  color="whiteAlpha.800">
                   Sinopse
                 </Heading>
-                <Text mt={4}>{content.overview}</Text>
+                <Text mt={4} color="whiteAlpha.800">
+                  {content.overview}
+                </Text>
               </Flex>
             </Flex>
           </Flex>

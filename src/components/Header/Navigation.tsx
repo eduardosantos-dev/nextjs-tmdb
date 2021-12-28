@@ -8,6 +8,7 @@ import {
   Stack,
   Link,
   Icon,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { useNavigation } from "../../services/hooks/useNavigation";
 import { MenuSection, NavigationMenu } from "../../types/navigation";
@@ -15,12 +16,14 @@ import { MenuSection, NavigationMenu } from "../../types/navigation";
 export function Navigation() {
   const { menu }: NavigationMenu = useNavigation();
 
+  const bgColor = useColorModeValue("white", "gray.700");
+
   return (
     <Stack direction="row" spacing={6}>
       {menu.map((menuSection: MenuSection) => (
         <Menu key={menuSection.label} autoSelect={false}>
           <MenuButton>{menuSection.label}</MenuButton>
-          <MenuList bgColor="gray.700" borderColor="transparent" boxShadow="lg">
+          <MenuList bgColor={bgColor} borderColor="transparent" boxShadow="lg">
             {menuSection.children.map((menuItem) => (
               <Link
                 key={menuItem.label}

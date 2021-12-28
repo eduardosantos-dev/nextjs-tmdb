@@ -5,6 +5,7 @@ import {
   IconButton,
   Link,
   useBreakpointValue,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { RiMenuLine } from "react-icons/ri";
 import { useSidebarDrawer } from "../../context/SidebarDrawerContext";
@@ -13,6 +14,7 @@ import { Logo } from "./Logo";
 import { Navigation } from "./Navigation";
 import { Profile } from "./Profile";
 import { SearchBox } from "./SearchBox";
+import ToggleTheme from "../ToggleTheme";
 
 export function Header() {
   const { onOpen } = useSidebarDrawer();
@@ -21,6 +23,8 @@ export function Header() {
     base: false,
     lg: true,
   });
+
+  const bg = useColorModeValue("white", "gray.800");
 
   return (
     <>
@@ -31,7 +35,7 @@ export function Header() {
         mx="auto"
         align="center"
         position="fixed"
-        backgroundColor="gray.800"
+        backgroundColor={bg}
         zIndex="1"
         boxShadow="xl">
         <Flex
@@ -61,6 +65,7 @@ export function Header() {
           </Flex>
 
           <Flex align="center" ml="auto">
+            <ToggleTheme mr={6} />
             <Profile showProfileData={isWideVersion} />
           </Flex>
         </Flex>

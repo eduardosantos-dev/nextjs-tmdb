@@ -7,6 +7,8 @@ import {
   Flex,
   Img,
   Image,
+  useColorModeValue,
+  useColorMode,
 } from "@chakra-ui/react";
 import React from "react";
 import { RiUserLine } from "react-icons/ri";
@@ -19,6 +21,9 @@ interface CastListProps {
 
 export function CastList({ cast }: CastListProps) {
   const SLIDER_MAX_LENGTH = 10;
+  const bgColor = useColorModeValue("white", "gray.800");
+  const { colorMode } = useColorMode();
+
   if (cast.length <= 0) return null;
 
   return (
@@ -30,7 +35,9 @@ export function CastList({ cast }: CastListProps) {
         position="relative"
         _after={{
           bgImage:
-            "linear-gradient(to right, rgba(255,255,255,0) 0%, var(--chakra-colors-gray-900) 100%)",
+            colorMode === "light"
+              ? "linear-gradient(to right, rgba(255,255,255,0) 0%, var(--chakra-colors-gray-50) 100%)"
+              : "linear-gradient(to right, rgba(255,255,255,0) 0%, var(--chakra-colors-gray-900) 100%)",
           position: "absolute",
           width: "60px",
           height: "100%",
@@ -57,7 +64,7 @@ export function CastList({ cast }: CastListProps) {
                 minH={300}
                 borderRadius="lg"
                 overflow="hidden"
-                bg="gray.800">
+                bg={bgColor}>
                 <CustomImage
                   src={`https://image.tmdb.org/t/p/w138_and_h175_face/${castMember.profile_path}`}
                   alt={castMember.name}
