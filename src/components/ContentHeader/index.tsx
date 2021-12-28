@@ -10,6 +10,7 @@ import {
   Button,
   Text,
 } from "@chakra-ui/react";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import {
   RiPlayListAddLine,
@@ -19,11 +20,12 @@ import {
   RiPlayLine,
 } from "react-icons/ri";
 import { useVideoModal } from "../../context/ModalContext";
-import movie from "../../pages/movie";
-import { ContentTypes, IGenre, IMovie, IShow, IVideo } from "../../types";
+import { IGenre, IVideo } from "../../types";
 import { ContentRating } from "../ContentRating";
 import { Header } from "../Header";
 import VideoModal from "../VideoModal";
+
+import styles from "./styles.module.scss";
 
 interface ContentHeaderProps {
   content: {
@@ -86,13 +88,17 @@ export default function ContentHeader({ content }: ContentHeaderProps) {
         />
       )}
       {content && (
-        <Flex
-          direction="column"
-          h="100%"
-          bgImage={`https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${content.backdrop_path}`}
-          bgPos="right -200px top"
-          bgSize="cover"
-          bgRepeat="no-repeat">
+        <Flex direction="column" h="100%" position="relative">
+          <Image
+            src={`https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${content.backdrop_path}`}
+            layout="fill"
+            objectFit="cover"
+            objectPosition="right top"
+            alt={content.name}
+            quality={30}
+            className={styles.heroBackgroundImage}
+            priority
+          />
           <Header />
           <Flex
             maxW="100%"
