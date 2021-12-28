@@ -86,6 +86,7 @@ export default function Movies({ moviesProps }: MoviesProps) {
                       content={movie}
                       contentType={ContentTypes.Movie}
                       key={movie.id}
+                      h={[400, 480, 500]}
                     />
                   ))}
               </SimpleGrid>

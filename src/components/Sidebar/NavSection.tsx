@@ -12,7 +12,7 @@ export function NavSection({ title, children }: NavSectionProps) {
     <Box>
       <Text
         fontWeight="bold"
-        color="gray.400"
+        color="green.500"
         fontSize="small"
         textTransform="uppercase">
         {title}

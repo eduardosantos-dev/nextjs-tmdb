@@ -12,6 +12,7 @@ const ChakraNextUnwrappedImage = chakra(NextImage, {
       "placeholder",
       "blurDataURL",
       "loader ",
+      "maxHeight",
     ].includes(prop),
 });
 
@@ -57,6 +58,7 @@ export default function CustomImage(
         alt={alt}
         transition="all 0.1s"
         objectFit="cover"
+        maxH={height}
       />
     </Box>
   );

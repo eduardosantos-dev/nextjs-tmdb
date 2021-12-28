@@ -18,8 +18,8 @@ export default function SearchHero({ src }: SearchHeroProps) {
       justify="center"
       px="10"
       py="8"
-      mt="12"
-      borderRadius="lg"
+      mt={["0", "12"]}
+      borderRadius={["0", "lg"]}
       position="relative"
       overflow="hidden">
       <Image

@@ -97,7 +97,7 @@ export default function ContentHeader({ content }: ContentHeaderProps) {
             src={`https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${content.backdrop_path}`}
             layout="fill"
             objectFit="cover"
-            objectPosition="200px top"
+            objectPosition={"50% 50%"}
             alt={content.name}
             quality={30}
             className={styles.heroBackgroundImage}
@@ -114,7 +114,7 @@ export default function ContentHeader({ content }: ContentHeaderProps) {
             <Flex
               as={Container}
               maxW="container.2xl"
-              direction={["column", "row"]}
+              direction={["column", "column", "row"]}
               flexWrap="wrap">
               <Box
                 borderRadius="lg"

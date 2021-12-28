@@ -1,12 +1,5 @@
 import { Stack } from "@chakra-ui/react";
 import React from "react";
-import {
-  RiFilmLine,
-  RiFireLine,
-  RiTvLine,
-  RiStarLine,
-  RiCalendarEventLine,
-} from "react-icons/ri";
 import { useNavigation } from "../../services/hooks/useNavigation";
 import { MenuItem, MenuSection, NavigationMenu } from "../../types/navigation";
 import { NavLink } from "./NavLink";

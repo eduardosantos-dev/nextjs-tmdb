@@ -7,9 +7,11 @@ import {
   DrawerHeader,
   useBreakpointValue,
   DrawerOverlay,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import React from "react";
 import { useSidebarDrawer } from "../../context/SidebarDrawerContext";
+import ToggleTheme from "../ToggleTheme";
 import SidebarNav from "./SidebarNav";
 
 export function Sidebar() {
@@ -20,11 +22,13 @@ export function Sidebar() {
     lg: false,
   });
 
+  const bgColor = useColorModeValue("white", "gray.800");
+
   if (isDrawerSidebar) {
     return (
       <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
         <DrawerOverlay>
-          <DrawerContent bg="gray.800" p="4">
+          <DrawerContent bg={bgColor} p="4">
             <DrawerCloseButton mt="6" />
             <DrawerHeader>Navegação</DrawerHeader>
             <DrawerBody>

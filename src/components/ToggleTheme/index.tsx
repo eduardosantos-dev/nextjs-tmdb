@@ -14,10 +14,11 @@ export default function ToggleTheme(props: BoxProps) {
     <Box {...props}>
       <IconButton
         aria-label="Mudar tema"
-        size="md"
+        size="lg"
         onClick={() => toggleColorMode()}
         variant="outline"
         colorScheme="green"
+        border="0"
         icon={colorMode === "light" ? <RiMoonFill /> : <RiSunFill />}
       />
     </Box>
