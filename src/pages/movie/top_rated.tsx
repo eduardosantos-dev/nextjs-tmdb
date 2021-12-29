@@ -1,17 +1,4 @@
-import {
-  Flex,
-  Container,
-  Spinner,
-  SimpleGrid,
-  Heading,
-} from "@chakra-ui/react";
-
-import styles from "./styles.module.scss";
-import React, { useMemo } from "react";
-import InfiniteScroll from "react-infinite-scroll-component";
-import { useInfiniteQuery } from "react-query";
-import ContentCard from "../../components/ContentCard";
-import { Header } from "../../components/Header";
+import React from "react";
 import { getMoviesTopRated } from "../../services/movie";
 import { ContentTypes, IMovie } from "../../types";
 import Head from "next/head";
@@ -22,6 +9,7 @@ interface MoviesProps {
 }
 
 export default function TopRated({ movies }: MoviesProps) {
+  const pageTitle = "Filmes mais bem avaliados";
   const fetchPage = async ({ pageParam = 1 }): Promise<any> => {
     const response = await getMoviesTopRated(pageParam);
     return response;
@@ -30,9 +18,15 @@ export default function TopRated({ movies }: MoviesProps) {
   return (
     <>
       <Head>
-        <title>tmdb • Filmes mais bem avaliados</title>
+        <title>tmdb • {pageTitle}</title>
       </Head>
-      <ContentPage initialData={movies} fetchPage={fetchPage} />
+      <ContentPage
+        queryKey="movies"
+        contentType={ContentTypes.Movie}
+        pageTitle={pageTitle}
+        initialData={movies}
+        fetchPage={fetchPage}
+      />
     </>
   );
 }

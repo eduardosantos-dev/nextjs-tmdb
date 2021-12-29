@@ -16,11 +16,17 @@ import styles from "./styles.module.scss";
 interface ContentPageProps {
   initialData: any;
   fetchPage: any;
+  queryKey: string;
+  contentType: ContentTypes;
+  pageTitle: string;
 }
 
 export default function ContentPage({
   initialData,
   fetchPage,
+  queryKey,
+  contentType,
+  pageTitle = "",
 }: ContentPageProps) {
   const {
     data,
@@ -29,7 +35,7 @@ export default function ContentPage({
     isFetchingNextPage,
     fetchNextPage,
     hasNextPage,
-  } = useInfiniteQuery("movies", fetchPage, {
+  } = useInfiniteQuery(queryKey, fetchPage, {
     getNextPageParam: (lastPage: { page: number; totalPages: number }) =>
       lastPage.page < lastPage.totalPages ? lastPage.page + 1 : undefined,
   });
@@ -57,7 +63,7 @@ export default function ContentPage({
               </Flex>
             }>
             <Heading mb="6" fontSize="2xl">
-              Filmes populares
+              {pageTitle}
             </Heading>
             <SimpleGrid
               flex="1"
@@ -68,7 +74,7 @@ export default function ContentPage({
                 content.map((content) => (
                   <ContentCard
                     content={content}
-                    contentType={ContentTypes.Movie}
+                    contentType={contentType}
                     key={content.id}
                     h="auto"
                   />

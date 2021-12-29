@@ -24,15 +24,13 @@ export default function SearchHero({ src }: SearchHeroProps) {
       overflow="hidden">
       <Image
         src={`https://image.tmdb.org/t/p/w1920_and_h600_multi_faces_filter(duotone,1C4532,9AE6B4)${src}`}
-        width="1368px"
-        height="360px"
         layout="fill"
         objectFit="cover"
         objectPosition="50% 50%"
         alt="tmdb"
         className={styles.image}
         priority
-        quality={30}
+        quality={50}
       />
       <Box mb="6" textAlign={["center", "left"]}>
         <Heading

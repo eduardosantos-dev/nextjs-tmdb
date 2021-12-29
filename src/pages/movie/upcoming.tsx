@@ -23,6 +23,8 @@ interface MoviesProps {
 }
 
 export default function Upcoming({ movies }: MoviesProps) {
+  const pageTitle = "Filmes que estreiam em breve";
+
   const fetchPage = async ({ pageParam = 1 }): Promise<any> => {
     const response = await getUpcomingMovies(pageParam);
     return response;
@@ -31,9 +33,15 @@ export default function Upcoming({ movies }: MoviesProps) {
   return (
     <>
       <Head>
-        <title>tmdb • Filmes que estreiam em breve</title>
+        <title>tmdb • {pageTitle}</title>
       </Head>
-      <ContentPage initialData={movies} fetchPage={fetchPage} />
+      <ContentPage
+        queryKey="movies"
+        contentType={ContentTypes.Movie}
+        pageTitle={pageTitle}
+        initialData={movies}
+        fetchPage={fetchPage}
+      />
     </>
   );
 }
