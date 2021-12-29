@@ -60,39 +60,32 @@ export default function ContentCard({
 
   return (
     <LinkBox>
-      <Box
-        bg={bgColor}
-        borderRadius="lg"
-        overflow="hidden"
-        onMouseEnter={() => handlePrefetchContent(content.id)}
-        h={rest.h}
-        minW={rest.minW}
-        position="relative">
-        <LinkOverlay href={`/${contentType}/${content.id}`} position="relative">
+      <LinkOverlay href={`/${contentType}/${content.id}`}>
+        <Box
+          bg={bgColor}
+          borderRadius="lg"
+          overflow="hidden"
+          onMouseEnter={() => handlePrefetchContent(content.id)}
+          h={rest.h}>
           <CustomImage
             src={`https://image.tmdb.org/t/p/w300/${content.poster_path}`}
             alt={contentName}
-            width={280}
-            height={380}
-            objectFit="cover"
             layout="fill"
           />
-        </LinkOverlay>
+        </Box>
         <Box px="10px" pt="26px" pb="12px" pos="relative">
           <ContentRating
             rating={content.vote_average}
             style={{ position: "absolute", top: "-25px", left: "12px" }}
           />
-          <LinkOverlay color={textColor} href={`/${contentType}/${content.id}`}>
-            <Text mt="0" fontWeight="bold" noOfLines={2} fontSize="sm">
-              {contentName}
-            </Text>
-          </LinkOverlay>
+          <Text mt="0" fontWeight="bold" noOfLines={2} fontSize="sm">
+            {contentName}
+          </Text>
           <Text mt="1" fontSize="sm" color="gray.400">
             {contentDate}
           </Text>
         </Box>
-      </Box>
+      </LinkOverlay>
     </LinkBox>
   );
 }

@@ -59,14 +59,18 @@ export default function ContentPage({
             <Heading mb="6" fontSize="2xl">
               Filmes populares
             </Heading>
-            <SimpleGrid flex="1" columns={[2, 3, 4, 5]} gap="4">
+            <SimpleGrid
+              flex="1"
+              spacingY="10"
+              spacingX="6"
+              minChildWidth={[150, 200]}>
               {content &&
                 content.map((content) => (
                   <ContentCard
                     content={content}
                     contentType={ContentTypes.Movie}
                     key={content.id}
-                    h={[400, 480, 500]}
+                    h="auto"
                   />
                 ))}
             </SimpleGrid>

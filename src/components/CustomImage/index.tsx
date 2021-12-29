@@ -13,6 +13,7 @@ const ChakraNextUnwrappedImage = chakra(NextImage, {
       "blurDataURL",
       "loader ",
       "maxHeight",
+      "layout",
     ].includes(prop),
 });
 
@@ -40,26 +41,32 @@ const toBase64 = (str: string) =>
     : window.btoa(str);
 
 export default function CustomImage(
-  { src, alt, width, quality, height, ...rest }: ImageProps,
+  { src, alt, width, quality, height, layout, sizes, ...rest }: ImageProps,
   hasShimmer: Boolean = true
 ) {
   return (
     <Box pos="relative" cursor="pointer" className="group" {...rest}>
-      <ChakraNextUnwrappedImage
-        w="auto"
-        h="auto"
-        loader={myLoader}
-        width={width}
-        quality={quality}
-        height={height}
-        placeholder={hasShimmer ? "blur" : "empty"}
-        blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
-        src={src}
-        alt={alt}
-        transition="all 0.1s"
-        objectFit="cover"
-        maxH={height}
-      />
+      <AspectRatio ratio={2 / 3}>
+        <ChakraNextUnwrappedImage
+          w="auto"
+          h="auto"
+          loader={myLoader}
+          width={width}
+          quality={quality}
+          height={height}
+          placeholder={hasShimmer ? "blur" : "empty"}
+          blurDataURL={`data:image/svg+xml;base64,${toBase64(
+            shimmer(700, 475)
+          )}`}
+          src={src}
+          alt={alt}
+          transition="all 0.1s"
+          objectFit="cover"
+          maxH={height}
+          layout={layout}
+          sizes={sizes}
+        />
+      </AspectRatio>
     </Box>
   );
 }

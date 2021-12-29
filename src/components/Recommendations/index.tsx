@@ -41,13 +41,12 @@ export function Recommendations({ recommendations }: RecommendationsProps) {
           pr="6">
           {recommendations &&
             recommendations.map((content: any) => (
-              <ContentCard
-                key={content.id}
-                content={content}
-                contentType={content.media_type}
-                h="300px"
-                minW="140px"
-              />
+              <Box minW={150} key={content.id}>
+                <ContentCard
+                  content={content}
+                  contentType={content.media_type}
+                />
+              </Box>
             ))}
         </Stack>
       </Box>

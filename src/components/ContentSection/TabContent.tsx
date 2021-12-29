@@ -38,13 +38,8 @@ export default function TabContent({
         py={6}
         pr="8">
         {contentList.map((content) => (
-          <Box key={content.id}>
-            <ContentCard
-              content={content}
-              contentType={contentType}
-              h="350px"
-              minW="150px"
-            />
+          <Box key={content.id} minW={150}>
+            <ContentCard content={content} contentType={contentType} />
           </Box>
         ))}
       </Stack>

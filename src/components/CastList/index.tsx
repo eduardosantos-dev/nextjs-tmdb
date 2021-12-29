@@ -56,21 +56,18 @@ export function CastList({ cast }: CastListProps) {
           pr="6">
           {cast &&
             cast.slice(0, SLIDER_MAX_LENGTH - 1).map((castMember: any) => (
-              <Box
-                key={castMember.credit_id}
-                w={140}
-                h="300"
-                minW={140}
-                minH={300}
-                borderRadius="lg"
-                overflow="hidden"
-                bg={bgColor}>
-                <CustomImage
-                  src={`https://image.tmdb.org/t/p/w138_and_h175_face/${castMember.profile_path}`}
-                  alt={castMember.name}
-                  width={138}
-                  height={175}
-                />
+              <Flex direction="column" key={castMember.credit_id}>
+                <Box
+                  minW={150}
+                  borderRadius="lg"
+                  overflow="hidden"
+                  bg={bgColor}>
+                  <CustomImage
+                    src={`https://image.tmdb.org/t/p/w276_and_h350_face/${castMember.profile_path}`}
+                    alt={castMember.name}
+                    layout="fill"
+                  />
+                </Box>
                 <Box py="2" px="4">
                   <Text mt="2" fontWeight="bold" noOfLines={2} fontSize="sm">
                     {castMember.name}
@@ -79,7 +76,7 @@ export function CastList({ cast }: CastListProps) {
                     {castMember.character}
                   </Text>
                 </Box>
-              </Box>
+              </Flex>
             ))}
         </Stack>
       </Box>

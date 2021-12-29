@@ -127,8 +127,9 @@ export default function ContentHeader({ content }: ContentHeaderProps) {
                 <CustomImage
                   src={`https://image.tmdb.org/t/p/w300/${content.poster_path}`}
                   alt={content.name}
-                  width={300}
-                  height={450}
+                  // width={300}
+                  // height={450}
+                  layout="fill"
                 />
                 <Box p="6">
                   <Text mt="2" fontWeight="bold" noOfLines={2}>
