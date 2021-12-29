@@ -14,9 +14,9 @@ export function SearchBox() {
       alignSelf="center"
       color="green.400"
       position="relative"
-      bg={useColorModeValue("white", "gray.700")}
+      bg={useColorModeValue("gray.50", "gray.700")}
       borderRadius="full"
-      boxShadow="lg">
+      boxShadow="sm">
       <Input
         color={useColorModeValue("gray.400", "gray.50")}
         variant="unstyled"
