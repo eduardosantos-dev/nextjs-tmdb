@@ -5,9 +5,27 @@ import {
   Input,
   useColorModeValue,
 } from "@chakra-ui/react";
+import { useRouter } from "next/router";
+import { KeyboardEvent, useState } from "react";
 import { RiSearchLine } from "react-icons/ri";
 
 export default function SearchInput() {
+  const [searchInput, setSearchInput] = useState("");
+  const router = useRouter();
+
+  const handleSearchClick = () => {
+    router.push({
+      pathname: "/search_results",
+      query: { query: searchInput },
+    });
+  };
+
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === "Enter") {
+      handleSearchClick();
+    }
+  };
+
   return (
     <Flex
       as="label"
@@ -25,16 +43,20 @@ export default function SearchInput() {
         variant="unstyled"
         placeholder="Buscar"
         _placeholder={{ color: "gray.400" }}
+        onChange={(e) => setSearchInput(e.target.value)}
+        onKeyDown={handleKeyDown}
       />
 
       <IconButton
         icon={<Icon as={RiSearchLine} />}
         color="green.400"
         fontSize="20"
-        variant="unstyled"
+        variant="ghost"
+        borderRadius="full"
         aria-label="Buscar"
         d="flex"
         mr="2"
+        onClick={handleSearchClick}
       />
     </Flex>
   );

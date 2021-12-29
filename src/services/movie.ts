@@ -1,4 +1,11 @@
-import { ICredits, IGenre, IMovie, IShow, IVideo } from "../types";
+import {
+  ContentTypes,
+  ICredits,
+  IGenre,
+  IMovie,
+  IShow,
+  IVideo,
+} from "../types";
 import { toRunTimeString } from "../utils";
 import { api } from "./api";
 
@@ -55,6 +62,7 @@ export async function getMovies(page: number = 1): Promise<GetMoviesResponse> {
           year: "numeric",
         }
       ),
+      media_type: ContentTypes.Movie,
     };
   });
 
@@ -98,6 +106,7 @@ export async function getMovieById(id: number): Promise<GetMovieByIdResponse> {
     }),
     recommendations: data.recommendations.results,
     videos: data.videos.results,
+    media_type: ContentTypes.Movie,
   };
 
   return {
@@ -126,6 +135,7 @@ export async function getMoviesTopRated(
           year: "numeric",
         }
       ),
+      media_type: ContentTypes.Movie,
     };
   });
 
@@ -158,6 +168,7 @@ export async function getMoviesNowPlaying(
           year: "numeric",
         }
       ),
+      media_type: ContentTypes.Movie,
     };
   });
 
@@ -190,6 +201,7 @@ export async function getUpcomingMovies(
           year: "numeric",
         }
       ),
+      media_type: ContentTypes.Movie,
     };
   });
 

@@ -14,10 +14,9 @@ import { Header } from "../Header";
 import styles from "./styles.module.scss";
 
 interface ContentPageProps {
-  initialData: any;
+  initialData?: any;
   fetchPage: any;
   queryKey: string;
-  contentType: ContentTypes;
   pageTitle: string;
 }
 
@@ -25,7 +24,6 @@ export default function ContentPage({
   initialData,
   fetchPage,
   queryKey,
-  contentType,
   pageTitle = "",
 }: ContentPageProps) {
   const {
@@ -74,7 +72,7 @@ export default function ContentPage({
                 content.map((content) => (
                   <ContentCard
                     content={content}
-                    contentType={contentType}
+                    contentType={content.media_type}
                     key={content.id}
                     h="auto"
                   />

@@ -20,6 +20,7 @@ export interface IMovie {
   formatted_budget: string;
   videos: IVideo[];
   recommendations: IMovie[] | IShow[];
+  media_type: string;
 }
 
 export interface IVideo {
@@ -47,6 +48,7 @@ export interface IShow {
   original_language: string;
   number_of_episodes: string;
   recommendations: IMovie[] | IShow[];
+  media_type: string;
 }
 
 export interface IGenre {

@@ -1,13 +1,36 @@
-import { Flex, Icon, Input, useColorModeValue } from "@chakra-ui/react";
-import React from "react";
+import {
+  Flex,
+  Icon,
+  IconButton,
+  Input,
+  useColorModeValue,
+} from "@chakra-ui/react";
+import { useRouter } from "next/router";
+import React, { useState, KeyboardEvent } from "react";
 import { RiSearchLine } from "react-icons/ri";
 
 export function SearchBox() {
+  const [searchInput, setSearchInput] = useState("");
+  const router = useRouter();
+
+  const handleSearchClick = () => {
+    router.push({
+      pathname: "/search_results",
+      query: { query: searchInput },
+    });
+  };
+
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === "Enter") {
+      handleSearchClick();
+    }
+  };
+
   return (
     <Flex
       as="label"
       flex="1"
-      py="2"
+      py="1"
       px="4"
       ml="6"
       maxW={300}
@@ -23,9 +46,18 @@ export function SearchBox() {
         mr="4"
         placeholder="Buscar"
         _placeholder={{ color: "gray.400" }}
+        onChange={(e) => setSearchInput(e.target.value)}
+        onKeyDown={handleKeyDown}
       />
-
-      <Icon as={RiSearchLine} fontSize="20" />
+      <IconButton
+        aria-label="Buscar"
+        icon={<Icon as={RiSearchLine} />}
+        size="sm"
+        variant="ghost"
+        borderRadius="full"
+        color="green.400"
+        onClick={handleSearchClick}
+      />
     </Flex>
   );
 }

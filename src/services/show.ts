@@ -1,4 +1,11 @@
-import { ICredits, IGenre, IMovie, IShow, IVideo } from "../types";
+import {
+  ContentTypes,
+  ICredits,
+  IGenre,
+  IMovie,
+  IShow,
+  IVideo,
+} from "../types";
 import { api } from "./api";
 
 interface IShowResponse {
@@ -53,6 +60,7 @@ export async function getShows(page: number = 1): Promise<GetShowsResponse> {
         month: "short",
         year: "numeric",
       }),
+      media_type: ContentTypes.Show,
     };
   });
 
@@ -83,6 +91,7 @@ export async function getShowById(id: number): Promise<GetShowByIdResponse> {
     ),
     recommendations: data.recommendations.results,
     videos: data.videos.results,
+    media_type: ContentTypes.Show,
   };
 
   return {
@@ -117,6 +126,7 @@ export async function getShowsTopRated(
         month: "short",
         year: "numeric",
       }),
+      media_type: ContentTypes.Show,
     };
   });
 
@@ -147,6 +157,7 @@ export async function getOnAirShows(
         month: "short",
         year: "numeric",
       }),
+      media_type: ContentTypes.Show,
     };
   });
 
@@ -177,6 +188,7 @@ export async function getAiringTodayShows(
         month: "short",
         year: "numeric",
       }),
+      media_type: ContentTypes.Show,
     };
   });
 
