@@ -59,6 +59,7 @@ export function CastList({ cast }: CastListProps) {
               <Flex direction="column" key={castMember.credit_id}>
                 <Box
                   minW={150}
+                  maxH={220}
                   borderRadius="lg"
                   overflow="hidden"
                   bg={bgColor}>

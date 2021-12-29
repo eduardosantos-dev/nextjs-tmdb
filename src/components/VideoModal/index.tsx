@@ -6,6 +6,7 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { useVideoModal } from "../../context/ModalContext";
 
@@ -21,11 +22,12 @@ export default function VideoModal({ contentTitle, src }: VideoModalProps) {
     <Modal isOpen={isOpen} onClose={onClose} size="xl">
       <ModalOverlay />
       <ModalContent
+        boxShadow="lg"
         bgColor="black"
         overflow="hidden"
         minW={{ base: "100%", xl: "container.2xl" }}>
-        <ModalHeader>{contentTitle}</ModalHeader>
-        <ModalCloseButton />
+        <ModalHeader color="white">{contentTitle}</ModalHeader>
+        <ModalCloseButton color="white" />
         <ModalBody p={0}>
           <AspectRatio ratio={16 / 9}>
             <iframe title={contentTitle} src={src} allowFullScreen />

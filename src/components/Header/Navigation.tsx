@@ -9,38 +9,32 @@ import {
   Link,
   Icon,
   useColorModeValue,
-  Box,
+  Button,
   useDisclosure,
 } from "@chakra-ui/react";
 import { useNavigation } from "../../services/hooks/useNavigation";
 import { MenuSection, NavigationMenu } from "../../types/navigation";
+import { RiArrowDownSLine } from "react-icons/ri";
 
 interface CustomMenuProps {
   menuSection: MenuSection;
 }
 
 function CustomMenu({ menuSection }: CustomMenuProps) {
-  const { isOpen, onOpen, onClose } = useDisclosure();
   const textColor = useColorModeValue("gray.400", "white");
   const interactionTextColor = useColorModeValue("white", "white");
 
   return (
-    <Menu autoSelect={false} isOpen={isOpen}>
+    <Menu autoSelect={false}>
       <MenuButton
+        as={Button}
+        rightIcon={<RiArrowDownSLine />}
         variant="ghost"
-        onMouseEnter={onOpen}
-        onMouseLeave={onClose}
-        _focus={{
-          textDecoration: "underline",
-          textDecorationColor: "green.400",
-          textDecorationThickness: "4px",
-          textUnderlineOffset: "5px",
-        }}>
+        colorScheme="green"
+        color={textColor}>
         {menuSection.label}
       </MenuButton>
       <MenuList
-        onMouseEnter={onOpen}
-        onMouseLeave={onClose}
         bgColor={useColorModeValue("white", "gray.700")}
         borderColor="transparent"
         boxShadow="dark-lg"
