@@ -84,7 +84,6 @@ export default function ContentHeader({ content }: ContentHeaderProps) {
 
   const bgColor = useColorModeValue("white", "gray.800");
 
-  console.log(content.media_type);
   return (
     <>
       {video && (

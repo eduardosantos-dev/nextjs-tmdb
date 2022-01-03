@@ -57,10 +57,22 @@ export interface IPerson {
   id: number;
   known_for: [];
   known_for_department: string;
-  media_type: "person";
+  media_type: ContentTypes.Person;
   name: string;
   popularity: number;
   profile_path: string;
+  biography: string;
+  external_ids: {
+    id: number;
+    freebase_mid?: string;
+    freebase_id?: string;
+    imdb_id?: string;
+    tvrage_id?: number;
+    facebook_id?: string;
+    instagram_id?: string;
+    twitter_id?: string;
+  };
+  credits?: ICredits;
 }
 
 export interface IGenre {

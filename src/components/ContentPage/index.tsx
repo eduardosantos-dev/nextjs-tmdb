@@ -4,6 +4,8 @@ import {
   Spinner,
   Heading,
   SimpleGrid,
+  Box,
+  Grid,
 } from "@chakra-ui/react";
 import { useMemo } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -63,19 +65,16 @@ export default function ContentPage({
             <Heading mb="6" fontSize="2xl">
               {pageTitle}
             </Heading>
-            <SimpleGrid
-              flex="1"
-              spacingY="10"
-              spacingX="6"
-              minChildWidth={[150, 200]}>
+            <SimpleGrid spacingY="10" spacingX="6" minChildWidth={[150, 200]}>
               {content &&
                 content.map((content) => (
-                  <ContentCard
-                    content={content}
-                    contentType={content.media_type}
-                    key={content.id}
-                    h="auto"
-                  />
+                  <Box key={content.id} maxW={300}>
+                    <ContentCard
+                      content={content}
+                      contentType={content.media_type}
+                      h="auto"
+                    />
+                  </Box>
                 ))}
             </SimpleGrid>
           </InfiniteScroll>

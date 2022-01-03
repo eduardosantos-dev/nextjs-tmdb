@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { getMovieById } from "../../services/movie";
+import { getPersonById } from "../../services/person";
 import { queryClient } from "../../services/queryClient";
 import { getShowById } from "../../services/show";
 import { IShow, IMovie, ContentTypes, IPerson } from "../../types";
@@ -36,6 +37,8 @@ export default function ContentCard({ content, ...rest }: ContentCardProps) {
           return await getMovieById(id);
         } else if (content.media_type === ContentTypes.Show) {
           return await getShowById(id);
+        } else if (content.media_type === ContentTypes.Person) {
+          return await getPersonById(id);
         }
       },
       {
@@ -67,44 +70,61 @@ export default function ContentCard({ content, ...rest }: ContentCardProps) {
 
   return (
     <LinkBox>
-      <LinkOverlay href={`/${content.media_type}/${content.id}`}>
-        <Box
-          bg={bgColor}
-          borderRadius="lg"
-          overflow="hidden"
-          onMouseEnter={() => handlePrefetchContent(content.id)}
-          h={rest.h}>
-          {contentImage && (
+      <Box
+        bg={bgColor}
+        borderRadius="lg"
+        overflow="hidden"
+        onMouseEnter={() => handlePrefetchContent(content.id)}
+        h={rest.h}>
+        {contentImage && (
+          <LinkOverlay href={`/${content.media_type}/${content.id}`}>
             <CustomImage
               src={contentImage}
               alt={contentName}
               layout="fill"
               contentType={content.media_type as ContentTypes}
             />
-          )}
-        </Box>
-        <Box px="10px" pt="26px" pb="12px" pos="relative">
-          {content.media_type === ContentTypes.Movie ||
-            (content.media_type === ContentTypes.Show && (
-              <ContentRating
-                rating={content.vote_average}
-                style={{ position: "absolute", top: "-25px", left: "12px" }}
-              />
-            ))}
-          <Text mt="0" fontWeight="bold" noOfLines={2} fontSize="sm">
+          </LinkOverlay>
+        )}
+      </Box>
+      <Box pt={4} pos="relative" p={2}>
+        {(content.media_type == ContentTypes.Movie ||
+          content.media_type == ContentTypes.Show) && (
+          <ContentRating
+            rating={content.vote_average}
+            style={{ position: "absolute", top: "-20px", left: "5px" }}
+          />
+        )}
+        <Link href={`/${content.media_type}/${content.id}`}>
+          <Text mt={4} fontWeight="bold" noOfLines={2} fontSize="sm">
             {contentName}
           </Text>
-          <Text mt="1" fontSize="sm" color="gray.400">
-            {content.media_type === ContentTypes.Person ? (
-              <Text mt="1" fontSize="sm" color="gray.400">
-                {(content as IPerson).known_for_department}
-              </Text>
-            ) : (
-              contentDate
-            )}
-          </Text>
-        </Box>
-      </LinkOverlay>
+        </Link>
+        <Text mt={0} fontSize="sm" color="gray.400">
+          {content.media_type === ContentTypes.Person ? (
+            <>
+              {(content as IPerson).known_for.map((item: IMovie | IShow) => (
+                <Link
+                  href={
+                    item.media_type === ContentTypes.Movie
+                      ? `/movie/${item.id}`
+                      : `/tv/${item.id}`
+                  }
+                  key={`${content.id}_${item.id}`}>
+                  <Text fontSize="xs" color="gray.200" mt={1}>
+                    {item.media_type === ContentTypes.Movie &&
+                      (item as IMovie).title}
+                    {item.media_type === ContentTypes.Show &&
+                      (item as IShow).name}
+                  </Text>
+                </Link>
+              ))}
+            </>
+          ) : (
+            contentDate
+          )}
+        </Text>
+      </Box>
     </LinkBox>
   );
 }

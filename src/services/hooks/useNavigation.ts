@@ -56,7 +56,7 @@ export function useNavigation(): NavigationMenu {
       },
       {
         label: "Pessoas",
-        children: [{ label: "Populares", href: "#", icon: RiFireLine }],
+        children: [{ label: "Populares", href: "/person", icon: RiFireLine }],
       },
     ],
   };

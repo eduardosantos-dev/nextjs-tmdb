@@ -9,6 +9,7 @@ import {
   Image,
   useColorModeValue,
   useColorMode,
+  Link,
 } from "@chakra-ui/react";
 import React from "react";
 import { RiUserLine } from "react-icons/ri";
@@ -63,17 +64,21 @@ export function CastList({ cast }: CastListProps) {
                   borderRadius="lg"
                   overflow="hidden"
                   bg={bgColor}>
-                  <CustomImage
-                    src={`https://image.tmdb.org/t/p/w276_and_h350_face/${castMember.profile_path}`}
-                    alt={castMember.name}
-                    contentType={ContentTypes.Person}
-                    layout="fill"
-                  />
+                  <Link href={`/person/${castMember.id}`}>
+                    <CustomImage
+                      src={`https://image.tmdb.org/t/p/w276_and_h350_face/${castMember.profile_path}`}
+                      alt={castMember.name}
+                      contentType={ContentTypes.Person}
+                      layout="fill"
+                    />
+                  </Link>
                 </Box>
-                <Box py="2" px="4">
-                  <Text mt="2" fontWeight="bold" noOfLines={2} fontSize="sm">
-                    {castMember.name}
-                  </Text>
+                <Box py="2">
+                  <Link href={`/person/${castMember.id}`}>
+                    <Text mt="2" fontWeight="bold" noOfLines={2} fontSize="sm">
+                      {castMember.name}
+                    </Text>
+                  </Link>
                   <Text mt="2" noOfLines={2} fontSize="xs">
                     {castMember.character}
                   </Text>
