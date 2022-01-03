@@ -1,5 +1,14 @@
-import { AspectRatio, Box, chakra } from "@chakra-ui/react";
+import { AspectRatio, Box, chakra, Icon, IconButton } from "@chakra-ui/react";
 import NextImage, { ImageProps, ImageLoaderProps } from "next/image";
+import { useEffect, useState } from "react";
+import {
+  RiHeartLine,
+  RiMovie2Line,
+  RiMovieLine,
+  RiTvLine,
+  RiUserLine,
+} from "react-icons/ri";
+import { ContentTypes } from "../../types";
 
 const ChakraNextUnwrappedImage = chakra(NextImage, {
   shouldForwardProp: (prop) =>
@@ -14,6 +23,8 @@ const ChakraNextUnwrappedImage = chakra(NextImage, {
       "loader ",
       "maxHeight",
       "layout",
+      "hasShimmer",
+      "onError",
     ].includes(prop),
 });
 
@@ -40,32 +51,66 @@ const toBase64 = (str: string) =>
     ? Buffer.from(str).toString("base64")
     : window.btoa(str);
 
-export default function CustomImage(
-  { src, alt, width, quality, height, layout, sizes, ...rest }: ImageProps,
-  hasShimmer: Boolean = true
-) {
+interface CustomImageProps extends ImageProps {
+  hasShimmer?: Boolean;
+  contentType: ContentTypes;
+}
+
+export default function CustomImage({
+  src,
+  alt,
+  width,
+  quality,
+  height,
+  layout,
+  sizes,
+  hasShimmer = true,
+  contentType,
+  ...rest
+}: CustomImageProps) {
+  const [imgError, setImgError] = useState(false);
+
+  const getFallbackIcon = () => {
+    if (contentType === ContentTypes.Person) {
+      return RiUserLine;
+    } else if (contentType === ContentTypes.Movie) {
+      return RiMovie2Line;
+    } else if (contentType === ContentTypes.Show) {
+      return RiTvLine;
+    }
+  };
+
   return (
     <Box pos="relative" cursor="pointer" className="group" {...rest}>
       <AspectRatio ratio={2 / 3}>
-        <ChakraNextUnwrappedImage
-          w="auto"
-          h="auto"
-          loader={myLoader}
-          width={width}
-          quality={quality}
-          height={height}
-          placeholder={hasShimmer ? "blur" : "empty"}
-          blurDataURL={`data:image/svg+xml;base64,${toBase64(
-            shimmer(700, 475)
-          )}`}
-          src={src}
-          alt={alt}
-          transition="all 0.1s"
-          objectFit="cover"
-          maxH={height}
-          layout={layout}
-          sizes={sizes}
-        />
+        {!imgError ? (
+          <ChakraNextUnwrappedImage
+            w="auto"
+            h="auto"
+            loader={myLoader}
+            width={width}
+            quality={quality}
+            height={height}
+            placeholder={hasShimmer ? "blur" : "empty"}
+            blurDataURL={`data:image/svg+xml;base64,${toBase64(
+              shimmer(700, 475)
+            )}`}
+            src={src}
+            alt={alt}
+            transition="all 0.1s"
+            objectFit="cover"
+            maxH={height}
+            layout={layout}
+            sizes={sizes}
+            onError={() => {
+              setImgError(true);
+            }}
+          />
+        ) : (
+          <Box>
+            <Icon as={getFallbackIcon()} w={12} h={12} color="green.400" />
+          </Box>
+        )}
       </AspectRatio>
     </Box>
   );

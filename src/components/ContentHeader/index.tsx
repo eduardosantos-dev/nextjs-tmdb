@@ -21,7 +21,7 @@ import {
   RiPlayLine,
 } from "react-icons/ri";
 import { useVideoModal } from "../../context/ModalContext";
-import { IGenre, IVideo } from "../../types";
+import { ContentTypes, IGenre, IVideo } from "../../types";
 import { ContentRating } from "../ContentRating";
 import CustomImage from "../CustomImage";
 import { Header } from "../Header";
@@ -41,6 +41,7 @@ interface ContentHeaderProps {
     vote_average: number;
     overview: string;
     number_of_episodes?: number;
+    media_type: ContentTypes;
   };
 }
 
@@ -83,6 +84,7 @@ export default function ContentHeader({ content }: ContentHeaderProps) {
 
   const bgColor = useColorModeValue("white", "gray.800");
 
+  console.log(content.media_type);
   return (
     <>
       {video && (
@@ -127,8 +129,7 @@ export default function ContentHeader({ content }: ContentHeaderProps) {
                 <CustomImage
                   src={`https://image.tmdb.org/t/p/w300/${content.poster_path}`}
                   alt={content.name}
-                  // width={300}
-                  // height={450}
+                  contentType={content.media_type as ContentTypes}
                   layout="fill"
                 />
                 <Box p="6">

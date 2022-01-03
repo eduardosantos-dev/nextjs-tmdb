@@ -62,7 +62,6 @@ export const getServerSideProps: GetServerSideProps = async ({
   const { query: searchTerm } = query;
 
   const { content } = await multiSearch(searchTerm);
-  console.log(content);
 
   return {
     props: {

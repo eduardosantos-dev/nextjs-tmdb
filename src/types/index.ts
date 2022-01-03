@@ -51,6 +51,18 @@ export interface IShow {
   media_type: string;
 }
 
+export interface IPerson {
+  adult: boolean;
+  gender: number;
+  id: number;
+  known_for: [];
+  known_for_department: string;
+  media_type: "person";
+  name: string;
+  popularity: number;
+  profile_path: string;
+}
+
 export interface IGenre {
   id: number;
   name: string;

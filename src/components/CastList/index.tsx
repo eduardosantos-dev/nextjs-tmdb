@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { RiUserLine } from "react-icons/ri";
-import { ICastMember } from "../../types";
+import { ContentTypes, ICastMember } from "../../types";
 import CustomImage from "../CustomImage";
 
 interface CastListProps {
@@ -66,6 +66,7 @@ export function CastList({ cast }: CastListProps) {
                   <CustomImage
                     src={`https://image.tmdb.org/t/p/w276_and_h350_face/${castMember.profile_path}`}
                     alt={castMember.name}
+                    contentType={ContentTypes.Person}
                     layout="fill"
                   />
                 </Box>

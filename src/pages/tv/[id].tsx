@@ -45,6 +45,7 @@ export default function ShowPage({ show }: ShowPageProps) {
         overview: show.overview,
         vote_average: show.vote_average,
         videos: show.videos,
+        media_type: show.media_type,
       });
     }
   }, [show]);

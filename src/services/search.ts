@@ -45,6 +45,10 @@ export async function multiSearch(
           year: "numeric",
         }),
       };
+    } else if (content.media_type === ContentTypes.Person) {
+      return {
+        ...content,
+      };
     } else {
       return {
         ...content,

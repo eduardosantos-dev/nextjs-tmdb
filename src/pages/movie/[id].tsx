@@ -37,6 +37,7 @@ export default function MoviePage({ movie }: MoviePageProps) {
         overview: movie.overview,
         vote_average: movie.vote_average,
         videos: movie.videos,
+        media_type: movie.media_type,
       });
     }
   }, [movie]);
