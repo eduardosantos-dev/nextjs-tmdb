@@ -23,7 +23,6 @@ export default function NowPlaying({ movies }: MoviesProps) {
       </Head>
       <ContentPage
         queryKey="movies"
-        contentType={ContentTypes.Movie}
         pageTitle={pageTitle}
         initialData={movies}
         fetchPage={fetchPage}

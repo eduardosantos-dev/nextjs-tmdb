@@ -36,7 +36,6 @@ export default function Shows({ shows }: ShowsProps) {
         queryKey="shows"
         initialData={shows}
         fetchPage={fetchPage}
-        contentType={ContentTypes.Show}
         pageTitle={pageTitle}
       />
     </>

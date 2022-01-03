@@ -37,7 +37,6 @@ export default function TopRatedShows({ shows }: ShowsProps) {
         queryKey="shows"
         initialData={shows}
         fetchPage={fetchPage}
-        contentType={ContentTypes.Show}
         pageTitle={pageTitle}
       />
     </>
