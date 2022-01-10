@@ -6,7 +6,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import React, { useState, KeyboardEvent } from "react";
+import { KeyboardEvent, useState } from "react";
 import { RiSearchLine } from "react-icons/ri";
 
 export function SearchBox() {

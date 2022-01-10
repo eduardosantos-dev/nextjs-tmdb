@@ -1,12 +1,11 @@
-import React from "react";
 import { Box, Container, Flex } from "@chakra-ui/react";
+import { GetStaticProps } from "next/types";
+import ContentSection from "../components/ContentSection";
 import { Header } from "../components/Header";
 import SearchHero from "../components/Home/SearchHero";
-import { GetStaticProps } from "next/types";
-import { ContentTypes, IMovie } from "../types";
-import ContentSection from "../components/ContentSection";
 import { getMovies, getMoviesTopRated } from "../services/movie";
 import { getShows, getShowsTopRated } from "../services/show";
+import { ContentTypes } from "../types";
 
 interface HomeProps {
   heroBackdropImage: string;

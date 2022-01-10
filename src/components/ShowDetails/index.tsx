@@ -1,4 +1,4 @@
-import { Flex, Stack } from "@chakra-ui/react";
+import { Stack } from "@chakra-ui/react";
 import { IShow } from "../../types";
 import { CastList } from "../CastList";
 import { Recommendations } from "../Recommendations";

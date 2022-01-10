@@ -1,6 +1,5 @@
-import { Box, BoxProps, Flex, forwardRef, Heading } from "@chakra-ui/react";
+import { Box, Flex, Heading } from "@chakra-ui/react";
 import Image from "next/image";
-import CustomImage from "../../CustomImage";
 import SearchInput from "./SearchInput";
 import styles from "./styles.module.scss";
 

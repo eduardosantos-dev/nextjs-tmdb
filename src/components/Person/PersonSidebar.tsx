@@ -1,4 +1,4 @@
-import { Flex, Box, Stack, Heading, Text } from "@chakra-ui/react";
+import { Box, Flex, Heading, Stack, Text } from "@chakra-ui/react";
 import { IPerson } from "../../types";
 import CustomImage from "../CustomImage";
 import SocialMedia from "../SocialMedia";

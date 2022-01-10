@@ -1,24 +1,23 @@
 import {
-  useBreakpointValue,
-  Flex,
-  Container,
   Box,
-  Img,
-  Heading,
-  Stack,
-  IconButton,
   Button,
+  Container,
+  Flex,
+  Heading,
+  IconButton,
+  Stack,
   Text,
+  useBreakpointValue,
   useColorModeValue,
 } from "@chakra-ui/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import {
-  RiPlayListAddLine,
-  RiHeartLine,
   RiBookmarkLine,
-  RiStarLine,
+  RiHeartLine,
   RiPlayLine,
+  RiPlayListAddLine,
+  RiStarLine,
 } from "react-icons/ri";
 import { useVideoModal } from "../../context/ModalContext";
 import { ContentTypes, IGenre, IVideo } from "../../types";
@@ -26,7 +25,6 @@ import { ContentRating } from "../ContentRating";
 import CustomImage from "../CustomImage";
 import { Header } from "../Header";
 import VideoModal from "../VideoModal";
-
 import styles from "./styles.module.scss";
 
 interface ContentHeaderProps {

@@ -1,10 +1,4 @@
-import {
-  Box,
-  BoxProps,
-  IconButton,
-  IconButtonProps,
-  useColorMode,
-} from "@chakra-ui/react";
+import { Box, BoxProps, IconButton, useColorMode } from "@chakra-ui/react";
 import { RiMoonFill, RiSunFill } from "react-icons/ri";
 
 export default function ToggleTheme(props: BoxProps) {

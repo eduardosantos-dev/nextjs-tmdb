@@ -1,4 +1,4 @@
-import { Box, Heading, Stack, BoxProps, useColorMode } from "@chakra-ui/react";
+import { Box, BoxProps, Heading, Stack } from "@chakra-ui/react";
 import { IMovie, IShow } from "../../types";
 import ContentCard from "../ContentCard";
 import GradientWrapper from "../GradientWrapper";
@@ -8,8 +8,6 @@ interface RecommendationsProps extends BoxProps {
 }
 
 export function Recommendations({ recommendations }: RecommendationsProps) {
-  const { colorMode } = useColorMode();
-
   if (recommendations.length <= 0) return null;
 
   return (

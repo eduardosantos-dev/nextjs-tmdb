@@ -1,23 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { GetServerSideProps, GetStaticProps } from "next";
-import {
-  Text,
-  Image,
-  Link,
-  Img,
-  Container,
-  Flex,
-  Heading,
-  Box,
-} from "@chakra-ui/react";
+import { Box, Container, Flex, Heading, Text } from "@chakra-ui/react";
+import { GetStaticProps } from "next";
 import { Params } from "next/dist/server/router";
-import { ContentRating } from "../../components/ContentRating";
 import Head from "next/head";
-import { IShow } from "../../types";
-import ShowDetails from "../../components/ShowDetails";
+import { useEffect, useState } from "react";
 import ContentDetailsSidebar from "../../components/ContentDetailsSidebar";
 import ContentHeader from "../../components/ContentHeader";
+import ShowDetails from "../../components/ShowDetails";
 import { getShowById, getShows } from "../../services/show";
+import { IShow } from "../../types";
 
 interface ShowPageProps {
   show: IShow;

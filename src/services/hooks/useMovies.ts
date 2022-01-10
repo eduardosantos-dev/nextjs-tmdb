@@ -1,5 +1,5 @@
 import { useQuery, UseQueryOptions } from "react-query";
-import { getMovies, getMoviesTopRated, getMovieById } from "../movie";
+import { getMovieById, getMovies, getMoviesTopRated } from "../movie";
 
 export function useMovies(page: number, options: UseQueryOptions): any {
   return useQuery(["movies", page], () => getMovies(page));

@@ -1,10 +1,8 @@
-import React from "react";
 import type { GetStaticProps } from "next";
 import Head from "next/head";
-import { ContentTypes, IPerson } from "../../types";
-import { getMovies } from "../../services/movie";
 import ContentPage from "../../components/ContentPage";
 import { getPeople } from "../../services/person";
+import { IPerson } from "../../types";
 
 interface PeopleProps {
   people: IPerson[];

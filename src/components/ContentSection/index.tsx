@@ -1,7 +1,7 @@
 import {
   Box,
-  Heading,
   Flex,
+  Heading,
   Tab,
   TabList,
   TabPanel,

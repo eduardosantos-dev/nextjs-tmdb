@@ -1,35 +1,12 @@
-import React, { useEffect, useState } from "react";
+import { Container, Flex } from "@chakra-ui/react";
 import { GetStaticProps } from "next";
 import { Params } from "next/dist/server/router";
-import {
-  Box,
-  Container,
-  Flex,
-  Heading,
-  IconButton,
-  Stack,
-  Text,
-  useColorMode,
-} from "@chakra-ui/react";
-import { IMovie, IPerson } from "../../types";
 import Head from "next/head";
-import { getMovies, getMovieById } from "../../services/movie";
-import { getPeople, getPersonById } from "../../services/person";
-import CustomImage from "../../components/CustomImage";
 import { Header } from "../../components/Header";
-import ContentCard from "../../components/ContentCard";
-import {
-  RiFacebookCircleFill,
-  RiFacebookLine,
-  RiInstagramFill,
-  RiInstagramLine,
-  RiTwitterFill,
-  RiTwitterLine,
-} from "react-icons/ri";
-import SocialMedia from "../../components/SocialMedia";
-import PersonDetailsSidebar from "../../components/Person/PersonSidebar";
-import PersonSidebar from "../../components/Person/PersonSidebar";
 import PersonMainContent from "../../components/Person/PersonMainContent";
+import PersonSidebar from "../../components/Person/PersonSidebar";
+import { getPeople, getPersonById } from "../../services/person";
+import { IPerson } from "../../types";
 
 interface PersonPageProps {
   person: IPerson;

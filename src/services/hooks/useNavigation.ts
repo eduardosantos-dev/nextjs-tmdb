@@ -1,11 +1,9 @@
 import {
-  RiFireLine,
-  RiFilmLine,
   RiCalendarEventLine,
+  RiFireLine,
+  RiMovie2Line,
   RiStarLine,
   RiTvLine,
-  RiMovie2Line,
-  RiTv2Line,
 } from "react-icons/ri";
 import { NavigationMenu } from "../../types/navigation";
 

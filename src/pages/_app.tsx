@@ -1,15 +1,14 @@
-import React from "react";
+import { ChakraProvider } from "@chakra-ui/react";
 import type { AppProps } from "next/app";
-import { ChakraProvider, ModalContextProvider } from "@chakra-ui/react";
-import { theme } from "../styles/theme";
-import { SidebarDrawerProvider } from "../context/SidebarDrawerContext";
-import { QueryClientProvider } from "react-query";
-import { queryClient } from "../services/queryClient";
-import { ReactQueryDevtools } from "react-query/devtools";
-import "../styles/global.scss";
 import Head from "next/head";
-import { VideoModalProvider } from "../context/ModalContext";
+import { QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 import { Chakra } from "../../src/Chakra";
+import { VideoModalProvider } from "../context/ModalContext";
+import { SidebarDrawerProvider } from "../context/SidebarDrawerContext";
+import { queryClient } from "../services/queryClient";
+import "../styles/global.scss";
+import { theme } from "../styles/theme";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

@@ -1,5 +1,4 @@
-import React from "react";
-import { Flex, Heading, Stack } from "@chakra-ui/react";
+import { Stack } from "@chakra-ui/react";
 import { IMovie } from "../../types";
 import { CastList } from "../CastList";
 import { Recommendations } from "../Recommendations";

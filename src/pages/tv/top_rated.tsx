@@ -1,9 +1,8 @@
-import React from "react";
 import type { GetStaticProps } from "next";
 import Head from "next/head";
-import { IShow } from "../../types";
-import { getShowsTopRated } from "../../services/show";
 import ContentPage from "../../components/ContentPage";
+import { getShowsTopRated } from "../../services/show";
+import { IShow } from "../../types";
 
 interface ShowsProps {
   shows: IShow[];

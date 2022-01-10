@@ -6,7 +6,6 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
-  useColorModeValue,
 } from "@chakra-ui/react";
 import { useVideoModal } from "../../context/ModalContext";
 

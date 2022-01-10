@@ -1,9 +1,8 @@
-import React from "react";
-import { getMoviesTopRated } from "../../services/movie";
-import { ContentTypes, IMovie } from "../../types";
-import Head from "next/head";
 import { GetStaticProps } from "next";
+import Head from "next/head";
 import ContentPage from "../../components/ContentPage";
+import { getMoviesTopRated } from "../../services/movie";
+import { IMovie } from "../../types";
 interface MoviesProps {
   movies: IMovie[];
 }

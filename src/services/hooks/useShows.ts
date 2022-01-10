@@ -1,5 +1,5 @@
 import { useQuery, UseQueryOptions } from "react-query";
-import { getShows, getShowById } from "../show";
+import { getShowById, getShows } from "../show";
 
 export function useShows(page: number, options: UseQueryOptions): any {
   return useQuery(["shows", page], () => getShows(page));

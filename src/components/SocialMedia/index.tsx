@@ -1,6 +1,5 @@
 import { IconButton, Link } from "@chakra-ui/react";
 import NextLink from "next/link";
-import React from "react";
 import { IconType } from "react-icons";
 import {
   RiFacebookCircleFill,

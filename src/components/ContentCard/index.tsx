@@ -1,11 +1,10 @@
 import {
   Box,
   BoxProps,
-  Skeleton,
-  Text,
   Link,
   LinkBox,
   LinkOverlay,
+  Text,
   useColorModeValue,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
@@ -13,7 +12,7 @@ import { getMovieById } from "../../services/movie";
 import { getPersonById } from "../../services/person";
 import { queryClient } from "../../services/queryClient";
 import { getShowById } from "../../services/show";
-import { IShow, IMovie, ContentTypes, IPerson } from "../../types";
+import { ContentTypes, IMovie, IPerson, IShow } from "../../types";
 import { ContentRating } from "../ContentRating";
 import CustomImage from "../CustomImage";
 

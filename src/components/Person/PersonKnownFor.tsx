@@ -1,5 +1,5 @@
-import { Heading, Box, Stack, useColorMode, Text } from "@chakra-ui/react";
-import { IMovie, IPerson, IShow } from "../../types";
+import { Box, Heading, Stack } from "@chakra-ui/react";
+import { IPerson } from "../../types";
 import ContentCard from "../ContentCard";
 import GradientWrapper from "../GradientWrapper";
 

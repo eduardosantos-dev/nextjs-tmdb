@@ -13,7 +13,6 @@ export default function TabContent({
   contentList,
   contentType,
 }: ContentSectionProps) {
-  const { colorMode } = useColorMode();
   return (
     <GradientWrapper>
       <Stack

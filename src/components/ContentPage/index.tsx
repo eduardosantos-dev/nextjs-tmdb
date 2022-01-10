@@ -1,16 +1,14 @@
 import {
-  Flex,
+  Box,
   Container,
-  Spinner,
+  Flex,
   Heading,
   SimpleGrid,
-  Box,
-  Grid,
+  Spinner,
 } from "@chakra-ui/react";
 import { useMemo } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useInfiniteQuery } from "react-query";
-import { ContentTypes, IMovie, IShow } from "../../types";
 import ContentCard from "../ContentCard";
 import { Header } from "../Header";
 import styles from "./styles.module.scss";

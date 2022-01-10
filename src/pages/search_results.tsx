@@ -1,24 +1,10 @@
-import React, { useEffect, useMemo, useState } from "react";
-import type { GetServerSideProps, GetStaticProps } from "next";
-import {
-  Container,
-  Flex,
-  Heading,
-  SimpleGrid,
-  Spinner,
-} from "@chakra-ui/react";
-import { Header } from "../components/Header";
-import Head from "next/head";
-import InfiniteScroll from "react-infinite-scroll-component";
-import { useInfiniteQuery } from "react-query";
-import ContentCard from "../components/ContentCard";
-import { ContentTypes, IMovie, IShow } from "../types";
-import { getAiringTodayShows } from "../services/show";
-import ContentPage from "../components/ContentPage";
-import { useRouter } from "next/router";
-import { multiSearch } from "../services/search";
+import type { GetServerSideProps } from "next";
 import { Params } from "next/dist/server/router";
-import { queryClient } from "../services/queryClient";
+import Head from "next/head";
+import { useEffect, useState } from "react";
+import ContentPage from "../components/ContentPage";
+import { multiSearch } from "../services/search";
+import { IMovie, IShow } from "../types";
 
 interface SearchResultsProps {
   content: IMovie[] | IShow[];

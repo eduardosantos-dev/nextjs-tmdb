@@ -1,5 +1,4 @@
 import { Stack } from "@chakra-ui/react";
-import React from "react";
 import { useNavigation } from "../../services/hooks/useNavigation";
 import { MenuItem, MenuSection, NavigationMenu } from "../../types/navigation";
 import { NavLink } from "./NavLink";

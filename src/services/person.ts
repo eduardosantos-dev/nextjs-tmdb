@@ -1,10 +1,4 @@
-import {
-  ContentTypes,
-  ICastMember,
-  ICredits,
-  ICrewMember,
-  IPerson,
-} from "../types";
+import { ContentTypes, ICastMember, ICrewMember, IPerson } from "../types";
 import { api } from "./api";
 
 type GetPeopleResponse = {

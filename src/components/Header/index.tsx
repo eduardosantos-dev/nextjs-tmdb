@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Flex,
   Icon,
@@ -10,11 +9,10 @@ import {
 import { RiMenuLine } from "react-icons/ri";
 import { useSidebarDrawer } from "../../context/SidebarDrawerContext";
 import { Sidebar } from "../Sidebar";
+import ToggleTheme from "../ToggleTheme";
 import { Logo } from "./Logo";
 import { Navigation } from "./Navigation";
-import { Profile } from "./Profile";
 import { SearchBox } from "./SearchBox";
-import ToggleTheme from "../ToggleTheme";
 
 export function Header() {
   const { onOpen } = useSidebarDrawer();

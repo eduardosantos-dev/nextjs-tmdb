@@ -1,4 +1,3 @@
-import React from "react";
 import { Avatar, Flex, FlexProps } from "@chakra-ui/react";
 
 interface ProfileProps extends FlexProps {

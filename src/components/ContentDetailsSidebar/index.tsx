@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, Text, useColorModeValue } from "@chakra-ui/react";
+import { Flex, useColorModeValue } from "@chakra-ui/react";
 
 interface ContentDetailsSidebarProps {
   children: React.ReactNode;

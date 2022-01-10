@@ -1,13 +1,7 @@
-import { AspectRatio, Box, chakra, Icon, IconButton } from "@chakra-ui/react";
-import NextImage, { ImageProps, ImageLoaderProps } from "next/image";
-import { useEffect, useState } from "react";
-import {
-  RiHeartLine,
-  RiMovie2Line,
-  RiMovieLine,
-  RiTvLine,
-  RiUserLine,
-} from "react-icons/ri";
+import { AspectRatio, Box, chakra, Icon } from "@chakra-ui/react";
+import NextImage, { ImageLoaderProps, ImageProps } from "next/image";
+import { useState } from "react";
+import { RiMovie2Line, RiTvLine, RiUserLine } from "react-icons/ri";
 import { ContentTypes } from "../../types";
 
 const ChakraNextUnwrappedImage = chakra(NextImage, {

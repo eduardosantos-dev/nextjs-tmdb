@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
+import { Box, Container, Flex, Heading, Text } from "@chakra-ui/react";
 import { GetStaticProps } from "next";
 import { Params } from "next/dist/server/router";
-import MovieDetails from "../../components/MovieDetails";
-import { Box, Container, Flex, Heading, Text } from "@chakra-ui/react";
-import { IMovie } from "../../types";
 import Head from "next/head";
+import { useEffect, useState } from "react";
 import ContentDetailsSidebar from "../../components/ContentDetailsSidebar";
 import ContentHeader from "../../components/ContentHeader";
-import { getMovies, getMovieById } from "../../services/movie";
+import MovieDetails from "../../components/MovieDetails";
+import { getMovieById, getMovies } from "../../services/movie";
+import { IMovie } from "../../types";
 
 interface MoviePageProps {
   movie: IMovie;

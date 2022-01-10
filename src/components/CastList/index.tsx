@@ -1,18 +1,13 @@
 import {
-  Stack,
   Box,
-  Heading,
-  Text,
-  Icon,
   Flex,
-  Img,
-  Image,
-  useColorModeValue,
-  useColorMode,
+  Heading,
   Link,
+  Stack,
+  Text,
+  useColorMode,
+  useColorModeValue,
 } from "@chakra-ui/react";
-import React from "react";
-import { RiUserLine } from "react-icons/ri";
 import { ContentTypes, ICastMember } from "../../types";
 import CustomImage from "../CustomImage";
 import GradientWrapper from "../GradientWrapper";

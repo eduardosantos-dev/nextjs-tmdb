@@ -1,22 +1,8 @@
-import {
-  Flex,
-  Container,
-  Spinner,
-  SimpleGrid,
-  Heading,
-} from "@chakra-ui/react";
-
-import styles from "./styles.module.scss";
-import React, { useMemo } from "react";
-import InfiniteScroll from "react-infinite-scroll-component";
-import { useInfiniteQuery } from "react-query";
-import ContentCard from "../../components/ContentCard";
-import { Header } from "../../components/Header";
-import { getMoviesNowPlaying, getUpcomingMovies } from "../../services/movie";
-import { ContentTypes, IMovie } from "../../types";
-import Head from "next/head";
 import { GetStaticProps } from "next";
+import Head from "next/head";
 import ContentPage from "../../components/ContentPage";
+import { getUpcomingMovies } from "../../services/movie";
+import { IMovie } from "../../types";
 
 interface MoviesProps {
   movies: IMovie[];

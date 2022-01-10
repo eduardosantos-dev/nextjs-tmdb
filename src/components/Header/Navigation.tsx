@@ -1,20 +1,18 @@
-import React from "react";
 import {
+  Button,
+  Icon,
+  Link,
   Menu,
   MenuButton,
-  Text,
-  MenuList,
   MenuItem,
+  MenuList,
   Stack,
-  Link,
-  Icon,
+  Text,
   useColorModeValue,
-  Button,
-  useDisclosure,
 } from "@chakra-ui/react";
+import { RiArrowDownSLine } from "react-icons/ri";
 import { useNavigation } from "../../services/hooks/useNavigation";
 import { MenuSection, NavigationMenu } from "../../types/navigation";
-import { RiArrowDownSLine } from "react-icons/ri";
 
 interface CustomMenuProps {
   menuSection: MenuSection;
