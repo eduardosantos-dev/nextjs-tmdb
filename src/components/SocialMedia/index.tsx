@@ -1,4 +1,7 @@
-import { IconButton, Link, Stack, StackProps } from "@chakra-ui/react";
+import { IconButton, Link } from "@chakra-ui/react";
+import NextLink from "next/link";
+import React from "react";
+import { IconType } from "react-icons";
 import {
   RiFacebookCircleFill,
   RiInstagramFill,
@@ -11,6 +14,28 @@ interface SocialMediaProps {
   instagram_id?: string;
 }
 
+interface SocialMediaLinkProps {
+  href: string;
+  label: string;
+  icon: IconType;
+}
+
+const SocialMediaLink = ({ href, label, icon }: SocialMediaLinkProps) => {
+  return (
+    <NextLink href={href} passHref>
+      <Link isExternal>
+        <IconButton
+          as={icon}
+          variant="ghost"
+          colorScheme="green"
+          aria-label={label}
+          size="sm"
+        />
+      </Link>
+    </NextLink>
+  );
+};
+
 export default function SocialMedia({
   facebook_id,
   instagram_id,
@@ -19,38 +44,26 @@ export default function SocialMedia({
   return (
     <>
       {facebook_id && (
-        <Link href={`https://facebook.com/${facebook_id}`} isExternal>
-          <IconButton
-            as={RiFacebookCircleFill}
-            variant="ghost"
-            colorScheme="green"
-            aria-label="facebook"
-            size="sm"
-          />
-        </Link>
+        <SocialMediaLink
+          href={`https://facebook.com/${facebook_id}`}
+          label="facebook"
+          icon={RiFacebookCircleFill}
+        />
       )}
       {instagram_id && (
-        <Link href={`https://instagram.com/${instagram_id}`} isExternal>
-          <IconButton
-            as={RiInstagramFill}
-            variant="ghost"
-            colorScheme="green"
-            aria-label="instagram"
-            size="sm"
-          />
-        </Link>
+        <SocialMediaLink
+          href={`https://instagram.com/${instagram_id}`}
+          label="instagram"
+          icon={RiInstagramFill}
+        />
       )}
 
       {twitter_id && (
-        <Link href={`https://twitter.com/${twitter_id}`} isExternal>
-          <IconButton
-            as={RiTwitterFill}
-            variant="ghost"
-            colorScheme="green"
-            aria-label="twitter"
-            size="sm"
-          />
-        </Link>
+        <SocialMediaLink
+          href={`https://twitter.com/${twitter_id}`}
+          label="twitter"
+          icon={RiTwitterFill}
+        />
       )}
     </>
   );

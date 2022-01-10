@@ -1,14 +1,24 @@
-import { Box, Heading, Stack, Text, useColorMode } from "@chakra-ui/react";
+import {
+  Box,
+  BoxProps,
+  Heading,
+  Stack,
+  Text,
+  useColorMode,
+} from "@chakra-ui/react";
 import { IPerson } from "../../types";
 import PersonKnownFor from "./PersonKnownFor";
 
-interface PersonMainContentProps {
+interface PersonMainContentProps extends BoxProps {
   person: IPerson;
 }
 
-export default function PersonMainContent({ person }: PersonMainContentProps) {
+export default function PersonMainContent({
+  person,
+  ...rest
+}: PersonMainContentProps) {
   return (
-    <Box maxW="full">
+    <Box {...rest}>
       <Box>
         <Heading>{person.name}</Heading>
         <Box mt={6}>

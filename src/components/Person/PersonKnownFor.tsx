@@ -8,6 +8,7 @@ interface PersonKnownForProps {
 
 export default function PersonKnownFor({ person }: PersonKnownForProps) {
   const { colorMode } = useColorMode();
+
   return (
     <>
       <Heading size="md" fontWeight="500" mb={4}>

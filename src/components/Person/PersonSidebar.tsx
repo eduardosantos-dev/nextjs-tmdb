@@ -7,35 +7,46 @@ interface PersonSidebarProps {
   person: IPerson;
 }
 
+const PersonInfo = ({ label, value }: { label: string; value: string }) => {
+  return (
+    <Box>
+      <Heading fontSize="md" mt={4}>
+        {label}
+      </Heading>
+
+      <Text fontSize="sm">{value}</Text>
+    </Box>
+  );
+};
+
 export default function PersonSidebar({ person }: PersonSidebarProps) {
   return (
-    <Flex direction="column" mr={6}>
-      <Box borderRadius="lg" overflow="hidden" minW={300} maxW={300} mb={4}>
-        <CustomImage
-          src={`https://image.tmdb.org/t/p/w300/${person.profile_path}`}
-          alt={person.name}
-          contentType={person.media_type}
-          layout="fill"
-        />
-      </Box>
-      <Stack direction="row" align="center" spacing={4}>
-        <SocialMedia
-          twitter_id={person.external_ids.twitter_id}
-          facebook_id={person.external_ids.facebook_id}
-          instagram_id={person.external_ids.instagram_id}
-        />
-      </Stack>
-      <Box mt={6}>
-        <Heading size="md">Informações pessoais</Heading>
-
-        <Box>
-          <Heading size="sm" mt={4}>
-            Conhecido(a) por
+    <Flex mb={4} mr={[0, 6]} align={["center", "left"]} direction="column">
+      <Flex mb={6} direction="column" align="center">
+        <Box borderRadius="lg" overflow="hidden" minW={300} maxW={300}>
+          <Heading my={2} size="md" textAlign="center">
+            {person.name}
           </Heading>
-
-          <Text fontSize="sm">{person.known_for_department}</Text>
+          <CustomImage
+            src={`https://image.tmdb.org/t/p/w300/${person.profile_path}`}
+            alt={person.name}
+            contentType={person.media_type}
+            layout="fill"
+          />
         </Box>
-      </Box>
+
+        <Stack direction="row" spacing={4} mt={2}>
+          <SocialMedia
+            twitter_id={person.external_ids.twitter_id}
+            facebook_id={person.external_ids.facebook_id}
+            instagram_id={person.external_ids.instagram_id}
+          />
+        </Stack>
+        <Box w="full" mt={6}>
+          <Heading fontSize="lg">Informações pessoais</Heading>
+          <PersonInfo label="Known For" value={person.known_for_department} />
+        </Box>
+      </Flex>
     </Flex>
   );
 }

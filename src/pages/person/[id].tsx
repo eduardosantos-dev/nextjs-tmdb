@@ -47,10 +47,14 @@ export default function PersonPage({ person }: PersonPageProps) {
           <Flex
             as={Container}
             maxW="container.2xl"
+            overflow="hidden"
             pt={32}
             direction={{ base: "column", md: "row" }}>
             <PersonSidebar person={person} />
-            <PersonMainContent person={person} />
+            <PersonMainContent
+              person={person}
+              w={{ base: "100%", md: "calc(100% - 324px)" }}
+            />
           </Flex>
         </>
       )}

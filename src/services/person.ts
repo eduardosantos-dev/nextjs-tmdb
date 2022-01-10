@@ -83,16 +83,18 @@ export async function getPersonById(
     `/person/${id}/combined_credits`
   );
 
-  const orderedCast = credits.data.cast.sort(
-    (a, b) => b.popularity - a.popularity
+  const uniqueCast = credits.data.cast.filter(
+    (value, index, array) => array.findIndex((t) => t.id === value.id) === index
   );
+
+  const formattedCast = uniqueCast.sort((a, b) => b.popularity - a.popularity);
 
   const person: IPerson = {
     ...data,
     external_ids: externalIdsResponse.data,
     credits: {
       ...credits.data,
-      cast: orderedCast,
+      cast: formattedCast,
     },
     media_type: ContentTypes.Person,
   };
