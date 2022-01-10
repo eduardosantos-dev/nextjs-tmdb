@@ -23,7 +23,7 @@ interface MoviesProps {
 }
 
 export default function Upcoming({ movies }: MoviesProps) {
-  const pageTitle = "Filmes que estreiam em breve";
+  const pageTitle = "Upcoming Movies";
 
   const fetchPage = async ({ pageParam = 1 }): Promise<any> => {
     const response = await getUpcomingMovies(pageParam);

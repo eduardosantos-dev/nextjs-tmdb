@@ -10,7 +10,7 @@ interface MoviesProps {
 }
 
 export default function NowPlaying({ movies }: MoviesProps) {
-  const pageTitle = "Filmes em cartaz";
+  const pageTitle = "Now Playing Movies";
   const fetchPage = async ({ pageParam = 1 }): Promise<any> => {
     const response = await getMoviesNowPlaying(pageParam);
     return response;

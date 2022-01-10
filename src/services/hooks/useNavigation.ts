@@ -13,50 +13,50 @@ export function useNavigation(): NavigationMenu {
   const navigation: NavigationMenu = {
     menu: [
       {
-        label: "Filmes",
+        label: "Movies",
         children: [
-          { label: "Populares", href: "/movie", icon: RiFireLine },
+          { label: "Popular", href: "/movie", icon: RiFireLine },
           {
-            label: "Em cartaz",
+            label: "Now Playing",
             href: "/movie/now_playing",
             icon: RiMovie2Line,
           },
           {
-            label: "Próximas estreias",
+            label: "Upcoming",
             href: "/movie/upcoming",
             icon: RiCalendarEventLine,
           },
           {
-            label: "Mais bem avaliados",
+            label: "Top Rated",
             href: "/movie/top_rated",
             icon: RiStarLine,
           },
         ],
       },
       {
-        label: "Séries",
+        label: "TV Shows",
         children: [
-          { label: "Populares", href: "/tv", icon: RiFireLine },
+          { label: "Popular", href: "/tv", icon: RiFireLine },
           {
-            label: "Em exibição hoje",
+            label: "Airing Today",
             href: "/tv/airing_today",
             icon: RiTvLine,
           },
           {
-            label: "Na TV",
+            label: "On TV",
             href: "/tv/on_the_air",
             icon: RiCalendarEventLine,
           },
           {
-            label: "Mais bem avaliados",
+            label: "Top Rated",
             href: "/tv/top_rated",
             icon: RiStarLine,
           },
         ],
       },
       {
-        label: "Pessoas",
-        children: [{ label: "Populares", href: "/person", icon: RiFireLine }],
+        label: "People",
+        children: [{ label: "Popular", href: "/person", icon: RiFireLine }],
       },
     ],
   };

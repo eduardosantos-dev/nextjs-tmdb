@@ -55,7 +55,7 @@ export async function getShows(page: number = 1): Promise<GetShowsResponse> {
       ...show,
       formatted_first_air_date: new Date(
         show.first_air_date
-      ).toLocaleDateString("pt-BR", {
+      ).toLocaleDateString("en-US", {
         day: "2-digit",
         month: "short",
         year: "numeric",
@@ -82,7 +82,7 @@ export async function getShowById(id: number): Promise<GetShowByIdResponse> {
   const show = {
     ...data,
     formatted_first_air_date: new Date(data.first_air_date).toLocaleDateString(
-      "pt-BR",
+      "en-US",
       {
         day: "2-digit",
         month: "short",
@@ -112,7 +112,6 @@ export async function getShowsTopRated(
   const { data } = await api.get("/tv/top_rated", {
     params: {
       page,
-      region: "BR",
     },
   });
 
@@ -121,7 +120,7 @@ export async function getShowsTopRated(
       ...show,
       formatted_first_air_date: new Date(
         show.first_air_date
-      ).toLocaleDateString("pt-BR", {
+      ).toLocaleDateString("en-US", {
         day: "2-digit",
         month: "short",
         year: "numeric",
@@ -152,7 +151,7 @@ export async function getOnAirShows(
       ...show,
       formatted_first_air_date: new Date(
         show.first_air_date
-      ).toLocaleDateString("pt-BR", {
+      ).toLocaleDateString("en-US", {
         day: "2-digit",
         month: "short",
         year: "numeric",
@@ -183,7 +182,7 @@ export async function getAiringTodayShows(
       ...show,
       formatted_first_air_date: new Date(
         show.first_air_date
-      ).toLocaleDateString("pt-BR", {
+      ).toLocaleDateString("en-US", {
         day: "2-digit",
         month: "short",
         year: "numeric",

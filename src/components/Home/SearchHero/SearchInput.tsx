@@ -41,7 +41,7 @@ export default function SearchInput() {
       <Input
         color={useColorModeValue("gray.400", "gray.50")}
         variant="unstyled"
-        placeholder="Buscar"
+        placeholder="Search"
         _placeholder={{ color: "gray.400" }}
         onChange={(e) => setSearchInput(e.target.value)}
         onKeyDown={handleKeyDown}
@@ -53,7 +53,7 @@ export default function SearchInput() {
         fontSize="20"
         variant="ghost"
         borderRadius="full"
-        aria-label="Buscar"
+        aria-label="Search"
         d="flex"
         mr="2"
         onClick={handleSearchClick}

@@ -23,10 +23,14 @@ export default function PersonSidebar({ person }: PersonSidebarProps) {
   return (
     <Flex mb={4} mr={[0, 6]} align={["center", "left"]} direction="column">
       <Flex mb={6} direction="column" align="center">
+        <Heading
+          my={2}
+          size="md"
+          textAlign="center"
+          display={["block", "none"]}>
+          {person.name}
+        </Heading>
         <Box borderRadius="lg" overflow="hidden" minW={300} maxW={300}>
-          <Heading my={2} size="md" textAlign="center">
-            {person.name}
-          </Heading>
           <CustomImage
             src={`https://image.tmdb.org/t/p/w300/${person.profile_path}`}
             alt={person.name}
@@ -43,7 +47,7 @@ export default function PersonSidebar({ person }: PersonSidebarProps) {
           />
         </Stack>
         <Box w="full" mt={6}>
-          <Heading fontSize="lg">Informações pessoais</Heading>
+          <Heading fontSize="lg">Personal Info</Heading>
           <PersonInfo label="Known For" value={person.known_for_department} />
         </Box>
       </Flex>

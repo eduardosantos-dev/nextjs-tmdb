@@ -21,7 +21,7 @@ interface ShowsProps {
 }
 
 export default function OnTheAir({ shows }: ShowsProps) {
-  const pageTitle = "Séries exibidas hoje";
+  const pageTitle = "TV Shows Airing Today";
 
   const fetchPage = async ({ pageParam = 1 }): Promise<any> => {
     const response = await getAiringTodayShows(pageParam);

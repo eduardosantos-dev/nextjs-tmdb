@@ -9,7 +9,7 @@ interface MoviesProps {
 }
 
 export default function TopRated({ movies }: MoviesProps) {
-  const pageTitle = "Filmes mais bem avaliados";
+  const pageTitle = "Top Rated Movies";
   const fetchPage = async ({ pageParam = 1 }): Promise<any> => {
     const response = await getMoviesTopRated(pageParam);
     return response;

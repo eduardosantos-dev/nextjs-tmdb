@@ -20,7 +20,7 @@ interface ShowsProps {
 }
 
 export default function Shows({ shows }: ShowsProps) {
-  const pageTitle = "Séries populares";
+  const pageTitle = "Popular TV Shows";
 
   const fetchPage = async ({ pageParam = 1 }): Promise<any> => {
     const response = await getShows(pageParam);

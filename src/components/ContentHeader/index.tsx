@@ -192,13 +192,13 @@ export default function ContentHeader({ content }: ContentHeaderProps) {
                             colorScheme="green"
                             variant="outline"
                             onClick={onOpen}>
-                            <Text>Reproduzir trailer</Text>
+                            <Text>Play Trailer</Text>
                           </Button>
                         ) : (
                           <IconButton
                             variant="outline"
                             colorScheme="green"
-                            aria-label="Reproduzir trailer"
+                            aria-label="Play Trailer"
                             icon={<RiPlayLine />}
                             onClick={onOpen}
                           />
@@ -213,7 +213,7 @@ export default function ContentHeader({ content }: ContentHeaderProps) {
                   mt={6}
                   fontWeight="500"
                   color="whiteAlpha.800">
-                  Sinopse
+                  Overview
                 </Heading>
                 <Text mt={4} color="whiteAlpha.800">
                   {content.overview}

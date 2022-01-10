@@ -16,7 +16,6 @@ export async function multiSearch(
     params: {
       query,
       page,
-      region: "BR",
     },
   });
 
@@ -26,7 +25,7 @@ export async function multiSearch(
         ...content,
         formatted_release_date: new Date(
           content.release_date
-        ).toLocaleDateString("pt-BR", {
+        ).toLocaleDateString("en-US", {
           day: "2-digit",
           month: "short",
           year: "numeric",
@@ -39,7 +38,7 @@ export async function multiSearch(
         formatted_release_date: null,
         formatted_first_air_date: new Date(
           (content as IShow).first_air_date
-        ).toLocaleDateString("pt-BR", {
+        ).toLocaleDateString("en-US", {
           day: "2-digit",
           month: "short",
           year: "numeric",

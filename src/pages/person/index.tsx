@@ -11,7 +11,7 @@ interface PeopleProps {
 }
 
 export default function People({ people }: PeopleProps) {
-  const pageTitle = "Pessoas populares";
+  const pageTitle = "Popular People";
   const fetchPage = async ({ pageParam = 1 }): Promise<any> => {
     const response = await getPeople(pageParam);
     return response;

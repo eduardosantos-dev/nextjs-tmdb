@@ -30,9 +30,9 @@ export default function ShowPage({ show }: ShowPageProps) {
   useEffect(() => {
     if (show) {
       setSidebarData([
-        { label: "Título original", value: show.original_name },
-        { label: "Situação", value: show.status },
-        { label: "Idioma original", value: show.original_language },
+        { label: "Original Title", value: show.original_name },
+        { label: "Status", value: show.status },
+        { label: "Original Language", value: show.original_language },
       ]);
 
       setHeaderData({

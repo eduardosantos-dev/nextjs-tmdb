@@ -12,8 +12,8 @@ export default function PersonKnownFor({ person }: PersonKnownForProps) {
 
   return (
     <>
-      <Heading size="md" fontWeight="500" mb={4}>
-        Conhecido(a) por
+      <Heading size="md" fontWeight="500">
+        Known For
       </Heading>
       <GradientWrapper>
         <Stack

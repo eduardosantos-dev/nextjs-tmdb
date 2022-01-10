@@ -20,11 +20,11 @@ export default function MoviePage({ movie }: MoviePageProps) {
   useEffect(() => {
     if (movie) {
       setSidebarData([
-        { label: "Título original", value: movie.original_title },
-        { label: "Situação", value: movie.status },
-        { label: "Idioma original", value: movie.original_language },
-        { label: "Orçamento", value: movie.formatted_budget },
-        { label: "Receita", value: movie.formatted_revenue },
+        { label: "Original Title", value: movie.original_title },
+        { label: "Status", value: movie.status },
+        { label: "Original Language", value: movie.original_language },
+        { label: "Budget", value: movie.formatted_budget },
+        { label: "Revenue", value: movie.formatted_revenue },
       ]);
 
       setHeaderData({

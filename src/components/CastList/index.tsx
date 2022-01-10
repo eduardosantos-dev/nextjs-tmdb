@@ -31,7 +31,7 @@ export function CastList({ cast }: CastListProps) {
   return (
     <Box maxW="100%">
       <Heading as="h3" fontSize="xl">
-        Elenco principal
+        Top Billed Cast
       </Heading>
       <GradientWrapper>
         <Stack

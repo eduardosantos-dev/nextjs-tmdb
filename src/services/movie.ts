@@ -55,7 +55,7 @@ export async function getMovies(page: number = 1): Promise<GetMoviesResponse> {
     return {
       ...movie,
       formatted_release_date: new Date(movie.release_date).toLocaleDateString(
-        "pt-BR",
+        "en-US",
         {
           day: "2-digit",
           month: "short",
@@ -88,7 +88,7 @@ export async function getMovieById(id: number): Promise<GetMovieByIdResponse> {
   const movie: IMovie = {
     ...data,
     formatted_release_date: new Date(data.release_date).toLocaleDateString(
-      "pt-BR",
+      "en-US",
       {
         day: "2-digit",
         month: "short",
@@ -120,7 +120,6 @@ export async function getMoviesTopRated(
   const { data } = await api.get("/movie/top_rated", {
     params: {
       page,
-      region: "BR",
     },
   });
 
@@ -128,7 +127,7 @@ export async function getMoviesTopRated(
     return {
       ...movie,
       formatted_release_date: new Date(movie.release_date).toLocaleDateString(
-        "pt-BR",
+        "en-US",
         {
           day: "2-digit",
           month: "short",
@@ -153,7 +152,6 @@ export async function getMoviesNowPlaying(
   const { data } = await api.get("/movie/now_playing", {
     params: {
       page,
-      region: "BR",
     },
   });
 
@@ -161,7 +159,7 @@ export async function getMoviesNowPlaying(
     return {
       ...movie,
       formatted_release_date: new Date(movie.release_date).toLocaleDateString(
-        "pt-BR",
+        "en-US",
         {
           day: "2-digit",
           month: "short",
@@ -186,7 +184,6 @@ export async function getUpcomingMovies(
   const { data } = await api.get("/movie/upcoming", {
     params: {
       page,
-      region: "BR",
     },
   });
 
@@ -194,7 +191,7 @@ export async function getUpcomingMovies(
     return {
       ...movie,
       formatted_release_date: new Date(movie.release_date).toLocaleDateString(
-        "pt-BR",
+        "en-US",
         {
           day: "2-digit",
           month: "short",

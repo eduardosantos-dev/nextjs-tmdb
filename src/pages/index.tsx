@@ -21,30 +21,30 @@ export default function Home({ heroBackdropImage }: HomeProps) {
       </Box>
       <Box as={Container} px="4" maxW="container.2xl" my="6">
         <ContentSection
-          title="Os Mais Populares"
+          title="What's Popular"
           tabs={[
             {
-              label: "Filmes",
+              label: "Movies",
               contentType: ContentTypes.Movie,
               onTabChange: getMovies,
             },
             {
-              label: "Na TV",
+              label: "TV",
               contentType: ContentTypes.Show,
               onTabChange: getShows,
             },
           ]}
         />
         <ContentSection
-          title="Os Melhores"
+          title="Top rated"
           tabs={[
             {
-              label: "Filmes",
+              label: "Movies",
               contentType: ContentTypes.Movie,
               onTabChange: getMoviesTopRated,
             },
             {
-              label: "Séries",
+              label: "TV",
               contentType: ContentTypes.Show,
               onTabChange: getShowsTopRated,
             },

@@ -23,7 +23,7 @@ export default function PersonMainContent({
         <Heading>{person.name}</Heading>
         <Box mt={6}>
           <Heading size="md" fontWeight="500" mb={4}>
-            Biografia
+            Biography
           </Heading>
           <Text
             fontSize="sm"

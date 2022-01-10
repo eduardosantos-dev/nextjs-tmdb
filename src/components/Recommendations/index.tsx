@@ -15,7 +15,7 @@ export function Recommendations({ recommendations }: RecommendationsProps) {
   return (
     <Box maxW="100%">
       <Heading as="h3" fontSize="xl">
-        Recomendados
+        Recommendations
       </Heading>
       <GradientWrapper>
         <Stack

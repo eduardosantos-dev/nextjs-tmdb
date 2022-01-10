@@ -35,7 +35,7 @@ export default function SearchResults({
     setSearch(searchTerm);
   }, [searchTerm]);
 
-  const pageTitle = `Busca por "${search}"`;
+  const pageTitle = `Search Results for "${search}"`;
 
   const fetchPage = async ({ pageParam = 1 }): Promise<any> => {
     const response = await multiSearch(search, pageParam);

@@ -10,7 +10,7 @@ interface MoviesProps {
 }
 
 export default function Movies({ movies }: MoviesProps) {
-  const pageTitle = "Filmes populares";
+  const pageTitle = "Popular Movies";
   const fetchPage = async ({ pageParam = 1 }): Promise<any> => {
     const response = await getMovies(pageParam);
     return response;

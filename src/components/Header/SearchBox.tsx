@@ -44,13 +44,13 @@ export function SearchBox() {
         color={useColorModeValue("gray.400", "gray.50")}
         variant="unstyled"
         mr="4"
-        placeholder="Buscar"
+        placeholder="Search"
         _placeholder={{ color: "gray.400" }}
         onChange={(e) => setSearchInput(e.target.value)}
         onKeyDown={handleKeyDown}
       />
       <IconButton
-        aria-label="Buscar"
+        aria-label="Search"
         icon={<Icon as={RiSearchLine} />}
         size="sm"
         variant="ghost"
