@@ -20,8 +20,8 @@ export default function PersonMainContent({
   return (
     <Box {...rest}>
       <Box>
-        <Heading>{person.name}</Heading>
-        <Box mt={6}>
+        <Heading display={{ base: "none", md: "block" }}>{person.name}</Heading>
+        <Box mt={[0, 6]}>
           <Heading size="md" fontWeight="500" mb={4}>
             Biography
           </Heading>

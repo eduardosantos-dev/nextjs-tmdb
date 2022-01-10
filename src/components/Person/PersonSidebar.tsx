@@ -27,7 +27,7 @@ export default function PersonSidebar({ person }: PersonSidebarProps) {
           my={2}
           size="md"
           textAlign="center"
-          display={["block", "none"]}>
+          display={{ base: "block", md: "none" }}>
           {person.name}
         </Heading>
         <Box borderRadius="lg" overflow="hidden" minW={300} maxW={300}>
