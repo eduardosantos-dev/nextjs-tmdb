@@ -1,6 +1,7 @@
 import { Box, Stack, useColorMode } from "@chakra-ui/react";
 import { ContentTypes, IMovie } from "../../types";
 import ContentCard from "../ContentCard";
+import GradientWrapper from "../GradientWrapper";
 
 interface ContentSectionProps {
   contentList: IMovie[];
@@ -14,22 +15,7 @@ export default function TabContent({
 }: ContentSectionProps) {
   const { colorMode } = useColorMode();
   return (
-    <Box
-      position="relative"
-      _after={{
-        bgImage:
-          colorMode === "light"
-            ? "linear-gradient(to right, rgba(255,255,255,0) 0%, var(--chakra-colors-gray-50) 100%)"
-            : "linear-gradient(to right, rgba(255,255,255,0) 0%, var(--chakra-colors-gray-900) 100%)",
-        position: "absolute",
-        width: "60px",
-        height: "100%",
-        top: 0,
-        right: 0,
-        willChange: "opacity",
-        pointerEvents: "none",
-        content: '""',
-      }}>
+    <GradientWrapper>
       <Stack
         direction="row"
         w="100%"
@@ -43,6 +29,6 @@ export default function TabContent({
           </Box>
         ))}
       </Stack>
-    </Box>
+    </GradientWrapper>
   );
 }

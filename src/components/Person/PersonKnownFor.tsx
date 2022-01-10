@@ -1,6 +1,7 @@
 import { Heading, Box, Stack, useColorMode, Text } from "@chakra-ui/react";
 import { IMovie, IPerson, IShow } from "../../types";
 import ContentCard from "../ContentCard";
+import GradientWrapper from "../GradientWrapper";
 
 interface PersonKnownForProps {
   person: IPerson;
@@ -14,28 +15,14 @@ export default function PersonKnownFor({ person }: PersonKnownForProps) {
       <Heading size="md" fontWeight="500" mb={4}>
         Conhecido(a) por
       </Heading>
-      <Box
-        position="relative"
-        _after={{
-          bgImage:
-            colorMode === "light"
-              ? "linear-gradient(to right, rgba(255,255,255,0) 0%, var(--chakra-colors-gray-50) 100%)"
-              : "linear-gradient(to right, rgba(255,255,255,0) 0%, var(--chakra-colors-gray-900) 100%)",
-          position: "absolute",
-          width: "60px",
-          height: "100%",
-          top: 0,
-          right: 0,
-          willChange: "opacity",
-          pointerEvents: "none",
-          content: '""',
-        }}>
+      <GradientWrapper>
         <Stack
           direction="row"
           w="100%"
           overflowX="auto"
           spacing={4}
-          py={6}
+          pt={2}
+          pb={6}
           pr="6">
           {person &&
             person?.credits?.cast &&
@@ -48,7 +35,7 @@ export default function PersonKnownFor({ person }: PersonKnownForProps) {
               </Box>
             ))}
         </Stack>
-      </Box>
+      </GradientWrapper>
     </>
   );
 }
