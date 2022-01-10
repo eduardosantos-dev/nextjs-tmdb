@@ -38,7 +38,7 @@ export default function SearchHero({ src }: SearchHeroProps) {
           fontSize={["2xl", "3xl", "5xl"]}
           mb="2"
           color="white">
-          Bem-Vindo(a).
+          Welcome.
         </Heading>
         <Heading
           as="h2"
@@ -46,7 +46,7 @@ export default function SearchHero({ src }: SearchHeroProps) {
           fontSize={["xl", "2xl", "3xl"]}
           mb="6"
           color="white">
-          Milhões de filmes, séries e pessoas para descobrir. Explore já.
+          Millions of movies, tv shows and people to discover. Explore now.
         </Heading>
       </Box>
       <SearchInput />
