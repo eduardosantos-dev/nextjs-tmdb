@@ -65,8 +65,8 @@ export function Header() {
           </Flex>
 
           <Flex align="center" ml="auto">
-            <ToggleTheme mr={4} />
-            <Profile showProfileData={isWideVersion} />
+            <ToggleTheme />
+            {/* <Profile ml={4} showProfileData={isWideVersion} /> */}
           </Flex>
         </Flex>
       </Flex>
