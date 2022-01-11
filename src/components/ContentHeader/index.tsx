@@ -98,11 +98,9 @@ export default function ContentHeader({ content }: ContentHeaderProps) {
             objectFit="cover"
             objectPosition={"50% 50%"}
             alt={content.name}
-            quality={30}
             className={styles.heroBackgroundImage}
             priority
           />
-          <Header />
           <Flex
             maxW="100%"
             mt="20"

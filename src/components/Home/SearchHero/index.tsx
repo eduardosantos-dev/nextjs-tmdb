@@ -29,7 +29,6 @@ export default function SearchHero({ src }: SearchHeroProps) {
         alt="tmdb"
         className={styles.image}
         priority
-        quality={50}
       />
       <Box mb="6" textAlign={["center", "left"]}>
         <Heading
