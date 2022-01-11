@@ -2,7 +2,9 @@ import { Container, Flex } from "@chakra-ui/react";
 import { GetStaticProps } from "next";
 import { Params } from "next/dist/server/router";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import { Header } from "../../components/Header";
+import Loading from "../../components/Loading";
 import PersonMainContent from "../../components/Person/PersonMainContent";
 import PersonSidebar from "../../components/Person/PersonSidebar";
 import { getPeople, getPersonById } from "../../services/person";
@@ -13,6 +15,20 @@ interface PersonPageProps {
 }
 
 export default function PersonPage({ person }: PersonPageProps) {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return (
+      <>
+        <Head>
+          <title>tmdb</title>
+        </Head>
+        <Header />
+        <Loading />
+      </>
+    );
+  }
+
   return (
     <>
       {person && (

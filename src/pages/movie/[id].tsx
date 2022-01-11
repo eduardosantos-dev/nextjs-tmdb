@@ -2,9 +2,12 @@ import { Box, Container, Flex, Heading, Text } from "@chakra-ui/react";
 import { GetStaticProps } from "next";
 import { Params } from "next/dist/server/router";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import ContentDetailsSidebar from "../../components/ContentDetailsSidebar";
 import ContentHeader from "../../components/ContentHeader";
+import { Header } from "../../components/Header";
+import Loading from "../../components/Loading";
 import MovieDetails from "../../components/MovieDetails";
 import { getMovieById, getMovies } from "../../services/movie";
 import { IMovie } from "../../types";
@@ -14,6 +17,7 @@ interface MoviePageProps {
 }
 
 export default function MoviePage({ movie }: MoviePageProps) {
+  const router = useRouter();
   const [sidebarData, setSidebarData] = useState<any>();
   const [headerData, setHeaderData] = useState<any>();
 
@@ -42,6 +46,18 @@ export default function MoviePage({ movie }: MoviePageProps) {
     }
   }, [movie]);
 
+  if (router.isFallback) {
+    return (
+      <>
+        <Head>
+          <title>tmdb</title>
+        </Head>
+        <Header />
+        <Loading />
+      </>
+    );
+  }
+
   return (
     <>
       {movie && (
@@ -49,7 +65,7 @@ export default function MoviePage({ movie }: MoviePageProps) {
           <Head>
             <title>tmdb • {movie.title}</title>
           </Head>
-
+          <Header />
           {headerData && <ContentHeader content={headerData} />}
           <Flex
             as={Container}

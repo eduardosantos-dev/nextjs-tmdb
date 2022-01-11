@@ -2,9 +2,12 @@ import { Box, Container, Flex, Heading, Text } from "@chakra-ui/react";
 import { GetStaticProps } from "next";
 import { Params } from "next/dist/server/router";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import ContentDetailsSidebar from "../../components/ContentDetailsSidebar";
 import ContentHeader from "../../components/ContentHeader";
+import { Header } from "../../components/Header";
+import Loading from "../../components/Loading";
 import ShowDetails from "../../components/ShowDetails";
 import { getShowById, getShows } from "../../services/show";
 import { IShow } from "../../types";
@@ -14,6 +17,7 @@ interface ShowPageProps {
 }
 
 export default function ShowPage({ show }: ShowPageProps) {
+  const router = useRouter();
   const [sidebarData, setSidebarData] = useState<any>();
   const [headerData, setHeaderData] = useState<any>();
 
@@ -40,6 +44,18 @@ export default function ShowPage({ show }: ShowPageProps) {
     }
   }, [show]);
 
+  if (router.isFallback) {
+    return (
+      <>
+        <Head>
+          <title>tmdb</title>
+        </Head>
+        <Header />
+        <Loading />
+      </>
+    );
+  }
+
   return (
     <>
       {show && (
@@ -48,6 +64,7 @@ export default function ShowPage({ show }: ShowPageProps) {
             <title>tmdb • {show.name}</title>
           </Head>
 
+          <Header />
           {headerData && <ContentHeader content={headerData} />}
           <Flex
             as={Container}
