@@ -967,6 +967,11 @@
   resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.1.0.tgz#7f698254aadf921e48dda8c0a6b304026b8a9323"
   integrity sha512-JLo+Y592QzIE+q7Dl2pMUtt4q8SKYI5jDrZxrozEQxnGVOyYE+GWK9eLkwTaeN9DDctlaRAQ3TBmzZ1qdLE30A==
 
+"@types/gtag.js@^0.0.11":
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/@types/gtag.js/-/gtag.js-0.0.11.tgz#0c384ea32e4e40043a2dca82db79b5e48d681ad5"
+  integrity sha512-rUuSDedDjcuUpoc2zf6eX6zRrxqALNgwrmMBfVFopkLH7YGM52C7tt6j9GsYIvaxn+ioVRpOKoHnN1DXzHEqIg==
+
 "@types/json5@^0.0.29":
   version "0.0.29"
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
